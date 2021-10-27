@@ -1,0 +1,9 @@
+._*
+*.log
+node_modules/
+jspm_packages/
+
+web_modules/
+*.env
+
+*.stackdump
