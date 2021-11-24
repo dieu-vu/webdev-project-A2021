@@ -105,3 +105,10 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+# ignore content of uploads folder
+uploads/*
+# except one (empty) file to have the folder in version control
+!uploads/.gitkeep
+
