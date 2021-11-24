@@ -1,1 +1,44 @@
 <!--Starting point of the application-->
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="utf8">
+    <title>login</title>
+    <link href="./styles/style.css" rel="stylesheet">
+</head>
+
+<body>
+<!--container login page left side-->
+<div class="container_1">
+    <h1>People make the memories</h1>
+    <h3>You choose how.</h3>
+</div>
+
+<!--container login page right side-->
+<div class="container_2">
+    <div class="forms">
+        <div class="form-wrapper" id="login-wrapper">
+            <img src="images/nutivity_logo_black.png" alt="logo" width="90px" height="100px">
+            <h3>Nutivity</h3>
+            <form id="login-form" class="light-border" action="http://10.114.32.24/auth/login" method="post">
+                <div>
+                    <label>Email:</label>
+                    <input class="light-border" type="text" name="username" />
+                </div>
+                <div>
+                    <label>Password:</label>
+                    <input class="light-border" type="password" name="password" />
+                </div>
+                <div>
+                    <button class="light-border" type="submit">Log In</button>
+                </div>
+            </form>
+        </div>
+        <button class="light-border" style="display: none;" id="log-out">Log out</button>
+    </div>
+</div>
+<script src="./scripts/login.js"></script>
+</body>
+
+</html>
