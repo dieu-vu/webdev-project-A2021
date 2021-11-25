@@ -1,0 +1,27 @@
+{
+  "name": "nutivity",
+  "version": "1.0.0",
+  "description": "Nutivity web app project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dieu-vu/webdev-project-A2021.git"
+  },
+  "keywords": [
+    "nutivity",
+    "activity"
+  ],
+  "author": "Jasmin, Xiaoming, Dieu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dieu-vu/webdev-project-A2021/issues"
+  },
+  "homepage": "https://github.com/dieu-vu/webdev-project-A2021#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
