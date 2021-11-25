@@ -9,30 +9,29 @@
 </head>
 
 <body>
+<div class="container_layout">
+
 <!--container register page left side-->
-<div class="container_1">
+<div class="container_intro">
   <h1>People make the memories</h1>
   <h3>You choose how.</h3>
 </div>
 
 <!--container register page right side-->
-<div class="container_2">
+<div class="container_register">
   <div class="forms">
     <div class="form-wrapper" id="register-wrapper">
-      <img src="images/nutivity_logo_black.png" alt="logo" width="90px" height="100px">
+      <img src="images/nutivity_logo.png" alt="logo" width="90px" height="100px">
       <h3>Nutivity</h3>
       <form id="register-form" class="light-border" action="http://10.114.32.24/auth/login" method="post">
         <div>
-          <label>Name:</label>
-          <input class="light-border" type="text" name="name" />
+          <input class="light-border" type="text" name="name" placeholder="Name"/>
         </div>
         <div>
-          <label>Email:</label>
-          <input class="light-border" type="email" name="username" />
+          <input class="light-border" type="email" name="username" placeholder="Email"/>
         </div>
         <div>
-          <label>Password:</label>
-          <input class="light-border" type="password" name="password" />
+          <input class="light-border" type="password" name="password" placeholder="Password"/>
         </div>
         <div>
           <button class="light-border" type="submit">Register</button>
@@ -41,6 +40,7 @@
       <p>Already have an account? <a href="login.html">login</a></p>
     </div>
   </div>
+</div>
 </div>
 <script src="./scripts/login.js"></script>
 </body>

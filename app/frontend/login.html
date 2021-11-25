@@ -9,38 +9,38 @@
 </head>
 
 <body>
-<!--container login page left side-->
-<div class="container_1">
-    <h1>People make the memories</h1>
-    <h3>You choose how.</h3>
-</div>
+<div class="container_layout">
 
-<!--container login page right side-->
-<div class="container_2">
-    <div class="forms">
-        <div class="form-wrapper" id="login-wrapper">
-            <img src="images/nutivity_logo_black.png" alt="logo" width="90px" height="100px">
-            <h3>Nutivity</h3>
-            <form id="login-form" class="light-border" action="http://10.114.32.24/auth/login" method="post">
-                <div>
-                    <label>Email:</label>
-                    <input class="light-border" type="email" name="username" />
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input class="light-border" type="password" name="password" />
-                </div>
-                <div>
-                    <button class="light-border" type="submit">Log In</button>
-                </div>
-            </form>
-            <a href="register.html">
-                <h5>Register</h5>
-            </a>
+    <!--container login page left side-->
+    <div class="container_intro">
+        <h1>People make the memories</h1>
+        <h3>You choose how.</h3>
+    </div>
+
+    <!--container login page right side-->
+    <div class="container_login">
+        <div class="forms">
+            <div class="form-wrapper" id="login-wrapper">
+                <img src="images/nutivity_logo.png" alt="logo" width="90px" height="100px">
+                <h3>Nutivity</h3>
+                <form id="login-form" class="light-border" action="http://10.114.32.24/auth/login" method="post">
+                    <div>
+                        <input class="light-border" type="email" name="username" placeholder="Username"/>
+                    </div>
+                    <div>
+                        <input class="light-border" type="password" name="password" placeholder="Password"/>
+                    </div>
+                    <div>
+                        <button class="light-border" type="submit">Log In</button>
+                    </div>
+                </form>
+                <a href="register.html">
+                    <h5>Register</h5>
+                </a>
+            </div>
         </div>
     </div>
 </div>
 <script src="./scripts/login.js"></script>
 </body>
-
 </html>
