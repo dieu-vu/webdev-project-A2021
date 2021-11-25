@@ -1,0 +1,48 @@
+<!--Starting point of the application-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf8">
+  <title>login</title>
+  <link href="./styles/style.css" rel="stylesheet">
+</head>
+
+<body>
+<!--container register page left side-->
+<div class="container_1">
+  <h1>People make the memories</h1>
+  <h3>You choose how.</h3>
+</div>
+
+<!--container register page right side-->
+<div class="container_2">
+  <div class="forms">
+    <div class="form-wrapper" id="register-wrapper">
+      <img src="images/nutivity_logo_black.png" alt="logo" width="90px" height="100px">
+      <h3>Nutivity</h3>
+      <form id="register-form" class="light-border" action="http://10.114.32.24/auth/login" method="post">
+        <div>
+          <label>Name:</label>
+          <input class="light-border" type="text" name="name" />
+        </div>
+        <div>
+          <label>Email:</label>
+          <input class="light-border" type="text" name="username" />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input class="light-border" type="password" name="password" />
+        </div>
+        <div>
+          <button class="light-border" type="submit">Register</button>
+        </div>
+      </form>
+      <p>Already have an account? <a href="login.html">login</a></p>
+    </div>
+  </div>
+</div>
+<script src="./scripts/login.js"></script>
+</body>
+
+</html>
