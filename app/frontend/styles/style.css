@@ -1,15 +1,15 @@
-/*App styles*/
+/* CSS for all pages */
 
-/*All pages*/
-p, h1, h2, input{
+
+p, h1, h2, input {
     font-family: Roboto, sans-serif;
 }
 
-/*Login and registering pages*/
+/************* LOGIN & REGISTER PAGE SECTION *************/
 body {
     width: 100%;
     margin: 0;
-    background: #000000;
+    background: #181818;
 }
 
 .container_layout {
@@ -21,11 +21,11 @@ body {
     height: 100%;
 }
 
-.container_intro {
+.container_intro_login {
     display: flex;
     flex-direction: column;
     position: relative;
-    padding: 1.5em;
+    padding: 1.55em;
     width: 40%;
     height: 100%;
     color: #FCFCFC;
@@ -33,6 +33,22 @@ body {
     font-size: xx-large;
     margin-top: 10%;
     background-image: url("../images/abstract2.jpeg");
+    z-index: 2;
+}
+
+.container_intro_register {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 2.5em;
+    width: 40%;
+    height: 100%;
+    color: #FCFCFC;
+    left: 2%;
+    font-size: xx-large;
+    margin-top: 10%;
+    background-image: url("../images/abstract2.jpeg");
+    z-index: 1;
 }
 
 .container_login, .container_register {
@@ -49,7 +65,7 @@ body {
     border-radius: 40px;
     margin-top: 10%;
     backdrop-filter: blur(10px);
-    box-shadow: 20px 20px 40px -6px rgba(0,0,0,0.2);
+    box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease-in-out;
     text-align: center;
     padding: 1em;
@@ -94,9 +110,107 @@ a:hover {
     font-size: x-large;
 }
 
-.container_intro > h3 {
+.container_intro_login > h3 {
     font-family: "Roboto Thin", sans-serif;
     font-weight: 100;
+}
+
+.container_intro_register > h3 {
+    font-family: "Roboto Thin", sans-serif;
+    font-weight: 100;
+}
+
+/************* HOME PAGE SECTION *************/
+.nav_container {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #181818;
+    overflow-x: hidden;
+    padding-top: 10%;
+    border-right: 0.5px solid rgba(252, 252, 252, 0.5);
+}
+
+.side_nav a {
+    padding: 6px 8px 6px 16px;
+    margin-bottom: 10%;
+    text-decoration: none;
+    font-size: 25px;
+    color: #FCFCFC;
+    display: block;
+}
+
+.side_nav a:hover {
+    color: #4db9b9;
+    transition: all 0.3s ease-in-out;
+    font-size: xx-large;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+
+/* max 1000px screen width for all pages*/
+@media only screen and (max-width: 1000px) {
+
+    /************* NAVIGATION SECTION *************/
+
+
+
+    /************* LOGIN & REGISTER PAGE SECTION *************/
+    .container_intro_login {
+        padding: 3.9em;
+        width: 40%;
+        font-size: x-large;
+    }
+
+    .container_intro_register {
+        padding: 5.2em;
+        width: 40%;
+        font-size: x-large;
+    }
+}
+
+/* max 870px screen width for all pages*/
+@media only screen and (max-width: 870px) {
+    body, html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+
+    /************* LOGIN & REGISTER PAGE SECTION *************/
+    .container_layout {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .container_intro_login, .container_intro_register {
+        display: none;
+    }
+
+    .container_login, .container_register {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        background: #004155;
+        color: #FCFCFC;
+        border-radius: 0;
+        margin-top: 0;
+        backdrop-filter: blur(10px);
+        box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+        transition: all 0.2s ease-in-out;
+        text-align: center;
+        padding: 1em;
+    }
 }
 
 
