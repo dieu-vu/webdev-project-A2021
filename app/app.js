@@ -1,6 +1,7 @@
 'use strict';
 
 //import necessary libraries:
+require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
 //TODO: error handling, passport, thumbnails
