@@ -1,7 +1,6 @@
-// file for login functionality
+// file for login and register functionality
 'use strict';
-// url for backend connection - change when uploading to server
-const url = 'http://localhost:3000';
+const url = 'http://localhost:3000'; // url for backend connection
 
 // select existing html elements
 const loginForm = document.querySelector('#login-form');

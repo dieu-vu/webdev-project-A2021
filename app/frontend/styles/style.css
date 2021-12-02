@@ -16,7 +16,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     width: 100%;
     height: 100%;
 }
@@ -25,13 +25,13 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
-    padding: 1.55em;
+    padding: 1.7em;
     width: 40%;
-    height: 100%;
+    min-height: 100%;
     color: #FCFCFC;
     left: 2%;
     font-size: xx-large;
-    margin-top: 10%;
+    margin-top: 5%;
     background-image: url("../images/abstract2.jpeg");
     z-index: 2;
 }
@@ -40,18 +40,19 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
-    padding: 2.5em;
+    padding: 2.6em;
     width: 40%;
-    height: 100%;
+    min-height: 100%;
     color: #FCFCFC;
     left: 2%;
     font-size: xx-large;
-    margin-top: 10%;
+    margin-top: 5%;
     background-image: url("../images/abstract2.jpeg");
     z-index: 1;
 }
 
 .container_login, .container_register {
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,11 +60,11 @@ body {
     position: relative;
     right: 2%;
     width: 40%;
-    height: 100%;
+    min-height: 100%;
     background: #004155;
     color: #FCFCFC;
     border-radius: 40px;
-    margin-top: 10%;
+    margin-top: 5%;
     backdrop-filter: blur(10px);
     box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease-in-out;
