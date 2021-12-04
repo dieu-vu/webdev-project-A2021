@@ -154,6 +154,26 @@ nav ul {
     list-style-type: none;
 }
 
+/************* USER PAGE SECTION *************/
+.user-image {
+    border-radius: 50%;
+}
+
+.image-stack{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    width: 70%;
+}
+
+.single-image{
+    background-color: #181818;
+}
+
+.activity-image{
+    padding: 5px;
+}
+
 
 /* max 1000px screen width for all pages*/
 @media only screen and (max-width: 1000px) {
