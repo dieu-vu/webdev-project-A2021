@@ -54,36 +54,70 @@ const getAllUsers = async() => {
 };
 
 const editUser = async(user) => {
+    const query = `UPDATE p_user SET name=?, email=?, password=? WHERE user_id=?`;
     try {
-    //Query user's role:
-        const [users] = await promisePool.query(`SELECT role FROM P_user WHERE user_id = ?`, [cat.user_id]);
-        const user_role = users[0].role;	
-        console.log('USER_ROLE', user_role);
-    } catch (e) {
-        console.error('CHECK USER ROLE ERROR', e.message)
-    }
-    //If user is admin, can edit without checking owner matching with user_id:	
-    query_normal = `UPDATE p_user SET name=?, email=?, password=? WHERE user_id=?`;
-    query_admin = `UPDATE p_user SET name=?, email=?, password=? WHERE user_id=?`;
-    try {
-        if (user_role != 0){
-            const [results] = await promisePool.execute(query_normal,
-                [user.name, user.email, user.password, user.user_id]);
-        } else {
-            const [results] = await promisePool.execute(query_admin,
-                [user.name, user.email, user.password, user.user_id]);
-        }
+        const [results] = await promisePool.execute(query_admin,
+            [user.name, user.email, user.password, user.user_id]);
         console.log('EDIT_USER', results);
         return results.affectedRows == 1;
     } catch (e) {
-        console.error('USERMODEL EDIT ERROR', e.message);
+        console.error('userModel edit ERROR', e.message);
     }
 };
+
+const getOwnActivity = async (user) => {
+    const query = `SELECT * FROM activity WHERE owner = ?`;
+    try {
+        const [results] = await promisePool.query(query, [user.user_id]);
+        return results;
+    } catch (e) {
+        console.error('UserModel getOwnActivity ERROR', e.message);
+    }
+};
+
+const getParticipatingActivity = async (user) => {
+    try {
+        const query = `SELECT p.*, a.* FROM participate_in AS p 
+            LEFT JOIN activity AS a 
+            ON p.activity = a.activity_id 
+            WHERE p.participant = ? `;
+        const results = await promisePool.query(query, [user.user_id]);
+        return results[0];
+    } catch (e) {
+        console.error('UserModel getParticipatingActivity ERROR', e.message);
+    };
+};
+
+
+
+// // Implement this for admin user only
+// const deleteUser = async (user) => {
+//     try {
+//     //Query user's role:
+//         const [users] = await promisePool.query(`SELECT role FROM p_user WHERE user_id = ?`, [user.user_id]);
+//         const user_role = users[0].role;	
+//         console.log('USER_ROLE', user_role);
+//     } catch (e) {
+//         console.error('CHECK USER ROLE ERROR', e.message)
+//     }
+//     //If user is admin, can delete without checking owner matching with user_id:	
+//     try {
+//         const [row] = await promisePool.query(`DELETE FROM p_user WHERE user_id = ?`, [user.user_id]);
+//         console.log('model delete user', row);
+// 		return row.affectedRows === 1;
+//     } catch (e) {
+//         console.error('model delete user ERROR', e.message)
+//     }
+// };
 
 
 module.exports = {
     getUserLogin,
     registerUser,
     getUser,
-    getAllUsers
+    getAllUsers, 
+    editUser,
+    getOwnActivity,
+    getParticipatingActivity,
+    //deleteUser,
 };
