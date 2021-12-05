@@ -170,15 +170,54 @@ nav ul {
 }
 
 /************* USER PAGE SECTION *************/
+
+.user-header {
+    overflow: auto;
+}
+
+#user-info{
+    color: #fcfcfc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    float: right;
+    font-size: larger;
+    font-weight: 600;
+    font-family: Roboto, sans-serif;
+}
+
+#user-info p {
+    text-align: center;
+}
+
 .user-image {
   border-radius: 50%;
+  margin: 20px 20px 5px 20px;
+  float: right;
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+}
+
+#user-activity{
+    color: #fcfcfc;
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 80%;
+    float: right;
+    margin: auto;
+
 }
 
 .image-stack {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-evenly;
-  width: 70%;
+  justify-content: center;
+  width: 80%;
+  margin: 40px;
+  float: right;
 }
 
 .single-image {
