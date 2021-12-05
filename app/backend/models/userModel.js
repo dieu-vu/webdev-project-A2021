@@ -29,6 +29,19 @@ const registerUser = async (user) => {
     }
 };
 
+// Get user data from database
+const getUser = async(userId) => {
+    query = 'SELECT * FROM p_user WHERE user_id = ?';
+    try {
+        const [results] = await promisePool.execute(query, [userId]);
+        console.log('model get user by id', results);
+        return results[0];
+    } catch (e) {
+        console.error('model get user by id ERROR', e.message);
+    };
+};
+
+
 module.exports = {
     getUserLogin,
     registerUser,

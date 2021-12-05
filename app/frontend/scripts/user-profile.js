@@ -54,9 +54,10 @@ const getProfile = async () => {
         const response = await fetch(url+ '/user', fetchOpstions);
         const user = await response.json();
 
+        createUserPic(user);
+
         //TODO: Get list of all relevant activities of user in json response
         //createActivityStack(user.activities);
-        createUserPic(user);
 
     } catch (e) {
         console.log(e.message);
