@@ -215,7 +215,6 @@ nav ul {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  width: 80%;
   margin: 40px;
   float: right;
 }
@@ -285,4 +284,29 @@ nav ul {
     text-align: center;
     padding: 1em;
   }
+}
+
+/* Transition image when hovering */
+.trans{
+    -webkit-transition: all 1.5s;
+    -moz-transition: all 1.5s;
+    -o-transition: all 1.5s;
+    transition: all 1.5s;
+}
+.trans:hover{
+    -webkit-transform: translate(50px, 70px) scale(1.5,1.5);
+    -moz-transform: translate(50px, 70px) scale(1.5,1.5);
+    -o-transform: translate(50px, 70px) scale(1.5,1.5);
+    -ms-transform: translate(50px, 70px) scale(1.5,1.5);
+    transform: translate(50px, 70px) scale(1.5,1.5);
+
+    -webkit-transition-property: transform;
+    -moz-transition-property: transform;
+    -o-transition-property: transform;
+    transition-property: transform;
+
+    -webkit-transition-duration: 1.5s;
+    -moz-transition-duration: 1.5s;
+    -o-transition-duration: 1.5s;
+    transition-duration: 1.5s;
 }

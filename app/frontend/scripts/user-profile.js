@@ -32,7 +32,7 @@ const createActivityStack = (activities, headerText) => {
 
     const ul = document.createElement('ul');
     ul.id = 'activity_list';
-    ul.className = 'image-stack';
+    ul.classList.add = 'image-stack';
 
     ul.innerHTML = '';
     activities.forEach((activity) => {
@@ -41,6 +41,8 @@ const createActivityStack = (activities, headerText) => {
         //img.src = url + '/thumbnails/' + activity.filename;
         img.alt = activity.name;
         img.classList.add('activity-image');
+        img.classList.add('trans');
+
 
         img.addEventListener('click', () => {
             location.href = 'activity.html?id=?' + activity.activity_id;
