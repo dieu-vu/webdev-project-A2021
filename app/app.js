@@ -4,8 +4,7 @@ require('dotenv').config();
 const express = require('express');
 const authRoute = require('./backend/routes/authRoute');
 const activityRoute = require('./backend/routes/activityRoute.js');
-//var userRoute = require('./backend/routes/userRoute.js');
-//var activityRoute = require('./backend/routes/activityRoute.js');
+const userRoute = require('./backend/routes/userRoute.js');
 const cors = require('cors');
 const passport = require('./backend/utils/pass');
 
@@ -23,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use('/auth', authRoute);
-//app.use('/user', userRoute);
+app.use('/user', userRoute);
 app.use('/activity', activityRoute);
 
 app.get('/', (req,res) => {
