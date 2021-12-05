@@ -1,7 +1,7 @@
 'use strict';
 const { validationResult } = require('express-validator');
-const {insertActivity, getActivity, deleteActivity, getActivityByDate, getActivityByLocation, getActivityByActivityName, getAllValidActivity, updateActivity, getParticipantList, getAllUsersValidActivity, getAllUsersParticipation } = require('../models/activityModel');
-const {httpError } = require('../utils/errors');
+const {insertActivity, getActivity, deleteActivity, getActivityByDate, getActivityByLocation, getActivityByActivityName, getAllValidActivity, updateActivity, getParticipantList, getAllUsersValidActivity, getAllUsersParticipation, insertParticipation } = require('../models/activityModel');
+const { httpError } = require('../utils/errors');
 
 const activity_list_get = async (req, res, next) => {
     const activities = await getAllValidActivity(next);
@@ -134,6 +134,21 @@ const activity_delete = async (req, res, next) => {
     res.json({message: `Activity deleted`});
 };
 
+const participation_post = async (req, res, next) => {
+
+    const errors = validationResult(req);
+    if(!errors.isEmpty()) {
+      console.error('participation_post validation', errors.array());
+    const err = httpError('data not valid', 400)
+    next(err);
+    return;
+    } 
+    console.log('add participation data', req.body);
+    // const newParticipation = await insertParticipation(req.user.userId, req.params.activityId, next);
+    const newParticipation = await insertParticipation(14, req.params.activityId, next);
+    res.json({message: `participation added: ${newParticipation}`});
+};
+
 module.exports = {
     activity_list_get,
     activity_get,
@@ -146,4 +161,5 @@ module.exports = {
     get_participants_by_activity,
     activity_get_by_user,
     participation_get_by_user,
-};
+    participation_post,
+}; 
