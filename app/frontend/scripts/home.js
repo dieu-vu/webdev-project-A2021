@@ -38,6 +38,9 @@ const createActivityCards = (activities) => {
     const p5 = document.createElement('p');
     p5.innerHTML = `Participant: ${activity.participantNum}`;
 
+    const p6 = document.createElement('p');
+    p6.innerHTML = `Id: ${activity.id}`;
+
     // participate button
     const participateButton = document.createElement('button');
     participateButton.innerHTML = 'Participate';
@@ -47,7 +50,10 @@ const createActivityCards = (activities) => {
           method: 'POST',
         };
         try {
-          
+          const response = await fetch(url + '/activity/participation/' + activity.id, fetchOptions);
+          const json = await response.json();
+          console.log('post response', json);
+          getActivity();         
         } catch (e) {
           console.log(e.message);
         }
@@ -64,6 +70,7 @@ const createActivityCards = (activities) => {
     li.appendChild(p3);
     li.appendChild(p4);
     li.appendChild(p5);
+    li.appendChild(p6);
     li.appendChild(participateButton);
     ul.appendChild(li);
   });
