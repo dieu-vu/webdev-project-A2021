@@ -113,6 +113,19 @@ const insertActivity = async (activity, next) => {
     }
 };
 
+const insertParticipation = async (participantId,activityId, next) => {
+    try {
+        const [rows] = await promisePool.execute('INSERT INTO participate_in (participant, activity) VALUES (?,?)',
+        [participantId, activityId]);
+        console.log('model insert participation', rows);
+        return rows
+    }catch(e) {
+        console.error('model insert participation', e.message);
+        const err = httpError('Sql error', 500);
+        next(err);
+    }
+};
+
 const updateActivity = async (activity) => {
     try {
         const [rows] = await promisePool.execute('UPDATE activity SET name = ?, location = ?, description = ? , owner = ?, VET = ? WHERE activity_id = ?',
@@ -140,6 +153,7 @@ module.exports = {
     getAllValidActivity,
     getActivity,
     insertActivity,
+    insertParticipation,
     updateActivity,
     deleteActivity,
     getActivityByDate,
