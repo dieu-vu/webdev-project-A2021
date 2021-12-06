@@ -11,13 +11,18 @@ const stack = document.querySelector('#user-activity')
 const openMenu = () => {
     document.querySelector('.side-edit-menu').style.width = "20%";
     document.querySelector('.side-edit-menu').style.padding = "5%";
-
+    stack.style.width = "50%";
+    stack.style.float = "left";
+    stack.style.marginLeft ='20%';
 };
+
 const closeMenu = () => {
     document.querySelector('.side-edit-menu').style.width = "0";
     document.querySelector('.side-edit-menu').style.padding = "0";
-
+    stack.style.width = "80%";
+    stack.style.float = "right";
 }
+
 // close side edit menu
 const closeButton = document.querySelector('.close-button');
 closeButton.addEventListener('click', () => {

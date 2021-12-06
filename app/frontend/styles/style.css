@@ -303,6 +303,7 @@ nav ul {
   flex-flow: column;
   justify-content: center;
   padding: 10%;
+  font-family: Roboto, sans-serif;
 }
 
 .edit-profile-field {
@@ -310,6 +311,14 @@ nav ul {
   border: none;
   background-color: #212020;
   color: #FFFFFF80;
+}
+
+.hint{
+  color: #fcfcfc;
+  background-color:#004155 ;
+  text-align: center;
+  font-size: 1em;
+  margin-bottom: 1em;
 }
 
 #save-profile-btn {
