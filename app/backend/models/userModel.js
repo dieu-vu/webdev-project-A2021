@@ -66,7 +66,8 @@ const editUser = async(user) => {
 };
 
 const getOwnActivity = async (user) => {
-    const query = `SELECT * FROM activity WHERE owner = ?`;
+    const query = `SELECT * FROM activity 
+        WHERE owner = ? AND (ISNULL(VET) OR VET > CURRENT_DATE())`;
     try {
         const [results] = await promisePool.query(query, [user.user_id]);
         return results;
@@ -80,7 +81,7 @@ const getParticipatingActivity = async (user) => {
         const query = `SELECT p.*, a.* FROM participate_in AS p 
             LEFT JOIN activity AS a 
             ON p.activity = a.activity_id 
-            WHERE p.participant = ? `;
+            WHERE p.participant = ? AND (ISNULL(VET) OR VET > CURRENT_DATE())`;
         const results = await promisePool.query(query, [user.user_id]);
         return results[0];
     } catch (e) {

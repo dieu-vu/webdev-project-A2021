@@ -84,6 +84,8 @@ const getProfile = async () => {
         //         Authorization: 'Bearer' + sessionStorage.getItem('token'),
         //     },
         // };
+
+        //TODO: update this route when finish login
         const response = await fetch(url + '/user/1');
         const user = await response.json();
 
