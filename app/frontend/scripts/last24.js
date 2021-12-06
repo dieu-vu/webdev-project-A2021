@@ -54,7 +54,7 @@ const createActivityCards = (activities) => {
           const response = await fetch(url + '/activity/participation/' + activity.id, fetchOptions);
           const json = await response.json();
           console.log('post response', json);
-          ggetLast24HoursActivity();        
+          getLast24HoursActivity();        
         } catch (e) {
           console.log(e.message);
         }
