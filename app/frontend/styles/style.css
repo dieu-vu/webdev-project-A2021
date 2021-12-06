@@ -7,6 +7,10 @@ input {
   font-family: Roboto, sans-serif;
 }
 
+.hidden{
+  display: none;
+}
+
 /************* LOGIN & REGISTER PAGE SECTION *************/
 body {
   width: 100%;
@@ -249,6 +253,73 @@ nav ul {
 
 .activity-image {
   padding: 5px;
+}
+
+.edit-profile-button{
+  background-image: url('../images/pencil.png');
+  background-color:#60bfba;
+  background-position: center; 
+  background-size: cover;
+  border-radius: 20%;
+  height: 2rem;
+  width: 2rem;
+}
+
+.container-image .edit-profile-button {
+  position: inherit;
+  transform: translate(100%, 100%);
+  float: right bottom;
+  -ms-transform: translate(100%, 100%);
+}
+
+.side-edit-menu{
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #004155;
+  overflow-x: hidden;
+  padding: 0%;
+  border-right: 0.5px solid rgba(252, 252, 252, 0.5);
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+}
+
+.close-button {
+  background-image: url('../images/x_button.png');
+  background-color:#181818;
+  background-position: center; 
+  background-size: cover;
+  height: 2rem;
+  width: 2rem;
+}
+
+#edit-profile-form{
+  width: 90%;
+  margin-top: 10%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  padding: 10%;
+}
+
+.edit-profile-field {
+  border-radius: 50px;
+  border: none;
+  background-color: #212020;
+  color: #FFFFFF80;
+}
+
+#save-profile-btn {
+  width: 40%;
+  margin: auto;
+  padding: 10px;
+  background: #60bfba;
+  border-radius: 50px;
+  border: none;
+  color: #fcfcfc ;
 }
 
 /* max 1000px screen width for all pages*/

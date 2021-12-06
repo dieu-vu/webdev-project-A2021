@@ -37,8 +37,18 @@
       </ul>
     </div>
 
+    <div id="edit-menu" class="side-edit-menu">
+        <button class="close-button"></button>
+        <form id="edit-profile-form">
+            <input type="text" class="edit-profile-field" value="Name" name="name">
+            <input type="text" class="edit-profile-field" value="Email" name="email">
+            <input class="edit-profile-field" type="file" name="filename" accept="image/*" placeholder="Choose file" class="hidden">
+            <button type="submit" class="edit-profile-field" id="save-profile-btn">Save</button>
+        </form>
+    </div>
+
     <!-- Define scripts here -->
     <script src="./scripts/serialize.js"></script>
-    <script src="scripts/user-profile.js"></script>
+    <script src="./scripts/user-profile.js"></script>
   </body>
 </html>

@@ -7,21 +7,47 @@ const stack = document.querySelector('#user-activity')
 // // get user data from session storage
 // const user = JSON.parse(sessionStorage.getItem('user'));
 
+// open and close side menu for editing user info:
+const openMenu = () => {
+    document.querySelector('.side-edit-menu').style.width = "20%";
+    document.querySelector('.side-edit-menu').style.padding = "5%";
+
+};
+const closeMenu = () => {
+    document.querySelector('.side-edit-menu').style.width = "0";
+    document.querySelector('.side-edit-menu').style.padding = "0";
+
+}
+// close side edit menu
+const closeButton = document.querySelector('.close-button');
+closeButton.addEventListener('click', () => {
+    closeMenu()});
+
 // create user picture on profile page:
-const userInfo = document.querySelector('#user-info')
+const userInfo = document.querySelector('#user-info');
 const createUserPic = (user) => {
+    const imgContainer = document.createElement('div');
+    imgContainer.classList.add('container-image');
+
     const img = document.createElement('img');
-    img.src = 'http://placedog.net/200/300';
+    img.src = 'http://placedog.net/200/300'
     // img.src = url + '/thumbnails/user/' + user.filename;
     img.alt = user.name;
     img.classList.add('user-image');
+    //const figure = document.createElement('figure').appendChild(img);
 
-    const figure = document.createElement('figure').appendChild(img);
-
+    // user edit profile button:
+    const editButton = document.createElement('button');
+    editButton.classList.add('edit-profile-button');
+    editButton.addEventListener('click', () => {
+        openMenu()});
     const p2 = document.createElement('p');
     p2.innerHTML = user.name;
 
-    userInfo.appendChild(figure);
+    imgContainer.appendChild(img);
+    imgContainer.appendChild(editButton);
+
+    userInfo.appendChild(imgContainer);
     userInfo.appendChild(p2);
 };
 
@@ -95,10 +121,10 @@ const getProfile = async () => {
         createActivityStack(user.participateActivity, 'Activities I participate in');
 
         console.log('participate', user.participateActivity)
-
     } catch (e) {
         console.log(e.message);
     }
 };
+
 
 getProfile();
