@@ -47,9 +47,17 @@ const user_put = async (req, res, next) => {
     res.send(updated);
 };
 
+const checkToken = (req, res, next) => {
+	if (!req.user) {
+		next(httpError('token not valid', 400));
+	} else {
+		res.json({ user: req.user });
+	}
+};
 
 module.exports = {
 	user_list_get,
 	user_get,
 	user_put,
+	checkToken,
 };

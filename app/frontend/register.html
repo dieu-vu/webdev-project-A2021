@@ -25,13 +25,16 @@
       <h3>Nutivity</h3>
       <form id="register-form" class="light-border" action="http://localhost:3000/auth/register" method="post">
         <div>
-          <input class="light-border" type="email" required name="email" placeholder="Email"/>
+          <input class="light-border" type="text" required name="email" placeholder="Email"/>
         </div>
         <div>
           <input class="light-border" type="text" required minlength="3" name="name" placeholder="Name"/>
         </div>
         <div>
           <input class="light-border" type="password" pattern="(?=.*[A-Z]).{8,}" name="password" placeholder="Password"/>
+        </div>
+        <div>
+          <input class="light-border" type="file" required name="user_filename" accept="image/*" placeholder="Choose file">
         </div>
         <div>
           <button class="light-border" type="submit">Register</button>

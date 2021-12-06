@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController.js');
+const {checkToken} = require('../controllers/userController');
 const { body, validationResult } = require('express-validator');
 const multer = require('multer');
 
@@ -24,5 +25,6 @@ router.route('/:id')
 		body('email').isEmail().not().isEmpty(),
 		userController.user_put);
 
+router.get('/token', checkToken);
 
 module.exports = router;
