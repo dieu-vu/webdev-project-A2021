@@ -54,10 +54,10 @@ const getAllUsers = async() => {
 };
 
 const editUser = async(user) => {
-    const query = `UPDATE p_user SET name=?, email=?, password=? WHERE user_id=?`;
+    const query = `UPDATE p_user SET name=?, email=? WHERE user_id=?`;
     try {
-        const [results] = await promisePool.execute(query_admin,
-            [user.name, user.email, user.password, user.user_id]);
+        const [results] = await promisePool.execute(query,
+            [user.name, user.email, user.user_id]);
         console.log('EDIT_USER', results);
         return results.affectedRows == 1;
     } catch (e) {

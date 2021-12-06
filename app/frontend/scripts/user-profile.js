@@ -2,7 +2,11 @@
 const url = 'http://localhost:3000';
 
 // Select html element of the activity list
-const stack = document.querySelector('#user-activity')
+const stack = document.querySelector('#user-activity');
+// Select html element of user profile picture
+const userInfo = document.querySelector('#user-info');
+// Select html element of user edit profile info form:
+const userEditForm = document.querySelector('#edit-profile-form');
 
 // // get user data from session storage
 // const user = JSON.parse(sessionStorage.getItem('user'));
@@ -15,7 +19,6 @@ const openMenu = () => {
     stack.style.float = "left";
     stack.style.marginLeft ='20%';
 };
-
 const closeMenu = () => {
     document.querySelector('.side-edit-menu').style.width = "0";
     document.querySelector('.side-edit-menu').style.padding = "0";
@@ -23,13 +26,13 @@ const closeMenu = () => {
     stack.style.float = "right";
 }
 
+
 // close side edit menu
 const closeButton = document.querySelector('.close-button');
 closeButton.addEventListener('click', () => {
     closeMenu()});
 
 // create user picture on profile page:
-const userInfo = document.querySelector('#user-info');
 const createUserPic = (user) => {
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('container-image');
@@ -39,7 +42,6 @@ const createUserPic = (user) => {
     // img.src = url + '/thumbnails/user/' + user.filename;
     img.alt = user.name;
     img.classList.add('user-image');
-    //const figure = document.createElement('figure').appendChild(img);
 
     // user edit profile button:
     const editButton = document.createElement('button');
@@ -110,26 +112,54 @@ const createActivityStack = (activities, headerText) => {
 const getProfile = async () => {
     try {
         // TODO: implement with passport/session
-        // const fetchOptions = {
-        //     headers: {
-        //         Authorization: 'Bearer' + sessionStorage.getItem('token'),
-        //     },
-        // };
-
+        const fetchOptions = {
+            headers: {
+                Authorization: 'Bearer' + sessionStorage.getItem('token'),
+            },
+        };
         //TODO: update this route when finish login
         const response = await fetch(url + '/user/1');
         const user = await response.json();
+        console.log('USER', user);
 
         createUserPic(user);
         //Get list of all relevant activities of user in json response
         createActivityStack(user.ownActivity, 'My own activities');
         createActivityStack(user.participateActivity, 'Activities I participate in');
 
-        console.log('participate', user.participateActivity)
+        console.log('participate', user.participateActivity);
     } catch (e) {
         console.log(e.message);
     }
 };
 
-
 getProfile();
+console.log('Current user id LOG', current_user_id);
+
+// Submit user profile edit form:
+userEditForm.addEventListener('submit', async (editEvent) => {
+    editEvent.preventDefault();
+    const data = serializeJson(userEditForm);
+
+    // remove empty properties
+    for (const [prop, value] of Object.entries(data)) {
+        if (value === '') {
+          delete data[prop];
+        }
+    }
+
+    const fetchOptions = {
+        method: 'PUT',
+        header: {
+            'Content-Type': 'application/json',
+            // Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+        body: JSON.stringify(data),
+    };
+    //backend will handle user_id with login passport for put method
+
+    const response = await fetch(url + '/user', fetchOptions);
+    const json = await response.json();
+    if (json.error) {alert(json.error.message)};
+    location.href = 'user.html';
+});

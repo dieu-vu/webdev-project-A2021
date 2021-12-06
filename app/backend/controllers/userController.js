@@ -1,5 +1,7 @@
 //User controller:
 const userModel = require('../models/userModel.js');
+const {httpError} = require('../utils/errors');
+const { body, validationResult } = require('express-validator');
 
 //const users = userModel.users;
 
@@ -14,8 +16,13 @@ const user_list_get = async (req, res) => {
 };
 
 //User get return the user and all related activities:
-const user_get = async (req, res) => {
-	const user = await userModel.getUser(req.params.id);
+const user_get = async (req, res, next) => {
+	const user = await userModel.getUser(req.params.id, next); //TODO: Update this to get user_id from req.user
+	if (!user) {
+		const err = httpError('User not found', 404);
+		next(err);
+		return;
+	}
 	delete user.password;
     user.ownActivity = await userModel.getOwnActivity(user);
     user.participateActivity = await userModel.getParticipatingActivity(user);
@@ -24,12 +31,19 @@ const user_get = async (req, res) => {
 
 
 // user_put allows user to edit their profile:
-const user_put = async (req, res) => {
+const user_put = async (req, res, next) => {
+	const errors = validationResult(req);
+	if (!errors.isEmpty()){
+		console.error('user_put validation', errors.array());
+		const err = httpError('data not valid', 400);
+		next(err);
+		return;
+	}
 	const user = req.body;
-    console.log('USER_PUT', user);
-    user.user_id = req.params.id;
-    const updated = await userModel.user_put(user);
-    console.log('USER_PUT', user);
+    user.user_id = parseInt(req.params.id); //TODO: Update this to get user_id from req.user when passport is done
+	console.log('USER_PUT', user);
+
+    const updated = await userModel.editUser(user);
     res.send(updated);
 };
 
