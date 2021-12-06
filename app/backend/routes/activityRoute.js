@@ -9,7 +9,7 @@ const fileFilter = (req, file, cb) => {
     }
 };
 const upload = multer({dest: './backend/uploads/', fileFilter});
-const { activity_get, activity_delete, activity_list_get, activity_post, activity_update, activity_get_by_date, activity_get_by_location, activity_get_by_type, get_participants_by_activity, activity_get_by_user, participation_get_by_user, participation_post } = require('../controllers/activityController');
+const { activity_get, activity_delete, activity_list_get, activity_post, activity_update, activity_get_by_date, activity_get_by_location, activity_get_by_type, get_participants_by_activity, activity_get_by_user, participation_get_by_user, participation_post, last_24_hours_activity_list_get } = require('../controllers/activityController');
 const router = express.Router(); 
 const {body} = require('express-validator');
 
@@ -22,6 +22,8 @@ router.route('/')
 router.route('/:activityId')
     .get(activity_get)
     .delete(activity_delete)
+
+router.get('/last24hours/list', last_24_hours_activity_list_get) 
 
 router.get('/searchDate/:searchDate', activity_get_by_date)
 

@@ -1,10 +1,22 @@
 'use strict';
 const { validationResult } = require('express-validator');
-const {insertActivity, getActivity, deleteActivity, getActivityByDate, getActivityByLocation, getActivityByActivityName, getAllValidActivity, updateActivity, getParticipantList, getAllUsersValidActivity, getAllUsersParticipation, insertParticipation } = require('../models/activityModel');
+const {insertActivity, getActivity, deleteActivity, getActivityByDate, getActivityByLocation, getActivityByActivityName, getAllValidActivity, updateActivity, getParticipantList, getAllUsersValidActivity, getAllUsersParticipation, insertParticipation, getAllValidActivityInLast24Hours } = require('../models/activityModel');
 const { httpError } = require('../utils/errors');
+
 
 const activity_list_get = async (req, res, next) => {
     const activities = await getAllValidActivity(next);
+    console.log('all activities', activities);
+    if(activities.length < 1) {
+        const err = httpError('No activity found', 404);
+        next(err);
+        return;
+    } 
+    res.json(activities);
+};
+
+const last_24_hours_activity_list_get = async (req, res, next) => {
+    const activities = await getAllValidActivityInLast24Hours(next);
     console.log('all activities', activities);
     if(activities.length < 1) {
         const err = httpError('No activity found', 404);
@@ -151,6 +163,7 @@ const participation_post = async (req, res, next) => {
 
 module.exports = {
     activity_list_get,
+    last_24_hours_activity_list_get,
     activity_get,
     activity_post,
     activity_update,

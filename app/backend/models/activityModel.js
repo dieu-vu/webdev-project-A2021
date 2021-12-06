@@ -1,11 +1,23 @@
 'use strict';
 const pool = require('../database/db');
 const { httpError } = require('../utils/errors');
+
 const promisePool = pool.promise();
 
 const getAllValidActivity = async (next) => {
     try {
-        const [rows] = await promisePool.query('SELECT T1.owner, T1.name AS activity, T1.activity_id AS id, T1.location, T1.description, T1.filename,T1.VST, T1.VET, T2.participantNum FROM (SELECT p_user.name as owner, activity.name,activity.activity_id,activity.location,activity.description,activity.filename,activity.VST,activity.VET FROM p_user, activity WHERE p_user.user_id = activity.owner) AS T1 INNER JOIN (SELECT activity.activity_id, COUNT(participate_in.participant) as participantNum FROM activity LEFT JOIN participate_in ON activity.activity_id = participate_in.activity GROUP BY activity.activity_id) AS T2 ON T1.activity_id = T2.activity_id WHERE CURRENT_TIMESTAMP <= T1.VET');
+        const [rows] = await promisePool.query('SELECT T1.owner, T1.name AS activity, T1.activity_id AS id, T1.location, T1.description, T1.filename,T1.VST, cast(T1.VET AS datetime) as VET, T2.participantNum FROM (SELECT p_user.name as owner, activity.name,activity.activity_id,activity.location,activity.description,activity.filename,activity.VST,activity.VET FROM p_user, activity WHERE p_user.user_id = activity.owner) AS T1 INNER JOIN (SELECT activity.activity_id, COUNT(participate_in.participant) as participantNum FROM activity LEFT JOIN participate_in ON activity.activity_id = participate_in.activity GROUP BY activity.activity_id) AS T2 ON T1.activity_id = T2.activity_id WHERE CURRENT_TIMESTAMP <= T1.VET');
+        return rows;
+    }catch(event) {
+        console.error('Get all activity error', event.message );
+        const err = httpError('Sql error', 500);
+        next(err);
+    }
+};
+
+const getAllValidActivityInLast24Hours = async (next) => {
+    try {
+        const [rows] = await promisePool.query('SELECT T1.owner, T1.name AS activity, T1.activity_id AS id, T1.location, T1.description, T1.filename,T1.VST, T1.VET, T2.participantNum FROM (SELECT p_user.name as owner, activity.name,activity.activity_id,activity.location,activity.description,activity.filename,activity.VST,activity.VET FROM p_user, activity WHERE p_user.user_id = activity.owner) AS T1 INNER JOIN (SELECT activity.activity_id, COUNT(participate_in.participant) as participantNum FROM activity LEFT JOIN participate_in ON activity.activity_id = participate_in.activity GROUP BY activity.activity_id) AS T2 ON T1.activity_id = T2.activity_id WHERE CURRENT_TIMESTAMP <= T1.VET AND date_sub(CURRENT_TIMESTAMP, interval 1 day) <= T1.VST');
         return rows;
     }catch(event) {
         console.error('Get all activity error', event.message );
@@ -151,6 +163,7 @@ const deleteActivity = async (activityId) => {
 
 module.exports = {
     getAllValidActivity,
+    getAllValidActivityInLast24Hours,
     getActivity,
     insertActivity,
     insertParticipation,
