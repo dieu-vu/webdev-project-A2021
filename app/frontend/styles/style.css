@@ -18,11 +18,31 @@ body {
   color: #fcfcfc;
   text-align: center;
 
-  margin: 0;
-  padding: 1rem;
+  margin: 1em;
+  padding: 1em;
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
+  float: right;
+  justify-content: space-evenly;
+}
+
+.activity_pic {
+  width: 20rem;
+  height: 13rem;
+  border-radius: 10px;
+}
+
+.activity_list_home {
+  color: #fcfcfc;
+  text-align: center;
+  width: 75%;
+  margin: 1em;
+  padding: 1em;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  float: right;
   justify-content: space-evenly;
 }
 
@@ -172,22 +192,22 @@ nav ul {
 /************* USER PAGE SECTION *************/
 
 .user-header {
-    overflow: auto;
+  overflow: auto;
 }
 
-#user-info{
-    color: #fcfcfc;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    float: right;
-    font-size: larger;
-    font-weight: 600;
-    font-family: Roboto, sans-serif;
+#user-info {
+  color: #fcfcfc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  float: right;
+  font-size: larger;
+  font-weight: 600;
+  font-family: Roboto, sans-serif;
 }
 
 #user-info p {
-    text-align: center;
+  text-align: center;
 }
 
 .user-image {
@@ -199,16 +219,15 @@ nav ul {
   object-fit: cover;
 }
 
-#user-activity{
-    color: #fcfcfc;
-    text-align: center;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    width: 80%;
-    float: right;
-    margin: auto;
-
+#user-activity {
+  color: #fcfcfc;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  width: 80%;
+  float: right;
+  margin: auto;
 }
 
 .image-stack {
@@ -287,26 +306,26 @@ nav ul {
 }
 
 /* Transition image when hovering */
-.trans{
-    -webkit-transition: all 1.5s;
-    -moz-transition: all 1.5s;
-    -o-transition: all 1.5s;
-    transition: all 1.5s;
+.trans {
+  -webkit-transition: all 1.5s;
+  -moz-transition: all 1.5s;
+  -o-transition: all 1.5s;
+  transition: all 1.5s;
 }
-.trans:hover{
-    -webkit-transform: translate(50px, 70px) scale(1.5,1.5);
-    -moz-transform: translate(50px, 70px) scale(1.5,1.5);
-    -o-transform: translate(50px, 70px) scale(1.5,1.5);
-    -ms-transform: translate(50px, 70px) scale(1.5,1.5);
-    transform: translate(50px, 70px) scale(1.5,1.5);
+.trans:hover {
+  -webkit-transform: translate(50px, 70px) scale(1.5, 1.5);
+  -moz-transform: translate(50px, 70px) scale(1.5, 1.5);
+  -o-transform: translate(50px, 70px) scale(1.5, 1.5);
+  -ms-transform: translate(50px, 70px) scale(1.5, 1.5);
+  transform: translate(50px, 70px) scale(1.5, 1.5);
 
-    -webkit-transition-property: transform;
-    -moz-transition-property: transform;
-    -o-transition-property: transform;
-    transition-property: transform;
+  -webkit-transition-property: transform;
+  -moz-transition-property: transform;
+  -o-transition-property: transform;
+  transition-property: transform;
 
-    -webkit-transition-duration: 1.5s;
-    -moz-transition-duration: 1.5s;
-    -o-transition-duration: 1.5s;
-    transition-duration: 1.5s;
+  -webkit-transition-duration: 1.5s;
+  -moz-transition-duration: 1.5s;
+  -o-transition-duration: 1.5s;
+  transition-duration: 1.5s;
 }
