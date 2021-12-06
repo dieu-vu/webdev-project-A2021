@@ -9,14 +9,17 @@ const ul = document.querySelector('#activity_list');
 const createActivityCards = (activities) => {
   // clear ul
   ul.innerHTML = '';
+  const header = document.createElement('h2');
+  header.innerHTML = "All activities available now ";
   activities.forEach((activity) => {
     // create li with DOM methods
+    
     const img = document.createElement('img');
     // img.src = url + '/' + activity.filename;
     img.src = activity.filename;
 
     img.alt = activity.activity;
-    img.classList.add('resp');
+    img.classList.add('activity_pic');
 
     const figure = document.createElement('figure').appendChild(img);
 
@@ -38,8 +41,6 @@ const createActivityCards = (activities) => {
     const p5 = document.createElement('p');
     p5.innerHTML = `Participant: ${activity.participantNum}`;
 
-    const p6 = document.createElement('p');
-    p6.innerHTML = `Id: ${activity.id}`;
 
     // participate button
     const participateButton = document.createElement('button');
@@ -70,8 +71,8 @@ const createActivityCards = (activities) => {
     li.appendChild(p3);
     li.appendChild(p4);
     li.appendChild(p5);
-    li.appendChild(p6);
     li.appendChild(participateButton);
+    // ul.appendChild(header);
     ul.appendChild(li);
   });
 };
