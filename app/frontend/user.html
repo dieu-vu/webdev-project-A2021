@@ -1,46 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Nutivity</title>
-    <link href="./styles/style.css" rel="stylesheet">
-</head>
+    <link href="./styles/style.css" rel="stylesheet" />
+  </head>
 
-<body>
+  <body>
     <!--Left side navigation drawer-->
     <nav class="nav_menu">
-        <div class="nav_container">
-            <div class="navbar__toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="side_nav">
-                <li><a href="">Search</a></li>
-                <li><a href="">&plus;</a></li>
-                <li><a href="">All</a></li>
-                <li><a href="">Last 24hrs</a></li>
-                <li><a href="">Settings</a></li>
-            </ul>
+      <div class="nav_container">
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </div>
+        <ul class="side_nav">
+          <li><a href="">Search</a></li>
+          <li><a href="">&plus;</a></li>
+          <li><a href="home.html">All</a></li>
+          <li><a href="last24.html">Last 24hrs</a></li>
+          <li><a href="">Settings</a></li>
+        </ul>
+      </div>
     </nav>
 
     <div class="user-header">
-        <div id="user-info">
-            <!-- diplay user picture and name -->
-        </div>
+      <div id="user-info">
+        <!-- diplay user picture and name -->
+      </div>
     </div>
     <div id="user-activity">
-        <!--Container for the activity images-->
-        <ul id="activity_list">
-            <!-- js creates activity image list here -->
-        </ul>
+      <!--Container for the activity images-->
+      <ul id="activity_list">
+        <!-- js creates activity image list here -->
+      </ul>
     </div>
-    
+
     <!-- Define scripts here -->
     <script src="./scripts/serialize.js"></script>
     <script src="scripts/user-profile.js"></script>
-</body>
-
+  </body>
 </html>
