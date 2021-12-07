@@ -9,8 +9,6 @@ const ul = document.querySelector('#hour_list');
 const createActivityCards = (activities) => {
   // clear ul
   ul.innerHTML = '';
-  const header = document.createElement('h2');
-  header.innerHTML = "All activities available now ";
   activities.forEach((activity) => {
     // create li with DOM methods
     
@@ -54,6 +52,10 @@ const createActivityCards = (activities) => {
           const response = await fetch(url + '/activity/participation/' + activity.id, fetchOptions);
           const json = await response.json();
           console.log('post response', json);
+          if(json.message == "undefined"){
+            alert("You have already participated in this activity before. ");
+        }else {alert("Welcome to join this activity.")};
+
           getLast24HoursActivity();        
         } catch (e) {
           console.log(e.message);
@@ -72,7 +74,6 @@ const createActivityCards = (activities) => {
     li.appendChild(p4);
     li.appendChild(p5);
     li.appendChild(participateButton);
-    // ul.appendChild(header);
     ul.appendChild(li);
   });
 };
@@ -83,6 +84,11 @@ const getLast24HoursActivity = async () => {
     const response = await fetch(url + '/activity/last24hours/list');
     const activities = await response.json();
     console.log(activities)
+    if(activities.message){
+        alert(activities.message);
+        location.href = 'home.html';
+        return
+    }
     createActivityCards(activities);
   } catch (e) {
     console.log(e.message);
