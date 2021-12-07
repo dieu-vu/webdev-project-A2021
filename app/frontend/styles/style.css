@@ -456,10 +456,19 @@ a:hover {
 
   /************* ACTIVITY LIST SECTION *************/
 .main_content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: stretch;
   margin-top: 20%;
 }
 
-
+  #title {
+    display: flex;
+    margin-left: 10%;
+  }
 
   /************* LOGIN & REGISTER PAGE SECTION *************/
   .container_intro_login {
@@ -518,7 +527,18 @@ a:hover {
 
   /************* ACTIVITY LIST SECTION *************/
   .main_content {
-    margin-top: 30%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: stretch;
+    margin-top: 20%;
+  }
+
+  #title {
+    display: flex;
+    margin-left: 10%;
   }
 }
 
