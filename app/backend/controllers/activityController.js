@@ -8,7 +8,7 @@ const activity_list_get = async (req, res, next) => {
     const activities = await getAllValidActivity(next);
     console.log('all activities', activities);
     if(activities.length < 1) {
-        const err = httpError('No activity found', 404);
+        const err = httpError('No valid activity can be found at present!', 404);
         next(err);
         return;
     } 
@@ -19,7 +19,7 @@ const last_24_hours_activity_list_get = async (req, res, next) => {
     const activities = await getAllValidActivityInLast24Hours(next);
     console.log('all activities', activities);
     if(activities.length < 1) {
-        const err = httpError('No activity found', 404);
+        const err = httpError('Sorry, there is no activity posted within last 24 hours.', 404);
         next(err);
         return;
     } 
@@ -51,7 +51,7 @@ const participation_get_by_user = async (req, res, next) => {
     // const activity = await getAllUsersValidActivity(req.user.userId, next);
     const activity = await getAllUsersParticipation(req.params.userId, next);
     if(activity.length < 1) {
-        const err = httpError('User does not participate any activity', 404);
+        const err = httpError('User does not participate in any activity', 404);
         next(err);
         return;
     } 
@@ -61,7 +61,7 @@ const participation_get_by_user = async (req, res, next) => {
 const activity_get_by_date = async (req, res, next) => {
     const activity = await getActivityByDate(req.params.searchDate, next);
     if(activity.length < 1) {
-        const err = httpError('No activity can be found on this date', 404);
+        const err = httpError('Sorry, there is no activity available on this date at this moment. Please try to search other date.', 404);
         next(err);
         return;
     } 
@@ -71,7 +71,7 @@ const activity_get_by_date = async (req, res, next) => {
 const activity_get_by_location = async (req, res, next) => {
     const activity = await getActivityByLocation(req.params.searchLocation, next);
     if(activity.length < 1) {
-        const err = httpError('No activity can be found on this location', 404);
+        const err = httpError('Sorry, there is no activity available on this location at this moment. Please try to search other location.', 404);
         next(err);
         return;
     } 
@@ -81,7 +81,7 @@ const activity_get_by_location = async (req, res, next) => {
 const activity_get_by_type = async (req, res, next) => {
     const activity = await getActivityByActivityName(req.params.searchType, next);
     if(activity.length < 1) {
-        const err = httpError('No activity can be found on this type', 404);
+        const err = httpError('Sorry, there is no such activity available at this moment. Please try to search other activity. Good luck.', 404);
         next(err);
         return;
     } 
@@ -158,7 +158,7 @@ const participation_post = async (req, res, next) => {
     console.log('add participation data', req.body);
     // const newParticipation = await insertParticipation(req.user.userId, req.params.activityId, next);
     const newParticipation = await insertParticipation(14, req.params.activityId, next);
-    res.json({message: `participation added: ${newParticipation}`});
+    res.json({message: `${newParticipation}`});
 };
 
 module.exports = {
