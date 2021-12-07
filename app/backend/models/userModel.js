@@ -40,6 +40,8 @@ const getAllUsers = async() => {
     }
 };
 
+//TODO: allow user to upload file
+//TODO: auto fill with old information if json field is blank
 const editUser = async(user) => {
     const query = `UPDATE p_user SET name=?, email=? WHERE user_id=?`;
     try {

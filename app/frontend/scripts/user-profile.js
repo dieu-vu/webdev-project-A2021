@@ -1,6 +1,8 @@
 'use strict';
 const url = 'http://localhost:3000';
 
+//TODO: ADD LOGOUT BUTTON
+
 // Select html element of the activity list
 const stack = document.querySelector('#user-activity');
 // Select html element of user profile picture
@@ -26,7 +28,6 @@ const closeMenu = () => {
     stack.style.width = "80%";
     stack.style.float = "right";
 }
-
 
 // close side edit menu
 const closeButton = document.querySelector('.close-button');
@@ -120,7 +121,6 @@ const createActivityStack = (activities, headerText) => {
 // get profile data:
 const getProfile = async () => {
     try {
-        // TODO: implement with passport/session
         const fetchOptions = {
             headers: {
                 Authorization: 'Bearer ' + sessionStorage.getItem('token'),
@@ -165,7 +165,7 @@ userEditForm.addEventListener('submit', async (editEvent) => {
         body: JSON.stringify(data),
     };
 
-    //backend will handle user_id with login passport for put method
+    //TODO: Check if backend will handle user_id with login passport for put method
     const response = await fetch(url + '/user', fetchOptions);
     const json = await response.json();
     if (json.error) {alert(json.error.message)};
