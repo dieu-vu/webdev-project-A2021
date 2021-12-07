@@ -18,84 +18,6 @@ body {
   background: #181818;
 }
 
-#activity_list {
-  color: #fcfcfc;
-  text-align: center;
-
-  margin: 1em;
-  padding: 1em;
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  float: right;
-  justify-content: space-evenly;
-}
-
-#search-form {
-  text-align: center;
-  justify-content: space-evenly;
-  margin: 0 auto;
-  margin-left: 20%;
-  margin-top: 2em;
-}
-
-#query {
-  width: 40%;
-  margin-right: 5px;
-  padding: 10px;
-  box-sizing: border-box;
-  border: 5px solid whitesmoke;
-  border-radius: 20px;
-}
-
-#search_button {
-  padding: 15px;
-  color: black;
-  background-color: white;
-  box-sizing: border-box;
-  border: 1px solid black;
-  border-radius: 20px;
-}
-
-#title {
-  color: #fcfcfc;
-  font-size: 35px;
-  font-family: Roboto, sans-serif;
-  margin-left: 50%;
-  margin-top: 2em;
-}
-
-#search_selector {
-  padding: 13px;
-  border-radius: 20px;
-}
-
-.activity_pic {
-  width: 20rem;
-  height: 13rem;
-  border-radius: 10px;
-  opacity: 0.8;
-  transition: all 1s;
-}
-
-.activity_pic:hover {
-  transform: scale(1.5);
-  opacity: 1;
-}
-
-.activity_list_home {
-  color: #fcfcfc;
-  text-align: center;
-  width: 75%;
-  margin: 1em;
-  padding: 1em;
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  float: right;
-  justify-content: space-evenly;
-}
-
 .container_layout {
   display: flex;
   flex-direction: row;
@@ -204,6 +126,86 @@ a:hover {
 .container_intro_register > h3 {
   font-family: "Roboto Thin", sans-serif;
   font-weight: 100;
+}
+
+/*********** SEARCH PAGE SECTION *************/
+#activity_list {
+  color: #fcfcfc;
+  text-align: center;
+  margin: 1em;
+  padding: 1em;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  float: right;
+  justify-content: space-evenly;
+}
+
+#search-form {
+  text-align: center;
+  margin-left: 20%;
+}
+
+#query {
+  width: 40%;
+  margin: 1em;
+  padding: 1.5em;
+  background-color: #004155;
+  box-sizing: border-box;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 56px;
+}
+
+#search_button {
+  padding: 1.5em;
+  color: #fcfcfc;
+  background-color: #004155;
+  box-sizing: border-box;
+  border: none;
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.25);
+  border-radius: 56px;
+}
+
+#title {
+  color: #fcfcfc;
+  font-size: 35px;
+  font-family: Roboto, sans-serif;
+  margin-left: 50%;
+  margin-top: 2em;
+}
+
+#search_selector {
+  padding: 1.4em;
+  border-radius: 56px;
+  border: none;
+  background-color: #004155;
+  color: #FCFCFC;
+}
+
+.activity_pic {
+  width: 20rem;
+  height: 13rem;
+  border-radius: 10px;
+  opacity: 0.8;
+  transition: all 1s;
+}
+
+.activity_pic:hover {
+  transform: scale(1.5);
+  opacity: 1;
+}
+
+.activity_list_home {
+  color: #fcfcfc;
+  text-align: center;
+  width: 75%;
+  margin: 1em;
+  padding: 1em;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  float: right;
+  justify-content: space-evenly;
 }
 
 /************* HOME PAGE SECTION *************/
