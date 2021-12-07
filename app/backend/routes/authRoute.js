@@ -14,9 +14,11 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({dest: './backend/uploads/', fileFilter});
 const router = express.Router(); // Creating a router
-const {login, user_register} = require('../controllers/authController');
+const {login, logout, user_register} = require('../controllers/authController');
 
 router.post('/login', login);
+router.get('/logout', logout);
+
 
 // TODO Consider making data sanitation for checking if e-mail is in use
 // User registration route with server side validation

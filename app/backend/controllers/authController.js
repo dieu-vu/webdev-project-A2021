@@ -29,6 +29,11 @@ const login = (req, res, next) => {
     })(req, res, next);
 };
 
+const logout = (req, res) => {
+    req.logout();
+    res.json({message: 'logout'});
+};
+
 
 // User registration
 // TODO error handling and thumbnails
@@ -49,5 +54,6 @@ const user_register = async (req, res, next) => {
 
 module.exports = {
     login,
+    logout,
     user_register,
 };
