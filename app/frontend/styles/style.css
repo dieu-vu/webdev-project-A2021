@@ -31,15 +31,56 @@ body {
   justify-content: space-evenly;
 }
 
+#search-form {
+  text-align: center;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  margin-left: 20%;
+  margin-top: 2em;
+}
+
+#query {
+  width: 40%;
+  margin-right: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 5px solid whitesmoke;
+  border-radius: 20px;
+}
+
+#search_button {
+  padding: 15px;
+  color: black;
+  background-color: white;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+#title {
+  color: #fcfcfc;
+  font-size: 35px;
+  font-family: Roboto, sans-serif;
+  margin-left: 50%;
+  margin-top: 2em;
+}
+
+#search_selector {
+  padding: 13px;
+  border-radius: 20px;
+}
+
 .activity_pic {
   width: 20rem;
   height: 13rem;
   border-radius: 10px;
+  opacity: 0.8;
   transition: all 1s;
 }
 
 .activity_pic:hover {
   transform: scale(1.5);
+  opacity: 1;
 }
 
 .activity_list_home {
