@@ -37,8 +37,7 @@ const activity_get = async (req, res, next) => {
 };
 
 const activity_get_by_user = async (req, res, next) => {
-    // const activity = await getAllUsersValidActivity(req.user.userId, next);
-    const activity = await getAllUsersValidActivity(req.params.userId, next);
+    const activity = await getAllUsersValidActivity(req.user.user_id, next);
     if(activity.length < 1) {
         const err = httpError('User does not have any valid activity', 404);
         next(err);
@@ -48,8 +47,7 @@ const activity_get_by_user = async (req, res, next) => {
 };
 
 const participation_get_by_user = async (req, res, next) => {
-    // const activity = await getAllUsersValidActivity(req.user.userId, next);
-    const activity = await getAllUsersParticipation(req.params.userId, next);
+    const activity = await getAllUsersValidActivity(req.user.user_id, next);
     if(activity.length < 1) {
         const err = httpError('User does not participate in any activity', 404);
         next(err);
@@ -156,8 +154,7 @@ const participation_post = async (req, res, next) => {
     return;
     } 
     console.log('add participation data', req.body);
-    // const newParticipation = await insertParticipation(req.user.userId, req.params.activityId, next);
-    const newParticipation = await insertParticipation(14, req.params.activityId, next);
+    const newParticipation = await insertParticipation(req.user.user_id, req.params.activityId, next);
     res.json({message: `${newParticipation}`});
 };
 
