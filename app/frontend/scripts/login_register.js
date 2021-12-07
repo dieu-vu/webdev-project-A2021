@@ -34,6 +34,7 @@ loginForm.addEventListener('submit', async (evt) => {
 
 // submit register form
 registerForm.addEventListener('submit', async (evt) => {
+    location.href = 'login.html';
     evt.preventDefault();
     const data = serializeJson(registerForm);
     const fetchOptions = {
