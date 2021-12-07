@@ -49,6 +49,9 @@ const createActivityCards = (activities) => {
     participateButton.addEventListener('click', async () => {
         const fetchOptions = {
           method: 'POST',
+          headers: {
+            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+          },
         };
         try {
           const response = await fetch(url + '/activity/participation/' + activity.id, fetchOptions);
@@ -82,7 +85,12 @@ const createActivityCards = (activities) => {
 // AJAX call
 const getActivity = async () => {
   try {
-    const response = await fetch(url + '/activity');
+    const fetchOptions = {
+      headers: {
+        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/activity', fetchOptions);
     const activities = await response.json();
     console.log(activities)
     createActivityCards(activities);

@@ -58,6 +58,9 @@ const createActivityCards = (activities) => {
       participateButton.addEventListener('click', async () => {
           const fetchOptions = {
             method: 'POST',
+            headers: {
+                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+              },
           };
           try {
             const response = await fetch(url + '/activity/participation/' + activity.id, fetchOptions);
@@ -105,7 +108,12 @@ form.addEventListener('submit', async (evt)=>{
         //   AJAX call
            getActivityByName = async () => {
             try {
-              const response = await fetch(url + '/activity/searchType/' + query.value);
+              const fetchOptions = {
+                    headers: {
+                      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                    },
+                  };
+              const response = await fetch(url + '/activity/searchType/' + query.value, fetchOptions);
               const activities = await response.json();
               console.log(activities);
               if(activities.message){
@@ -122,7 +130,12 @@ form.addEventListener('submit', async (evt)=>{
            //   AJAX call
            getActivityByLocation = async () => {
             try {
-              const response = await fetch(url + '/activity/searchLocation/' + query.value);
+              const fetchOptions = {
+                    headers: {
+                      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                    },
+                  };
+              const response = await fetch(url + '/activity/searchLocation/' + query.value, fetchOptions);
               const activities = await response.json();
               console.log(activities);
               if(activities.message){
@@ -139,7 +152,12 @@ form.addEventListener('submit', async (evt)=>{
          //   AJAX call
           getActivityByDate = async () => {
             try {
-              const response = await fetch(url + '/activity/searchDate/' + query.value);
+              const fetchOptions = {
+                    headers: {
+                      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                    },
+                  };
+              const response = await fetch(url + '/activity/searchDate/' + query.value, fetchOptions);
               const activities = await response.json();
               console.log(activities);
               if(activities.message){
