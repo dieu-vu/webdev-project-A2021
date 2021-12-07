@@ -13,8 +13,8 @@ const fileFilter = (req, file, cb) => {
 };
 
 const upload = multer({dest: './backend/uploads/', fileFilter});
-const router = express.Router(); // Creating a router
 const {login, logout, user_register} = require('../controllers/authController');
+const router = express.Router(); // Creating a router
 
 router.post('/login', login);
 router.get('/logout', logout);

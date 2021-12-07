@@ -23,7 +23,7 @@
     <div class="form-wrapper" id="register-wrapper">
       <img src="images/nutivity_logo.png" alt="logo" width="90px" height="100px">
       <h3>Nutivity</h3>
-      <form id="register-form" class="light-border" action="http://localhost:3000/auth/register" method="post">
+      <form id="register-form" class="light-border" action="http://localhost:3000/auth/register" method="post" enctype="multipart/form-data">
         <div>
           <input class="light-border" type="text" required name="email" placeholder="Email"/>
         </div>
@@ -47,7 +47,7 @@
 </div>
 <!--Define scripts here-->
 <script src="./scripts/serialize.js"></script>
-<script src="scripts/login_register.js"></script>
+<script src="./scripts/login_register.js"></script>
 </body>
 
 </html>
