@@ -30,7 +30,8 @@ const login = (req, res, next) => {
 };
 
 
-// User registration // TODO error handling and thumbnails
+// User registration
+// TODO error handling and thumbnails
 const user_register = async (req, res, next) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
