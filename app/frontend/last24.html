@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <title>Title</title>
-    <link href="./styles/style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <!--Left side navigation drawer-->
-    <nav class="nav_menu">
-      <div class="nav_container">
-        <div class="navbar__toggle" id="mobile-menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
+    <link href="./styles/style.css" rel="stylesheet"/>
+</head>
+<body>
+<!--Left side navigation drawer-->
+<nav class="nav_menu">
+    <div class="nav_container">
+        <div class="navbar_toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
         </div>
         <ul class="side_nav">
-          <li><a href="search.html">Search</a></li>
-          <li><a href="">&plus;</a></li>
-          <li><a href="home.html">All</a></li>
-          <li><a href="last24.html">Last 24hrs</a></li>
-          <li><a href="user.html">My profile</a></li>
-          <li><a href="">Settings</a></li>
-          <li><a href="logout.html">Logout</a></li>
+            <li class="navbar_item"><a href="search.html" class="navbar_links">Search</a></li>
+            <li class="navbar_item"><a href="" class="navbar_links">&plus;</a></li>
+            <li class="navbar_item"><a href="home.html" class="navbar_links">All</a></li>
+            <li class="navbar_item"><a href="last24.html" class="navbar_links">Last 24hrs</a></li>
+            <li class="navbar_item"><a href="user.html" class="navbar_links">My profile</a></li>
+            <li class="navbar_item"><a href="" class="navbar_links">Settings</a></li>
+            <li class="navbar_item"><a href="logout.html" class="navbar_links">Logout</a></li>
         </ul>
-      </div>
-    </nav>
+    </div>
+</nav>
+
+<!--Main content-->
+<div class="main_content">
     <h1 id="title">Last 24hrs</h1>
     <!--Container for the activity images-->
     <ul class="activity_list_home" id="hour_list">
-      <!-- js creates activity image list here -->
+        <!-- js creates activity image list here -->
     </ul>
-    <!-- Define scripts here -->
-    <!--<script src="./scripts/check-login.js"></script>-->
-    <script src="./scripts/serialize.js"></script>
-    <script src="./scripts/login_register.js"></script>
-    <script src="./scripts/last24.js"></script>
-  </body>
+</div>
+<!-- Define scripts here -->
+<!--<script src="./scripts/check-login.js"></script>-->
+<script src="./scripts/serialize.js"></script>
+<script src="./scripts/login_register.js"></script>
+<script src="./scripts/navigation.js"></script>
+<script src="./scripts/last24.js"></script>
+</body>
 </html>
