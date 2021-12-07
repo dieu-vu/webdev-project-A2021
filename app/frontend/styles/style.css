@@ -406,7 +406,7 @@ a:hover {
     position: fixed;
     transition: all 0.5s ease;
     z-index: 150;
-    height: 100%;
+    height: 50%;
     font-size: 2px;
   }
 
@@ -420,13 +420,18 @@ a:hover {
 
   .navbar_item {
     width: 100%;
+    height: 50px;
   }
 
   .navbar_links {
     text-align: center;
     width: 100%;
-    font-size: 18px;
+    font-size: 20px;
     display: table;
+  }
+
+  .navbar_links:hover {
+    font-size: xx-large;
   }
 
   #mobile-menu {
