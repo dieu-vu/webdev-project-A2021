@@ -54,6 +54,9 @@ const createActivityCards = (activities) => {
           const response = await fetch(url + '/activity/participation/' + activity.id, fetchOptions);
           const json = await response.json();
           console.log('post response', json);
+          if(json.message == "undefined"){
+            alert("You have already participated in this activity before. ");
+        }else {alert("Welcome to join this activity.")};
           getActivity();         
         } catch (e) {
           console.log(e.message);
@@ -72,7 +75,6 @@ const createActivityCards = (activities) => {
     li.appendChild(p4);
     li.appendChild(p5);
     li.appendChild(participateButton);
-    // ul.appendChild(header);
     ul.appendChild(li);
   });
 };
