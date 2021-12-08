@@ -4,13 +4,12 @@
 
 // select existing html elements
 const ul = document.querySelector('#activity_list');
+const user = JSON.parse(sessionStorage.getItem('user'));
 
 // create activity cards
 const createActivityCards = (activities) => {
   // clear ul
   ul.innerHTML = '';
-  const header = document.createElement('h2');
-  header.innerHTML = "All activities available now ";
   activities.forEach((activity) => {
     // create li with DOM methods
     
@@ -41,11 +40,22 @@ const createActivityCards = (activities) => {
     const p5 = document.createElement('p');
     p5.innerHTML = `Participant: ${activity.participantNum}`;
 
+    const li = document.createElement('li');
+    li.classList.add('light-border');
+
+    li.appendChild(h2);
+    li.appendChild(figure);
+    li.appendChild(p1);
+    li.appendChild(p2);
+    li.appendChild(p3);
+    li.appendChild(p4);
+    li.appendChild(p5);
 
     // participate button
     const participateButton = document.createElement('button');
     participateButton.innerHTML = 'Participate';
     participateButton.classList.add('button');
+    li.appendChild(participateButton);
     participateButton.addEventListener('click', async () => {
         const fetchOptions = {
           method: 'POST',
@@ -66,18 +76,30 @@ const createActivityCards = (activities) => {
         }
       });
 
+      //delete button
+    if(user.role == 0){
+      const deleteButton = document.createElement('button');
+      deleteButton.innerHTML = 'Delete';
+      deleteButton.classList.add('button');
+      li.appendChild(deleteButton)
+      deleteButton.addEventListener('click', async () => {
+        const fetchOptions = {
+          method: 'DELETE',
+          headers: {
+            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+          },
+        };
+        try {
+          const response = await fetch(url + '/activity/' + activity.id, fetchOptions);
+          const json = await response.json();
+          console.log('delete response', json);
+          getActivity();         
+        } catch (e) {
+          console.log(e.message);
+        }
+      });
+    }
 
-    const li = document.createElement('li');
-    li.classList.add('light-border');
-
-    li.appendChild(h2);
-    li.appendChild(figure);
-    li.appendChild(p1);
-    li.appendChild(p2);
-    li.appendChild(p3);
-    li.appendChild(p4);
-    li.appendChild(p5);
-    li.appendChild(participateButton);
     ul.appendChild(li);
   });
 };
