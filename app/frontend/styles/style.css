@@ -233,7 +233,7 @@ a:hover {
 .navbar_links:hover {
   color: #4db9b9;
   transition: all 0.3s ease-in-out;
-  font-size: x-large;
+  font-size: larger;
 }
 
 .side_nav {
@@ -431,7 +431,7 @@ a:hover {
   }
 
   .navbar_links:hover {
-    font-size: xx-large;
+    font-size: x-large;
   }
 
   #mobile-menu {
