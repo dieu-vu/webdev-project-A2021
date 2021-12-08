@@ -3,7 +3,6 @@
     'use strict';
     const url = 'http://localhost:3000'; // url for backend connection
 
-    // !!!!!!!! Need to check this because user can also enter main without logging in !!!!!!!!!!
     // check sessionStorage and if token || user does not exist - reload login.html
     if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
         location.href = 'login.html';

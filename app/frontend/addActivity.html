@@ -1,113 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <title>Title</title>
-    <link href="./styles/style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <!--Left side navigation drawer-->
-    <nav class="nav_menu">
-      <div class="nav_container">
+    <link href="./styles/style.css" rel="stylesheet"/>
+</head>
+<body>
+<!--Left side navigation drawer-->
+<nav class="nav_menu">
+    <div class="nav_container">
         <div class="navbar__toggle" id="mobile-menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
         </div>
         <ul class="side_nav">
-          <li class="navbar_item">
-            <a href="search.html" class="navbar_links">Search</a>
-          </li>
-          <li class="navbar_item">
-            <a href="addActivity.html" class="navbar_links">&plus;</a>
-          </li>
-          <li class="navbar_item">
-            <a href="home.html" class="navbar_links">All</a>
-          </li>
-          <li class="navbar_item">
-            <a href="last24.html" class="navbar_links">Last 24hrs</a>
-          </li>
-          <li class="navbar_item">
-            <a href="user.html" class="navbar_links">My profile</a>
-          </li>
-          <li class="navbar_item">
-            <a href="" class="navbar_links">Settings</a>
-          </li>
-          <li class="navbar_item">
-            <a href="logout.html" class="navbar_links">Logout</a>
-          </li>
+            <li class="navbar_item">
+                <a href="search.html" class="navbar_links">Search</a>
+            </li>
+            <li class="navbar_item">
+                <a href="addActivity.html" class="navbar_links">&plus;</a>
+            </li>
+            <li class="navbar_item">
+                <a href="home.html" class="navbar_links">All</a>
+            </li>
+            <li class="navbar_item">
+                <a href="last24.html" class="navbar_links">Last 24hrs</a>
+            </li>
+            <li class="navbar_item">
+                <a href="user.html" class="navbar_links">My profile</a>
+            </li>
+            <li class="navbar_item">
+                <a href="" class="navbar_links">Settings</a>
+            </li>
+            <li class="navbar_item">
+                <a href="logout.html" class="navbar_links">Logout</a>
+            </li>
         </ul>
-      </div>
-    </nav>
-    <h1 id="title">Add activity</h1>
-    <!--Container for the activity form-->
-    <div id="add_activity">
-      <form
-        id="add_activity_form"
-        class="light-border"
-        method="post"
-        enctype="multipart/form-data"
-      >
-        <div>
-          <input
-            class="light-border"
-            type="text"
-            required
-            minlength="3"
-            name="name"
-            placeholder="Activity name"
-          />
-        </div>
-        <div>
-          <input
-            class="light-border"
-            type="text"
-            required
-            minlength="3"
-            name="location"
-            placeholder="Location"
-          />
-        </div>
-        <div>
-          <input
-            class="light-border"
-            type="text"
-            required
-            minlength="3"
-            name="description"
-            placeholder="Description"
-          />
-        </div>
-        <div>
-          <input
-            class="light-border"
-            type="text"
-            required
-            minlength="3"
-            name="VET"
-            placeholder="Start time:YYYY-MM-DD hh:mm:ss"
-          />
-        </div>
-        <div>
-          <input
-            class="light-border"
-            type="file"
-            required
-            minlength="3"
-            name="activity_pic"
-            placeholder="Activity pic"
-          />
-        </div>
-        <div>
-          <button class="light-border" type="submit">Add</button>
-        </div>
-      </form>
     </div>
-    <!-- Define scripts here -->
-    <!--    <script src="./scripts/check-login.js"></script>-->
-    <script src="./scripts/serialize.js"></script>
-    <script src="scripts/login_register.js"></script>
-    <script src="./scripts/addActivity.js"></script>
-    <script src="./scripts/navigation.js"></script>
-  </body>
+</nav>
+
+<!--Main content-->
+<!--Container for the activity form-->
+<div class="container_new_activity">
+    <div class="forms">
+        <div class="form-wrapper" id="activity-wrapper">
+            <p class="p_add_activity">Add a new activity</p>
+        <form id="add_activity_form" class="light-border" method="post" enctype="multipart/form-data">
+            <div>
+                <input class="activity_input" type="text" required minlength="3" name="name" placeholder="Name"/>
+            </div>
+            <div class="form_section_1">
+            <div>
+                <input class="activity_input" type="text" required minlength="3" name="location" placeholder="Location"/>
+            </div>
+            <div>
+                <input class="activity_input" type="text" required minlength="3" name="VET" placeholder="Time:YYYY-MM-DD hh:mm:ss"/>
+            </div>
+            </div>
+            <div>
+                <textarea class="description_input" type="text" required minlength="3" name="description" rows="5" placeholder="Description"></textarea>
+            </div>
+            <div class="upload_btn_wrapper">
+                <button class="upload_img_btn">Upload a file</button>
+                <input class="activity_input" id="file" type="file" required minlength="3" name="activity_pic" placeholder="Image" onchange="updateList()"/>
+            </div>
+            <div id="fileList"></div>
+            <div>
+                <button class="submit_activity" type="submit">Add</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Define scripts here -->
+<!--    <script src="./scripts/check-login.js"></script>-->
+<script src="./scripts/serialize.js"></script>
+<script src="scripts/login_register.js"></script>
+<script src="./scripts/addActivity.js"></script>
+<script src="./scripts/navigation.js"></script>
+</body>
 </html>

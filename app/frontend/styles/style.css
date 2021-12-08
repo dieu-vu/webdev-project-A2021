@@ -90,6 +90,7 @@ input {
   font-family: Roboto, sans-serif;
   font-weight: 500;
   transition: all 0.2s ease-in-out;
+  border-radius: 10px;
 }
 
 div > button {
@@ -208,12 +209,6 @@ a:hover {
   justify-content: space-evenly;
 }
 
-#add_activity {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-20%, -60%);
-}
 
 /************* LEFT SIDE NAVIGATION *************/
 .nav_container {
@@ -376,6 +371,110 @@ a:hover {
   border: none;
   color: #fcfcfc;
 }
+
+/************* NEW ACTIVITY SECTION *************/
+.container_new_activity {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 35%;
+  width: 40%;
+  height: 100%;
+  background: #004155;
+  color: #fcfcfc;
+  border-radius: 40px;
+  margin-top: 5%;
+  backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  padding: 1em;
+}
+
+.p_add_activity {
+  font-family: "Roboto Light", sans-serif;
+  font-weight: 100;
+  font-size: x-large;
+}
+
+.activity_input, .description_input {
+  background: rgba(0, 123, 161, 0.5);
+  width: 100%;
+  padding: 1.5em;
+  margin-bottom: 2em;
+  border: none;
+  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+  color: rgb(252, 252, 252);
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  border-radius: 10px;
+}
+
+.form_section_1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.form_section_1 > div {
+  min-width: 43%;
+  padding-left: 7%;
+  padding-right: 7%;
+}
+
+.description_input {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.submit_activity {
+  width: 50%;
+  height: 100%;
+  padding: 15px;
+  background: #60bfba;
+  border-radius: 50px;
+  font-size: larger;
+  font-weight: 100;
+  font-family: "Roboto Thin", sans-serif;
+  border: none;
+}
+
+/*CSS for browse file button begins*/
+.upload_btn_wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  padding-bottom: 5%;
+}
+
+#fileList {
+  padding-bottom: 5%;
+}
+
+.upload_img_btn {
+  color: #FCFCFC;
+  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 123, 161, 0.5);
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 100;
+  width: 100%;
+}
+
+.upload_btn_wrapper input[type=file] {
+  font-size: larger;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+/*CSS for browse file button ends*/
+
+
 
 /* max 1000px screen width for all pages*/
 @media only screen and (max-width: 1000px) {
