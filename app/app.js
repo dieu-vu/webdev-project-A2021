@@ -26,6 +26,7 @@ app.use(express.static('./backend/uploads'));
 app.use('./thumbnails', express.static('thumbnails'));
 
 app.use('/auth', authRoute);
+app.use('/guest_activity',activityRoute);
 app.use('/activity', passport.authenticate('jwt', {session: false}), activityRoute);
 app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 

@@ -16,25 +16,13 @@
         </div>
         <ul class="side_nav">
           <li class="navbar_item">
-            <a href="search.html" class="navbar_links">Search</a>
+            <a href="guest_search.html" class="navbar_links">Search</a>
           </li>
           <li class="navbar_item">
-            <a href="addActivity.html" class="navbar_links">&plus;</a>
+            <a href="guest_home.html" class="navbar_links">All</a>
           </li>
           <li class="navbar_item">
-            <a href="home.html" class="navbar_links">All</a>
-          </li>
-          <li class="navbar_item">
-            <a href="last24.html" class="navbar_links">Last 24hrs</a>
-          </li>
-          <li class="navbar_item">
-            <a href="user.html" class="navbar_links">My profile</a>
-          </li>
-          <li class="navbar_item">
-            <a href="" class="navbar_links">Settings</a>
-          </li>
-          <li class="navbar_item">
-            <a href="logout.html" class="navbar_links">Logout</a>
+            <a href="login.html" class="navbar_links">Register</a>
           </li>
         </ul>
       </div>
@@ -42,9 +30,24 @@
 
     <!--Main content-->
     <div class="main_content">
-      <h1 id="title">All activities</h1>
+      <h1 id="title">Search by:</h1>
+      <form id="search-form">
+        <select id="search_selector">
+          <option value="location">Location</option>
+          <option value="date">Start date</option>
+          <option value="name" selected>Name or type</option>
+        </select>
+        <input
+          id="query"
+          type="text"
+          name="q"
+          placeholder="Search.."
+          required
+        />
+        <button id="search_button" type="submit">Search</button>
+      </form>
       <!--Container for the activity images-->
-      <ul class="activity_list_home" id="activity_list">
+      <ul class="activity_list_home" id="hour_list">
         <!-- js creates activity image list here -->
       </ul>
     </div>
@@ -53,6 +56,6 @@
     <script src="./scripts/serialize.js"></script>
     <script src="./scripts/login_register.js"></script>
     <script src="./scripts/navigation.js"></script>
-    <script src="./scripts/home.js"></script>
+    <script src="./scripts/guestSearch.js"></script>
   </body>
 </html>
