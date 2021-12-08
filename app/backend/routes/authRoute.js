@@ -12,7 +12,18 @@ const fileFilter = (req, file, cb) => {
     }
 };
 
-const upload = multer({dest: './backend/uploads/', fileFilter});
+// Use disk storage to control storing files:
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './backend/uploads/')
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + '.jpg') 
+    }
+  })
+
+const upload = multer({storage: storage, fileFilter});
+
 const {login, logout, user_register} = require('../controllers/authController');
 const router = express.Router(); // Creating a router
 

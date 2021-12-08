@@ -291,14 +291,11 @@ a:hover {
 .image-stack {
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   margin: 40px;
   float: right;
 }
 
-.single-image {
-  background-color: #181818;
-}
 
 .activity-image {
   padding: 5px;

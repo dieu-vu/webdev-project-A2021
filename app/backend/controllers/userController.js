@@ -40,7 +40,7 @@ const user_put = async (req, res, next) => {
 		return;
 	}
 	const user = req.body;
-    user.user_id = parseInt(req.params.id); //TODO: Update this to get user_id from req.user when passport is done
+    user.user_id = parseInt(req.user.user_id); 
 	console.log('USER_PUT', user);
 
     const updated = await userModel.editUser(user);

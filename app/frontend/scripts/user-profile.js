@@ -40,7 +40,7 @@ const createUserPic = (user) => {
     imgContainer.classList.add('container-image');
 
     const img = document.createElement('img');
-    img.src = url + '/thumbnails/user/' + user.filename;
+    img.src = url + '/' + user.user_filename;
     img.alt = user.name;
     img.classList.add('user-image');
 
@@ -73,10 +73,9 @@ const createActivityStack = (activities, headerText) => {
     if (activities.length !==0){
         activities.forEach((activity) => {
             const img = document.createElement('img');
-            img.src = 'http://placedog.net/200/300';
-            //img.src = url + '/thumbnails/' + activity.filename;
+            img.src = url + '/' + activity.filename;
             img.alt = activity.name;
-            img.classList.add('activity-image');
+            img.classList.add('activity_pic');
             img.classList.add('trans');
 
 
@@ -96,7 +95,7 @@ const createActivityStack = (activities, headerText) => {
             p2.innerHTML = activity.description;
 
             const li = document.createElement('li');
-            li.classList.add('single-image');
+            li.classList.add('activity-pic');
 
             li.appendChild(h2);
             li.appendChild(figure);

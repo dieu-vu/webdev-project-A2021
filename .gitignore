@@ -108,8 +108,8 @@ Temporary Items
 
 
 # ignore content of uploads folder
-uploads/*
+*/uploads/*
 # except one (empty) file to have the folder in version control
-!uploads/.gitkeep
+!*/uploads/.gitkeep
 
 .vscode/
