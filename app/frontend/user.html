@@ -1,61 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
+  <head>
+    <meta charset="UTF-8" />
     <title>Nutivity</title>
-    <link href="./styles/style.css" rel="stylesheet"/>
-</head>
+    <link href="./styles/style.css" rel="stylesheet" />
+  </head>
 
-<body>
-<!--Left side navigation drawer-->
-<nav class="nav_menu">
-    <div class="nav_container">
+  <body>
+    <!--Left side navigation drawer-->
+    <nav class="nav_menu">
+      <div class="nav_container">
         <div class="navbar_toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </div>
         <ul class="side_nav">
-            <li class="navbar_item"><a href="search.html" class="navbar_links">Search</a></li>
-            <li class="navbar_item"><a href="" class="navbar_links">&plus;</a></li>
-            <li class="navbar_item"><a href="home.html" class="navbar_links">All</a></li>
-            <li class="navbar_item"><a href="last24.html" class="navbar_links">Last 24hrs</a></li>
-            <li class="navbar_item"><a href="user.html" class="navbar_links">My profile</a></li>
-            <li class="navbar_item"><a href="" class="navbar_links">Settings</a></li>
-            <li class="navbar_item"><a href="logout.html" class="navbar_links">Logout</a></li>
+          <li class="navbar_item">
+            <a href="search.html" class="navbar_links">Search</a>
+          </li>
+          <li class="navbar_item">
+            <a href="" class="navbar_links">&plus;</a>
+          </li>
+          <li class="navbar_item">
+            <a href="home.html" class="navbar_links">All</a>
+          </li>
+          <li class="navbar_item">
+            <a href="last24.html" class="navbar_links">Last 24hrs</a>
+          </li>
+          <li class="navbar_item">
+            <a href="user.html" class="navbar_links">My profile</a>
+          </li>
+          <li class="navbar_item">
+            <a href="" class="navbar_links">Settings</a>
+          </li>
+          <li class="navbar_item">
+            <a href="logout.html" class="navbar_links">Logout</a>
+          </li>
         </ul>
-    </div>
-</nav>
+      </div>
+    </nav>
 
-<!--Main content-->
-<div class="main_content">
-    <div class="user-header">
+    <!--Main content-->
+    <div class="main_content">
+      <div class="user-header">
         <div id="user-info">
-            <!-- display user picture and name -->
+          <!-- display user picture and name -->
         </div>
-    </div>
-    <div id="user-activity">
+      </div>
+      <div id="user-activity">
         <!--Container for the activity images-->
         <ul id="activity_list">
-            <!-- js creates activity image list here -->
+          <!-- js creates activity image list here -->
         </ul>
-    </div>
+      </div>
 
-    <div id="edit-menu" class="side-edit-menu">
+      <div id="edit-menu" class="side-edit-menu">
+        <<<<<<< HEAD
         <button class="close-button"></button>
         <form id="edit-profile-form">
-            <input type="text" class="edit-profile-field" value="Name" name="name">
-            <input type="text" class="edit-profile-field" value="Email" name="email">
-            <label class="edit-profile-field hint" for="filename">Upload new profile pic:</label>
-            <input class="edit-profile-field" type="file" name="filename" accept="image/*" placeholder="Choose file"
-                   class="hidden">
-            <button type="submit" class="edit-profile-field" id="save-profile-btn">Save</button>
+          <input
+            type="text"
+            class="edit-profile-field"
+            value="Name"
+            name="name"
+          />
+          <input
+            type="text"
+            class="edit-profile-field"
+            value="Email"
+            name="email"
+          />
+          <label class="edit-profile-field hint" for="filename"
+            >Upload new profile pic:</label
+          >
+          <input
+            class="edit-profile-field"
+            type="file"
+            name="filename"
+            accept="image/*"
+            placeholder="Choose file"
+            class="hidden"
+          />
+          <button
+            type="submit"
+            class="edit-profile-field"
+            id="save-profile-btn"
+          >
+            Save
+          </button>
         </form>
+        =======
+        <button class="close-button"></button>
+        <form id="edit-profile-form">
+          <input
+            type="text"
+            class="edit-profile-field"
+            value="Name"
+            name="name"
+          />
+          <input
+            type="text"
+            class="edit-profile-field"
+            value="Email"
+            name="email"
+          />
+          <label class="edit-profile-field hint" for="filename"
+            >Upload new profile pic:</label
+          >
+          <input
+            class="edit-profile-field"
+            type="file"
+            name="filename"
+            accept="image/*"
+            placeholder="Choose file"
+            class="hidden"
+          />
+          <button
+            type="submit"
+            class="edit-profile-field"
+            id="save-profile-btn"
+          >
+            Save
+          </button>
+        </form>
+        >>>>>>> 38a3d33 (add link to addActivity.html)
+      </div>
     </div>
-</div>
-<!-- Define scripts here -->
-<script src="./scripts/serialize.js"></script>
-<script src="./scripts/navigation.js"></script>
-<script src="./scripts/user-profile.js"></script>
-</body>
+    <!-- Define scripts here -->
+    <script src="./scripts/serialize.js"></script>
+    <script src="./scripts/navigation.js"></script>
+    <script src="./scripts/user-profile.js"></script>
+  </body>
 </html>
