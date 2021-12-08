@@ -43,10 +43,10 @@ const getAllUsers = async() => {
 //TODO: allow user to upload file
 //TODO: auto fill with old information if json field is blank
 const editUser = async(user) => {
-    const query = `UPDATE p_user SET name=?, email=? WHERE user_id=?`;
+    const query = `UPDATE p_user SET name=?, email=?, user_filename=? WHERE user_id=?`;
     try {
         const [results] = await promisePool.execute(query,
-            [user.name, user.email, user.user_id]);
+            [user.name, user.email, user.user_filename, user.user_id]);
         console.log('EDIT_USER', results);
         return results.affectedRows === 1;
     } catch (e) {

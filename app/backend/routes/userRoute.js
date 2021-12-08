@@ -13,14 +13,24 @@ const fileFilter = (req, file, cb) => {
 	};
 	cb(null, false);
 };
-const upload = multer({dest:'./uploads/user/', fileFilter});
+// Use disk storage to control storing files:
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './backend/uploads/')
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + '.jpg') 
+    }
+  })
+
+const upload = multer({storage: storage, fileFilter});
 
 router.get('/', userController.user_list_get);
 
 router.route('/:id')
     .get(userController.user_get)
     .put(
-        upload.single('user'),
+        upload.single('user_filename'),
         body('name').not().isEmpty(),
 		body('email').isEmail().not().isEmpty(),
 		userController.user_put);

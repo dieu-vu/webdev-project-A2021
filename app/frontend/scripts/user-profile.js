@@ -105,7 +105,7 @@ const createActivityStack = (activities, headerText) => {
             ul.appendChild(li);
 
             stack.appendChild(header);
-            stack.appendChild(ul);
+            stack.appendChild(ul)
 
         });
     } else {
@@ -146,6 +146,7 @@ getProfile();
 
 // Submit user profile edit form:
 userEditForm.addEventListener('submit', async (editEvent) => {
+    
     editEvent.preventDefault();
     const data = serializeJson(userEditForm);
 
@@ -155,18 +156,22 @@ userEditForm.addEventListener('submit', async (editEvent) => {
           delete data[prop];
         }
     }
-    const fetchOptions = {
+    data.user_filename = document.getElementById('file-id').files[0].name;
+
+    const options = {
         method: 'PUT',
-        header: {
+        headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + sessionStorage.getItem('token'),
         },
         body: JSON.stringify(data),
     };
-
-    //TODO: Check if backend will handle user_id with login passport for put method
-    const response = await fetch(url + '/user', fetchOptions);
+    
+    const response = await fetch(url + '/user/' + loggedInUserId, options);
     const json = await response.json();
+    console.log('USER PUT', response);
+    
     if (json.error) {alert(json.error.message)};
+    
     location.href = 'user.html';
 });

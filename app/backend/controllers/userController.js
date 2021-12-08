@@ -42,6 +42,7 @@ const user_put = async (req, res, next) => {
 	const user = req.body;
     user.user_id = parseInt(req.user.user_id); 
 	console.log('USER_PUT', user);
+	
 
     const updated = await userModel.editUser(user);
     res.send(updated);
