@@ -117,6 +117,7 @@ const activity_post = async (req, res, next) => {
 
     const activity = req.body;
     activity.filename = req.file.filename;
+    activity.owner = req.user.user_id;
     const id = await insertActivity(activity, next);
     res.json({message: `activity added with id: ${id}`});
 };
