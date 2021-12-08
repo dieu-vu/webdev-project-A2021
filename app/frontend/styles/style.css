@@ -208,6 +208,13 @@ a:hover {
   justify-content: space-evenly;
 }
 
+#add_activity {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-20%, -60%);
+}
+
 /************* LEFT SIDE NAVIGATION *************/
 .nav_container {
   height: 100%;
