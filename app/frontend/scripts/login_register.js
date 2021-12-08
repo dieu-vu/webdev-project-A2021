@@ -34,7 +34,6 @@ loginForm.addEventListener('submit', async (evt) => {
 
 // submit register form
 registerForm.addEventListener('submit', async (evt) => {
-    location.href = 'login.html';
     evt.preventDefault();
     const data = new FormData(registerForm);
     const fetchOptions = {
@@ -47,4 +46,6 @@ registerForm.addEventListener('submit', async (evt) => {
     const response = await fetch(url + '/auth/register', fetchOptions);
     const json = await response.json();
     alert(json.message);
+    console.log('register response', json);
+    location.href('login.html');
 });

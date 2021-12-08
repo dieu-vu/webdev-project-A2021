@@ -27,6 +27,7 @@ const upload = multer({storage: storage, fileFilter});
 const {login, logout, user_register} = require('../controllers/authController');
 const router = express.Router(); // Creating a router
 
+
 router.post('/login', login);
 router.get('/logout', logout);
 
