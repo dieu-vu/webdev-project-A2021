@@ -22,7 +22,7 @@ app.use(passport.initialize());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.use(express.static('./backend/uploads'));
+app.use(express.static('uploads'));
 app.use('./thumbnails', express.static('thumbnails'));
 
 app.use('/auth', authRoute);
