@@ -22,8 +22,13 @@ app.use(passport.initialize());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+<<<<<<< HEAD
 app.use(express.static('uploads'));
 app.use(express.static('thumbnails'));
+=======
+app.use(express.static('./backend/uploads'));
+app.use('./thumbnails', express.static('thumbnails'));
+>>>>>>> fee691a (change path of uploads folder for express.static)
 
 app.use('/auth', authRoute);
 app.use('/activity', passport.authenticate('jwt', {session: false}), activityRoute);
