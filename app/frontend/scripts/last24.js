@@ -13,8 +13,8 @@ const createActivityCards = (activities) => {
     // create li with DOM methods
     
     const img = document.createElement('img');
-    // img.src = url + '/' + activity.filename;
-    img.src = activity.filename;
+    img.src = url + '/' + activity.filename;
+    // img.src = activity.filename;
 
     img.alt = activity.activity;
     img.classList.add('activity_pic');
