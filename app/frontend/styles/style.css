@@ -7,7 +7,7 @@ input {
   font-family: Roboto, sans-serif;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
@@ -179,7 +179,7 @@ a:hover {
   border-radius: 56px;
   border: none;
   background-color: #004155;
-  color: #FCFCFC;
+  color: #fcfcfc;
 }
 
 .activity_pic {
@@ -297,10 +297,10 @@ a:hover {
   padding: 5px;
 }
 
-.edit-profile-button{
-  background-image: url('../images/pencil.png');
-  background-color:#60bfba;
-  background-position: center; 
+.edit-profile-button {
+  background-image: url("../images/pencil.png");
+  background-color: #60bfba;
+  background-position: center;
   background-size: cover;
   border-radius: 20%;
   height: 2rem;
@@ -314,7 +314,7 @@ a:hover {
   -ms-transform: translate(100%, 100%);
 }
 
-.side-edit-menu{
+.side-edit-menu {
   height: 100%;
   width: 0;
   position: fixed;
@@ -330,15 +330,15 @@ a:hover {
 }
 
 .close-button {
-  background-image: url('../images/x_button.png');
-  background-color:#004155;
-  background-position: center; 
+  background-image: url("../images/x_button.png");
+  background-color: #004155;
+  background-position: center;
   background-size: cover;
   height: 2rem;
   width: 2rem;
 }
 
-#edit-profile-form{
+#edit-profile-form {
   width: 90%;
   margin-top: 10%;
   display: flex;
@@ -352,12 +352,12 @@ a:hover {
   border-radius: 50px;
   border: none;
   background-color: #212020;
-  color: #FFFFFF80;
+  color: #ffffff80;
 }
 
-.hint{
+.hint {
   color: #fcfcfc;
-  background-color:#004155 ;
+  background-color: #004155;
   text-align: center;
   font-size: 1em;
   margin-bottom: 1em;
@@ -370,7 +370,7 @@ a:hover {
   background: #60bfba;
   border-radius: 50px;
   border: none;
-  color: #fcfcfc ;
+  color: #fcfcfc;
 }
 
 /* max 1000px screen width for all pages*/
@@ -458,17 +458,16 @@ a:hover {
     transform: translateY(-8px) rotate(-45deg);
   }
 
-
   /************* ACTIVITY LIST SECTION *************/
-.main_content {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;
-  align-content: stretch;
-  margin-top: 20%;
-}
+  .main_content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+    margin-top: 20%;
+  }
 
   #title {
     display: flex;
@@ -488,7 +487,6 @@ a:hover {
     font-size: x-large;
   }
 }
-
 
 /* max 870px screen width for all pages*/
 @media only screen and (max-width: 870px) {
