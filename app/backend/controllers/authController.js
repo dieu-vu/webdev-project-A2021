@@ -61,7 +61,7 @@ const user_register = async (req, res, next) => {
         user.user_filename = req.file.filename;
         const id = await registerUser(user);
         if (thumb) {
-            res.json({ message: `user added with id: ${id}`});
+            res.json({ message: `Successfully registered!`});
         }
     } catch (e) {
         console.log('register error', e.message);
