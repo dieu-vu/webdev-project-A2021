@@ -138,6 +138,8 @@ const insertParticipation = async (participantId,activityId, next) => {
     }
 };
 
+
+
 const updateActivity = async (activity) => {
     try {
         const [rows] = await promisePool.execute('UPDATE activity SET name = ?, location = ?, description = ? , owner = ?, VET = ? WHERE activity_id = ?',
@@ -161,6 +163,31 @@ const deleteActivity = async (activityId) => {
     }
 };
 
+const checkParticipationStatus = async (userId, activityId, next) => {
+    try {
+        const [rows] = await promisePool.execute('SELECT participant,activity FROM participate_in WHERE participant = ? AND activity = ?',[userId,activityId]);
+    return rows ;
+
+    }catch(e) {
+        console.error('get participant', e.message);
+        const err = httpError('Sql error', 500);
+        next(err);
+    }
+};
+
+const deleteParticipation = async (userId,activityId, next) => {
+    try {
+        const [rows] = await promisePool.execute('DELETE FROM participate_in WHERE participant = ? AND activity = ?',[userId, activityId]);
+        console.log('model delete participation', rows);
+    return true;
+
+    }catch(e) {
+        console.error('model delete activity', e.message);
+        const err = httpError('Sql error', 500);
+        next(err);
+    }
+};
+
 module.exports = {
     getAllValidActivity,
     getAllValidActivityInLast24Hours,
@@ -175,4 +202,6 @@ module.exports = {
     getParticipantList,
     getAllUsersValidActivity,
     getAllUsersParticipation,
+    checkParticipationStatus,
+    deleteParticipation,
 };

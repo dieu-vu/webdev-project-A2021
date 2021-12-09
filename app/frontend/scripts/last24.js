@@ -56,14 +56,49 @@ const createActivityCards = (activities) => {
     li.appendChild(p4);
     li.appendChild(p5);
 
-    // participate button
-    const participateButton = document.createElement('button');
-    participateButton.innerHTML = 'Participate';
-    participateButton.classList.add('button');
-    li.appendChild(participateButton);
-    participateButton.addEventListener('click', async () => {
+    //if user not participate this activity display participate button otherwise display quit button
+    const getParticipationStatus = async () => {
+      try {
         const fetchOptions = {
-          method: 'POST',
+          headers: {
+            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+          },
+        };
+        const response = await fetch(url + '/activity/participationStatus/' + activity.id, fetchOptions);
+        const participationStatus = await response.json();
+        if (participationStatus.message == "not yet participate"){
+          console.log(`no participated ${activity.id}`);
+          // participate button
+          const participateButton = document.createElement('button');
+          participateButton.innerHTML = 'Participate';
+          participateButton.classList.add('button');
+          li.appendChild(participateButton);
+          participateButton.addEventListener('click', async () => {
+          const fetchOptions = {
+         method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+      };
+      try {
+        const response = await fetch(url + '/activity/participation/' + activity.id, fetchOptions);
+        const json = await response.json();
+        console.log('post response', json);
+        alert("Welcome to join this activity.");
+        getLast24HoursActivity();
+      } catch (e) {
+        console.log(e.message);
+      }
+    });
+        } else{
+        //quit button
+        const quitButton = document.createElement('button');
+        quitButton.innerHTML = 'Quit';
+        quitButton.classList.add('button');
+        li.appendChild(quitButton)
+        quitButton.addEventListener('click', async () => {
+        const fetchOptions = {
+          method: 'DELETE',
           headers: {
             Authorization: 'Bearer ' + sessionStorage.getItem('token'),
           },
@@ -71,16 +106,19 @@ const createActivityCards = (activities) => {
         try {
           const response = await fetch(url + '/activity/participation/' + activity.id, fetchOptions);
           const json = await response.json();
-          console.log('post response', json);
-          if(json.message == "undefined"){
-            alert("You have already participated in this activity before. ");
-        }else {alert("Welcome to join this activity.")};
-
-          getLast24HoursActivity();        
+          console.log('delete response', json);
+          alert("You have quitted this activity.")
+          getLast24HoursActivity();
         } catch (e) {
           console.log(e.message);
         }
-      });
+    });      
+      }
+      } catch (e) {
+      console.log(e.message);
+      }
+    };
+    getParticipationStatus();
 
           //delete button
           if(user.role == 0){

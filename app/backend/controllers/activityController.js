@@ -1,6 +1,6 @@
 'use strict';
 const { validationResult } = require('express-validator');
-const {insertActivity, getActivity, deleteActivity, getActivityByDate, getActivityByLocation, getActivityByActivityName, getAllValidActivity, updateActivity, getParticipantList, getAllUsersValidActivity, getAllUsersParticipation, insertParticipation, getAllValidActivityInLast24Hours } = require('../models/activityModel');
+const {insertActivity, getActivity, deleteActivity, getActivityByDate, getActivityByLocation, getActivityByActivityName, getAllValidActivity, updateActivity, getParticipantList, getAllUsersValidActivity, getAllUsersParticipation, insertParticipation, getAllValidActivityInLast24Hours, checkParticipationStatus, deleteParticipation } = require('../models/activityModel');
 const { httpError } = require('../utils/errors');
 
 
@@ -159,6 +159,29 @@ const participation_post = async (req, res, next) => {
     res.json({message: `${newParticipation}`});
 };
 
+const participation_status_get = async (req, res, next) => {
+
+    const participationStatus = await checkParticipationStatus(req.user.user_id, req.params.activityId, next);
+
+    if(participationStatus.length < 1) {
+        const err = httpError('not yet participate', 404);
+        next(err);
+        return;
+    }    
+    res.json(participationStatus);
+};
+
+const participation_delete = async (req, res, next) => {
+    await deleteParticipation(req.user.user_id,req.params.activityId,next);
+    let activity_id = req.params.activityId;
+    if(!activity_id){
+        const err = httpError('Fail to delete activity', 400);
+        next(err);
+        return;
+    };
+    res.json({message: `Participation deleted`});
+};
+
 module.exports = {
     activity_list_get,
     last_24_hours_activity_list_get,
@@ -173,4 +196,6 @@ module.exports = {
     activity_get_by_user,
     participation_get_by_user,
     participation_post,
+    participation_status_get,
+    participation_delete,
 }; 
