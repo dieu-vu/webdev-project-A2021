@@ -20,6 +20,7 @@ body {
   width: 100%;
   margin: 0;
   background: #181818;
+  font-family: Roboto, sans-serif;
 }
 
 .container_layout {
@@ -360,6 +361,19 @@ a:hover {
 
 /************* USER PAGE SECTION *************/
 
+/*shared classes between user and account-settings*/
+.main_content {
+  width: 80%;
+  float: right;
+  margin: auto;
+  color: #fcfcfc;
+}
+
+.main_content h1 {
+  text-align: center;
+  padding: 2em;
+}
+
 .user-header {
   overflow: auto;
 }
@@ -394,9 +408,6 @@ a:hover {
   display: flex;
   flex-flow: column;
   justify-content: center;
-  width: 80%;
-  float: right;
-  margin: auto;
 }
 
 .image-stack {
@@ -496,6 +507,39 @@ a:hover {
   width: 60%;
 }
 
+/************* ACCOUNT SETTINGS PAGE SECTION *************/
+
+.setting-menu{
+  width: 20%;
+  float: left;
+  padding: 1em;
+  line-height: 1.5;
+}
+
+.setting-menu-list{
+  list-style: none;
+  margin: auto;
+  padding-left: 0;
+  border: 1px solid #e8e8ea;
+  border-radius: 4px;
+  background: rgba(0, 65, 85, 0.5); 
+  color: #fcfcfc;
+}
+
+.setting-item{
+  height: 3em;
+  box-sizing: border-box;
+  border-top: 1px solid #e8e8ea;
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.arrow {
+  height: 1.5em;
+  float: right;
+}
 
 
 /************* NEW ACTIVITY SECTION *************/

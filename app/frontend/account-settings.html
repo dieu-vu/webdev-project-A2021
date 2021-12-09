@@ -2,9 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Title</title>
+    <title>Nutivity</title>
     <link href="./styles/style.css" rel="stylesheet" />
   </head>
+
   <body>
     <!--Left side navigation drawer-->
     <nav class="nav_menu">
@@ -15,9 +16,6 @@
           <span class="bar"></span>
         </div>
         <ul class="side_nav">
-          <li class="navbar_item hidden admin-option">
-            <a href="admin.html" class="navbar_links">Admin page</a>
-          </li>
           <li class="navbar_item">
             <a href="search.html" class="navbar_links">Search</a>
           </li>
@@ -34,9 +32,6 @@
             <a href="user.html" class="navbar_links">My profile</a>
           </li>
           <li class="navbar_item">
-            <a href="account-settings.html" class="navbar_links">Settings</a>
-          </li>
-          <li class="navbar_item">
             <a href="logout.html" class="navbar_links">Logout</a>
           </li>
         </ul>
@@ -45,17 +40,40 @@
 
     <!--Main content-->
     <div class="main_content">
-      <h1 id="title">All activities</h1>
-      <!--Container for the activity images-->
-      <ul class="activity_list_home" id="activity_list">
-        <!-- js creates activity image list here -->
-      </ul>
+        <h1>Account settings</h1>
+        <div class="setting-menu">
+            <ul class="setting-menu-list">
+                <li class="setting-item">General
+                    <a class="setting-item-active">
+                        <span class="arrow">
+                        <img src="./images/right-arrow.png" class="arrow" alt="arrow">
+                    </a>
+                    </span>
+                </li>
+                <li class="setting-item"> Password
+                    <a class="setting-item-active">
+                        <span class="arrow">
+                        <img src="./images/right-arrow.png" class="arrow" alt="arrow">
+                    </a>
+                    </span>
+                </li>
+                <li class="setting-item"> More
+                    <a href="" class="setting-item-active">
+                        <span class="arrow">
+                        <img src="./images/right-arrow.png" class="arrow" alt="arrow">
+                    </a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="settings-input">
+            <!-- from account-settings.js -->
+        </div>
+      
     </div>
     <!-- Define scripts here -->
-    <!--    <script src="./scripts/check-login.js"></script>-->
     <script src="./scripts/serialize.js"></script>
-    <script src="./scripts/login.js"></script>
     <script src="./scripts/navigation.js"></script>
-    <script src="./scripts/home.js"></script>
+    <script src="./scripts/account-settings.js"></script>
   </body>
 </html>

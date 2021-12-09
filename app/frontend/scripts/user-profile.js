@@ -22,14 +22,14 @@ if (loggedInUser.role === 0) {
 const openMenu = () => {
     document.querySelector('.side-edit-menu').style.width = "20%";
     document.querySelector('.side-edit-menu').style.padding = "5%";
-    stack.style.width = "50%";
+    stack.style.width = "60%";
     stack.style.float = "left";
-    stack.style.marginLeft ='20%';
+    stack.style.marginLeft ='0%';
 };
 const closeMenu = () => {
     document.querySelector('.side-edit-menu').style.width = "0";
     document.querySelector('.side-edit-menu').style.padding = "0";
-    stack.style.width = "80%";
+    stack.style.width = "100%";
     stack.style.float = "right";
 }
 
@@ -108,7 +108,8 @@ const createActivityStack = (activities, headerText) => {
             ul.appendChild(li);
 
             stack.appendChild(header);
-            stack.appendChild(ul)
+            stack.appendChild(ul);
+            stack.style.color = '#fcfcfc';
 
         });
     } else {
