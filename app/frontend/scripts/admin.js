@@ -12,7 +12,9 @@ const loggedInUserId = JSON.parse(sessionStorage.getItem('user')).user_id;
 
 // Create tabs for displaying user and activity list:
 const tabs = document.querySelector('.tab-panel');
-const itemList = document.querySelector('.item-list');
+const userList = document.querySelector('.user-list');
+const activityList = document.querySelector('.activity-list');
+
 
 const createTabs = (node) => {
     let tabs = Array.from(node.children).map ( node => {
@@ -35,7 +37,6 @@ const createTabs = (node) => {
         for (let tab of tabs) {
             let selected = tab === selectedTab;
             tab.node.style.display = selected ? "inline-block" : "none";
-            // tab.listDiv.style.display = selected ? "block" : "none";
             tab.button.style.color = selected ? "#004155" : "#fcfcfc";
         }
     }
@@ -56,7 +57,6 @@ const getAllUsers = async () => {
         const response = await fetch(url + `/user/`, fetchOptions);
         const users = await response.json();
         console.log('USERS RETRIEVED', users.length);
-        //const userNameList = users.map( (user) => { return user.name; });
         createUserList(users);
 
     } catch (e) {
@@ -121,13 +121,11 @@ const createUserList = (users) => {
                   console.log(e.message);
                 }
             });
-
             li.appendChild(deleteButton);
-
             ul.appendChild(li);
         });
     }
-    itemList.appendChild(ul);    
+    userList.appendChild(ul);    
 };
 
 // create list for displaying activity in activity tab:
@@ -157,13 +155,13 @@ const createActivityList = (activities) => {
                     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
                   },
                 };
+                alert("You are deleting an activity, continue?");
                 try {
-                  
-                  const response = await fetch(url + '/activity/' + activity.id, fetchOptions);
-                  const json = await response.json();
-                  console.log('delete response', json);        
+                    const response = await fetch(url + '/activity/' + activity.id, fetchOptions);
+                    const json = await response.json();
+                    console.log('delete response', json);        
                 } catch (e) {
-                  console.log(e.message);
+                    console.log(e.message);
                 }
             });
             li.appendChild(deleteButton);
@@ -171,7 +169,7 @@ const createActivityList = (activities) => {
             ul.appendChild(li);
         });
     }
-    itemList.appendChild(ul);    
+    activityList.appendChild(ul);    
 };
 
 getAllUsers();

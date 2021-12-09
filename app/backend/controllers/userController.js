@@ -5,8 +5,6 @@ const { body, validationResult } = require('express-validator');
 const { makeThumbnail } = require('../utils/resize.js');
 const { response } = require('express');
 
-//const users = userModel.users;
-
 // User list is for admin only:
 const user_list_get = async (req, res) => {
     const users = await userModel.getAllUsers();

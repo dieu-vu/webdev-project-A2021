@@ -94,7 +94,7 @@ const getUserLogin = async (params) => {
 
 
 
-// // Implement this for admin user only
+// Implement this for admin user only
 const deleteUser = async (currentUser, deletedUserId) => {
     try {
     //Query user's role:
