@@ -17,7 +17,7 @@ const createActivityCards = (activities) => {
   ul.innerHTML = '';
   activities.forEach((activity) => {
     // create li with DOM methods
-    
+
     const img = document.createElement('img');
     img.src = url + '/' + activity.filename;
     // img.src = activity.filename;
@@ -62,26 +62,26 @@ const createActivityCards = (activities) => {
     participateButton.classList.add('button');
     li.appendChild(participateButton);
     participateButton.addEventListener('click', async () => {
-        const fetchOptions = {
-          method: 'POST',
-          headers: {
-            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-          },
-        };
-        try {
-          const response = await fetch(url + '/activity/participation/' + activity.id, fetchOptions);
-          const json = await response.json();
-          console.log('post response', json);
-          if(json.message == "undefined"){
-            alert("You have already participated in this activity before. ");
+      const fetchOptions = {
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        },
+      };
+      try {
+        const response = await fetch(url + '/activity/participation/' + activity.id, fetchOptions);
+        const json = await response.json();
+        console.log('post response', json);
+        if(json.message == "undefined"){
+          alert("You have already participated in this activity before. ");
         }else {alert("Welcome to join this activity.")};
-          getActivity();         
-        } catch (e) {
-          console.log(e.message);
-        }
-      });
+        getActivity();
+      } catch (e) {
+        console.log(e.message);
+      }
+    });
 
-      //delete button
+    //delete button
     if(user.role == 0){
       const deleteButton = document.createElement('button');
       deleteButton.innerHTML = 'Delete';
@@ -98,7 +98,7 @@ const createActivityCards = (activities) => {
           const response = await fetch(url + '/activity/' + activity.id, fetchOptions);
           const json = await response.json();
           console.log('delete response', json);
-          getActivity();         
+          getActivity();
         } catch (e) {
           console.log(e.message);
         }

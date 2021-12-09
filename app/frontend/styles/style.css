@@ -130,18 +130,6 @@ a:hover {
 }
 
 /*********** SEARCH PAGE SECTION *************/
-#activity_list {
-  color: #fcfcfc;
-  text-align: center;
-  margin: 1em;
-  padding: 1em;
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  float: right;
-  justify-content: space-evenly;
-}
-
 #search-form {
   text-align: center;
   margin-left: 20%;
@@ -183,6 +171,7 @@ a:hover {
   color: #fcfcfc;
 }
 
+/*********** ACTIVITY LIST SECTION *************/
 .activity_pic {
   width: 20rem;
   height: 13rem;
@@ -209,8 +198,130 @@ a:hover {
   justify-content: space-evenly;
 }
 
+/*********FOR THE NEW DESIGN*******************/
+/*********** ACTIVITY LIST SECTION *************/
+/*.content {*/
+/*  display: flex;*/
+/*  flex-direction: row;*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*}*/
 
+/*.main_content {*/
+/*  width: 60%;*/
+/*  transition: 0.3s;*/
+/*  position: relative;*/
+/*  left: 25%;*/
+/*  margin-top: 5%;*/
+/*}*/
+
+/*.activity_link {*/
+/*  filter: grayscale(1);*/
+/*}*/
+
+/*.activity_list_home {*/
+/*  column-count: 2;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  flex-wrap: wrap;*/
+/*  width: 60%;*/
+/*  height: 60%;*/
+/*}*/
+
+/*.activity_link {*/
+/*  margin: 0;*/
+/*  overflow: hidden;*/
+/*}:hover {*/
+/*   filter: grayscale(0);*/
+/* }*/
+
+/* .activity_image:hover {*/
+/*   transform: scale(1.1);*/
+/* }*/
+
+
+/*.activity_caption {*/
+/*  opacity: 1;*/
+/*}*/
+
+/*.activity_thumb {*/
+/*  position: relative;*/
+/*  margin: 4px;*/
+/*}*/
+
+/*.activity_image {*/
+/*  display: block;*/
+/*  width: 100%;*/
+/*  transition: 0.3s;*/
+/*}*/
+
+/*.gradient_background {*/
+/*   position: absolute;*/
+/*   bottom: 0;*/
+/*   left: 0;*/
+/*   padding: 25px 15px 15px;*/
+/*   width: 100%;*/
+/*   height: 100%;*/
+/*   background: linear-gradient(*/
+/*           0deg,*/
+/*           rgba(0, 0, 0, 0.91) 0%,*/
+/*           rgba(255, 255, 255, 0) 100%*/
+/*   );*/
+/*   transition: 0.3s;*/
+/* }*/
+
+/*.button_participate {*/
+/*  position: absolute;*/
+/*  bottom: 8px;*/
+/*  right: 16px;*/
+/*  background-color: #60bfba;*/
+/*  padding: 3%;*/
+/*  border-radius: 20px;*/
+/*  border: none;*/
+/*}*/
+
+/*.participants {*/
+/*  position: absolute;*/
+/*  top: 8px;*/
+/*  right: 16px;*/
+/*  color: #FCFCFC;*/
+/*  font-weight: bold;*/
+/*}*/
+
+/*.publisher {*/
+/*  position: absolute;*/
+/*  top: 8px;*/
+/*  left: 16px;*/
+/*  color: #FCFCFC;*/
+/*}*/
+
+/*.activity_name {*/
+/*  position: absolute;*/
+/*  bottom: 25px;*/
+/*  left: 16px;*/
+/*}*/
+
+/*.activity_description {*/
+/*  position: absolute;*/
+/*  bottom: 8px;*/
+/*  left: 16px;*/
+/*}*/
+
+/*.activity_location {*/
+/*  position: absolute;*/
+/*  top: 12%;*/
+/*  left: 3%;*/
+/*  color: #FCFCFC;*/
+/*}*/
+
+/*.activity_time {*/
+/*  position: absolute;*/
+/*  top: 20%;*/
+/*  left: 16px;*/
+/*  color: #FCFCFC;*/
+/*}*/
 /************* LEFT SIDE NAVIGATION *************/
+
 .nav_container {
   height: 100%;
   width: 20%;
@@ -241,6 +352,7 @@ a:hover {
 .side_nav {
   list-style-type: none;
 }
+
 
 /************* USER PAGE SECTION *************/
 
@@ -535,7 +647,7 @@ a:hover {
     height: 50px;
   }
 
-  .navbar_links {
+  .bar_links {
     text-align: center;
     width: 100%;
     font-size: 20px;
@@ -571,20 +683,8 @@ a:hover {
   }
 
   /************* ACTIVITY LIST SECTION *************/
-  .main_content {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: stretch;
-    align-content: stretch;
-    margin-top: 20%;
-  }
 
-  #title {
-    display: flex;
-    margin-left: 10%;
-  }
+
 
   /************* LOGIN & REGISTER PAGE SECTION *************/
   .container_intro_login {
@@ -641,20 +741,9 @@ a:hover {
   }
 
   /************* ACTIVITY LIST SECTION *************/
-  .main_content {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: stretch;
-    align-items: stretch;
-    margin-top: 20%;
-  }
 
-  #title {
-    display: flex;
-    margin-left: 10%;
-  }
+
+
 }
 
 /* Transition image when hovering */
