@@ -148,30 +148,29 @@ getProfile();
 userEditForm.addEventListener('submit', async (editEvent) => {
     
     editEvent.preventDefault();
-    const data = serializeJson(userEditForm);
+    const data = new FormData(userEditForm);
 
-    // remove empty properties
-    for (const [prop, value] of Object.entries(data)) {
-        if (value === '') {
-          delete data[prop];
-        }
-    }
-    data.user_filename = document.getElementById('file-id').files[0].name;
+    data.filename = document.getElementById('file-id').files[0].name;
+    console.log('USER PUT REQ', data);
 
     const options = {
         method: 'PUT',
         headers: {
-            'Content-Type': 'application/json',
             Authorization: 'Bearer ' + sessionStorage.getItem('token'),
         },
-        body: JSON.stringify(data),
+        body: data,
     };
     
-    const response = await fetch(url + '/user/' + loggedInUserId, options);
+    const response = await fetch(url + `/user/${loggedInUserId}`, options);
+    if (response.status == 200) {
+        alert("Successfully updated!");
+    } else {
+        alert("Error " + response.status + " occurred when updating profile");
+    }
     const json = await response.json();
     console.log('USER PUT', response);
     
     if (json.error) {alert(json.error.message)};
     
-    location.href = 'user.html';
+    //location.href = 'user.html';
 });

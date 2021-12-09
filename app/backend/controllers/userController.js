@@ -2,6 +2,8 @@
 const userModel = require('../models/userModel.js');
 const {httpError} = require('../utils/errors');
 const { body, validationResult } = require('express-validator');
+const { makeThumbnail } = require('../utils/resize.js');
+const { response } = require('express');
 
 //const users = userModel.users;
 
@@ -39,13 +41,32 @@ const user_put = async (req, res, next) => {
 		next(err);
 		return;
 	}
-	const user = req.body;
-    user.user_id = parseInt(req.user.user_id); 
-	console.log('USER_PUT', user);
-	
 
-    const updated = await userModel.editUser(user);
-    res.send(updated);
+	try {
+		const user = req.body;
+		user.user_id = parseInt(req.user.user_id); 
+		user.email = req.body.email;
+		user.name = req.body.name;
+		//If user upload a new picture, create thumbnail
+		if (!req.file) {
+			user.user_filename = req.user.user_filename;
+			console.log('CANNOT GET FILE', req.file)
+		}
+		else {
+			const thumb = await makeThumbnail(req.file.path, req.file.filename);
+			console.log('thumbnail_PUT', req.file.path, req.file.filename);
+			user.user_filename = req.file.filename;
+		}
+		console.log('USER_PUT', user);
+		const updated = await userModel.editUser(user);
+    	res.send(updated);
+	} catch (e) {
+		console.log('USER PUT ERROR', e.message);
+		const err = httpError('Error updating user', 404);
+		next(err);
+		return;
+	}
+
 };
 
 const checkToken = (req, res, next) => {
