@@ -6,6 +6,10 @@
 const ul = document.querySelector('#activity_list');
 const user = JSON.parse(sessionStorage.getItem('user'));
 
+if (user.role === 0) {
+  document.querySelector('.admin-option').style.display = "block";
+};
+
 // create activity cards
 const createActivityCards = (activities) => {
   // clear ul

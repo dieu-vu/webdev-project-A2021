@@ -10,9 +10,14 @@ const userInfo = document.querySelector('#user-info');
 // Select html element of user edit profile info form:
 const userEditForm = document.querySelector('#edit-profile-form');
 
-// // get user data from session storage
+// get user data from session storage
 const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
 const loggedInUserId = loggedInUser.user_id;
+
+// Check if user is an admin to give access to admin page
+if (loggedInUser.role === 0) {
+    document.querySelector('.admin-option').style.display = "block";
+}
 
 // open and close side menu for editing user info:
 const openMenu = () => {
@@ -78,7 +83,6 @@ const createActivityStack = (activities, headerText) => {
             img.classList.add('activity_pic');
             img.classList.add('trans');
 
-
             img.addEventListener('click', () => {
                 location.href = 'activity.html?id=?' + activity.activity_id;
             });
@@ -125,7 +129,6 @@ const getProfile = async () => {
                 Authorization: 'Bearer ' + sessionStorage.getItem('token'),
             },
         };
-       
         console.log('LOGGED IN USER', loggedInUserId);
         const response = await fetch(url + `/user/${loggedInUserId}`, fetchOptions);
         const user = await response.json();

@@ -11,6 +11,11 @@ let getActivityByName;
 let getActivityByLocation;
 let getActivityByDate;
 
+// Check if user is an admin to give access to admin page
+if (user.role === 0) {
+  document.querySelector('.admin-option').style.display = "block";
+};
+
 const createActivityCards = (activities) => {
     // clear ul
     ul.innerHTML = '';

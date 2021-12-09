@@ -2,9 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Title</title>
+    <title>Nutivity</title>
     <link href="./styles/style.css" rel="stylesheet" />
   </head>
+
   <body>
     <!--Left side navigation drawer-->
     <nav class="nav_menu">
@@ -15,9 +16,6 @@
           <span class="bar"></span>
         </div>
         <ul class="side_nav">
-          <li class="navbar_item hidden admin-option">
-            <a href="admin.html" class="navbar_links">Admin page</a>
-          </li>
           <li class="navbar_item">
             <a href="search.html" class="navbar_links">Search</a>
           </li>
@@ -45,17 +43,22 @@
 
     <!--Main content-->
     <div class="main_content">
-      <h1 id="title">Last 24hrs</h1>
-      <!--Container for the activity images-->
-      <ul class="activity_list_home" id="hour_list">
-        <!-- js creates activity image list here -->
-      </ul>
+      <div class="user-header">
+        <div id="user-info">
+          <!-- display user picture and name -->
+        </div>
+      </div>
+      <div id="user-activity">
+        <!--Container for the activity images-->
+        <ul id="activity_list">
+          <!-- js creates activity image list here -->
+        </ul>
+      </div>
     </div>
     <!-- Define scripts here -->
-    <!--<script src="./scripts/check-login.js"></script>-->
     <script src="./scripts/serialize.js"></script>
-    <script src="./scripts/login_register.js"></script>
     <script src="./scripts/navigation.js"></script>
-    <script src="./scripts/last24.js"></script>
+    <script src="./scripts/user-profile.js"></script>
+    <script src="admin.js"></script>
   </body>
 </html>
