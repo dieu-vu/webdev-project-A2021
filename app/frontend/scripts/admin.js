@@ -112,6 +112,7 @@ const createUserList = (users) => {
                     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
                   },
                 };
+                alert("You are deleting a user, continue?");
                 try {
                   const response = await fetch(url + '/user/' + user.user_id, fetchOptions);
                   const json = await response.json();
@@ -157,6 +158,7 @@ const createActivityList = (activities) => {
                   },
                 };
                 try {
+                  
                   const response = await fetch(url + '/activity/' + activity.id, fetchOptions);
                   const json = await response.json();
                   console.log('delete response', json);        

@@ -33,7 +33,8 @@ router.route('/:id')
         upload.single('user_filename'),
         body('name', 'minimum 3 characters'),
 		body('email', 'email is not valid').isEmail(),
-		userController.user_put);
+		userController.user_put)
+    .delete(userController.user_delete);
 
 router.get('/token', checkToken);
 

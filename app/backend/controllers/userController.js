@@ -69,6 +69,14 @@ const user_put = async (req, res, next) => {
 
 };
 
+const user_delete = async (req, res) => {
+	const deletedUserId = req.params.id;
+	console.log('USER_DELETE', deletedUserId); 
+	const currentUser = req.user;
+	const deleted = await userModel.deleteUser(currentUser, deletedUserId);
+	res.send(`removed user Id ${deleted}`);
+};
+
 const checkToken = (req, res, next) => {
 	if (!req.user) {
 		next(httpError('token not valid', 400));
@@ -81,5 +89,6 @@ module.exports = {
 	user_list_get,
 	user_get,
 	user_put,
+	user_delete,
 	checkToken,
 };

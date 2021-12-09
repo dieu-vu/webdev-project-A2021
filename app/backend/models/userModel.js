@@ -95,24 +95,24 @@ const getUserLogin = async (params) => {
 
 
 // // Implement this for admin user only
-// const deleteUser = async (user) => {
-//     try {
-//     //Query user's role:
-//         const [users] = await promisePool.query(`SELECT role FROM p_user WHERE user_id = ?`, [user.user_id]);
-//         const user_role = users[0].role;	
-//         console.log('USER_ROLE', user_role);
-//     } catch (e) {
-//         console.error('CHECK USER ROLE ERROR', e.message)
-//     }
-//     //If user is admin, can delete without checking owner matching with user_id:	
-//     try {
-//         const [row] = await promisePool.query(`DELETE FROM p_user WHERE user_id = ?`, [user.user_id]);
-//         console.log('model delete user', row);
-// 		return row.affectedRows === 1;
-//     } catch (e) {
-//         console.error('model delete user ERROR', e.message)
-//     }
-// };
+const deleteUser = async (currentUser, deletedUserId) => {
+    try {
+    //Query user's role:
+        const [users] = await promisePool.query(`SELECT role FROM p_user WHERE user_id = ?`, [currentUser.user_id]);
+        const user_role = users[0].role;	
+        console.log('USER_ROLE', user_role);
+    } catch (e) {
+        console.error('CHECK USER ROLE ERROR', e.message)
+    }
+    //If user is admin, can delete user:	
+    try {
+        const [row] = await promisePool.query(`DELETE FROM p_user WHERE user_id = ?`, [deletedUserId]);
+        console.log('model delete user', row);
+		return row.affectedRows === 1;
+    } catch (e) {
+        console.error('model delete user ERROR', e.message)
+    }
+};
 
 
 module.exports = {
@@ -123,5 +123,5 @@ module.exports = {
     getOwnActivity,
     getParticipatingActivity,
     getUserLogin,
-    //deleteUser,
+    deleteUser,
 };
