@@ -43,22 +43,27 @@
 
     <!--Main content-->
     <div class="main_content">
-      <div class="user-header">
-        <div id="user-info">
-          <!-- display user picture and name -->
+        <div class="user-header">
+            <div id="user-info">
+            <!-- display user picture and name -->
+            </div>
         </div>
-      </div>
-      <div id="user-activity">
-        <!--Container for the activity images-->
-        <ul id="activity_list">
-          <!-- js creates activity image list here -->
-        </ul>
-      </div>
+        <div class="tab-panel">
+            <div data-tabname="Users">
+                Test content
+                <!-- js to generate user list -->
+            </div>
+            <div data-tabname="Activities">
+                test activity content
+                <!-- js to generate user list -->
+            </div>
+        </div>
+
+      
     </div>
     <!-- Define scripts here -->
     <script src="./scripts/serialize.js"></script>
     <script src="./scripts/navigation.js"></script>
-    <script src="./scripts/user-profile.js"></script>
-    <script src="admin.js"></script>
+    <script src="./scripts/admin.js"></script>
   </body>
 </html>

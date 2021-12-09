@@ -1,7 +1,6 @@
 'use strict';
 const url = 'http://localhost:3000';
 
-//TODO: ADD LOGOUT BUTTON
 
 // Select html element of the activity list
 const stack = document.querySelector('#user-activity');
@@ -40,7 +39,7 @@ closeButton.addEventListener('click', () => {
     closeMenu()});
 
 // create user picture on profile page:
-const createUserPic = (user) => {
+const createUserPic = (user, el) => {
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('container-image');
 
@@ -60,8 +59,8 @@ const createUserPic = (user) => {
     imgContainer.appendChild(img);
     imgContainer.appendChild(editButton);
 
-    userInfo.appendChild(imgContainer);
-    userInfo.appendChild(p2);
+    el.appendChild(imgContainer);
+    el.appendChild(p2);
 };
 
 // generate activity stack
@@ -134,7 +133,7 @@ const getProfile = async () => {
         const user = await response.json();
         console.log('USER', user);
 
-        createUserPic(user);
+        createUserPic(user, userInfo);
         //Get list of all relevant activities of user in json response
         createActivityStack(user.ownActivity, 'My own activities');
         createActivityStack(user.participateActivity, 'Activities I participate in');
@@ -175,5 +174,6 @@ userEditForm.addEventListener('submit', async (editEvent) => {
     
     if (json.error) {alert(json.error.message)};
     
-    //location.href = 'user.html';
+    location.href = 'user.html';
 });
+

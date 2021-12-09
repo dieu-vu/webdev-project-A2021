@@ -372,6 +372,15 @@ a:hover {
   color: #fcfcfc;
 }
 
+/************* ADMIN PAGE SECTION *************/
+.tab-panel{
+  color: #fcfcfc;
+  margin: auto;
+  float: right;
+  width: 60%;
+}
+
+
 /************* NEW ACTIVITY SECTION *************/
 .container_new_activity {
   display: flex;

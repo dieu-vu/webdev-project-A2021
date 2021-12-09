@@ -6,6 +6,7 @@
 const ul = document.querySelector('#activity_list');
 const user = JSON.parse(sessionStorage.getItem('user'));
 
+// Check if user is an admin to give access to admin page
 if (user.role === 0) {
   document.querySelector('.admin-option').style.display = "block";
 };
