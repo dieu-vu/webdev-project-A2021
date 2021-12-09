@@ -164,7 +164,7 @@ a:hover {
   color: #fcfcfc;
   font-size: 35px;
   font-family: Roboto, sans-serif;
-  margin-left: 50%;
+  margin-left: auto;
   margin-top: 2em;
 }
 
@@ -193,7 +193,7 @@ a:hover {
 .activity_list_home {
   color: #fcfcfc;
   text-align: center;
-  width: 75%;
+  width: 90%;
   margin: 1em;
   padding: 1em;
   list-style-type: none;
