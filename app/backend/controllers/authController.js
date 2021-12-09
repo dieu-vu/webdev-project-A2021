@@ -44,6 +44,7 @@ const user_register = async (req, res, next) => {
         next(err);
         return;
     }
+
     // Error handling for undefined file or not file at all
     if (!req.file) {
         const err = httpError('Invalid file', 400);

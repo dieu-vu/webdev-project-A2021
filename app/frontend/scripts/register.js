@@ -3,6 +3,7 @@
 const url = 'http://localhost:3000'; // url for backend connection
 const registerForm = document.querySelector('#register-form');
 
+
 // submit register form
 registerForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
