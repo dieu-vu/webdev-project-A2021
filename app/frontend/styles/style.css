@@ -11,6 +11,10 @@ input {
   display: none;
 }
 
+ul {
+  list-style: none;
+}
+
 /************* LOGIN & REGISTER PAGE SECTION *************/
 body {
   width: 100%;
@@ -491,6 +495,7 @@ a:hover {
   float: right;
   width: 60%;
 }
+
 
 
 /************* NEW ACTIVITY SECTION *************/
