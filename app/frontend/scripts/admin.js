@@ -115,8 +115,9 @@ const createUserList = (users) => {
                 alert("You are deleting a user, continue?");
                 try {
                   const response = await fetch(url + '/user/' + user.user_id, fetchOptions);
-                  const json = await response.json();
-                  console.log('delete response', json);    
+                  console.log('delete response', response);
+                  alert(`User ${name.innerHTML} deleted`);
+                  window.location.reload();
                 } catch (e) {
                   console.log(e.message);
                 }
@@ -138,7 +139,7 @@ const createActivityList = (activities) => {
         activities.forEach((activity) => {
             const name = document.createElement('p');
             name.classList.add('item-name');
-            name.innerHTML = `${activity.activity}`;
+            name.innerHTML = `${activity.activity} - Owner: ${activity.owner}`;
     
             const li = document.createElement('li');
             li.appendChild(name);
@@ -158,8 +159,9 @@ const createActivityList = (activities) => {
                 alert("You are deleting an activity, continue?");
                 try {
                     const response = await fetch(url + '/activity/' + activity.id, fetchOptions);
-                    const json = await response.json();
-                    console.log('delete response', json);        
+                    console.log('delete response', response);
+                    alert(`Activity ${name.innerHTML} deleted`);
+                    getAllActitivities();        
                 } catch (e) {
                     console.log(e.message);
                 }
