@@ -161,7 +161,7 @@ const createActivityList = (activities) => {
                     const response = await fetch(url + '/activity/' + activity.id, fetchOptions);
                     console.log('delete response', response);
                     alert(`Activity ${name.innerHTML} deleted`);
-                    getAllActitivities();        
+                    window.location.reload();
                 } catch (e) {
                     console.log(e.message);
                 }
