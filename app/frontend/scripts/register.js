@@ -1,4 +1,4 @@
-// file for login functionality
+// file for register functionality
 'use strict';
 const url = 'http://localhost:3000'; // url for backend connection
 const registerForm = document.querySelector('#register-form');
