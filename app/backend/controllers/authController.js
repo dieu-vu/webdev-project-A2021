@@ -45,25 +45,25 @@ const user_register = async (req, res, next) => {
         return;
     }
 
-    // Error handling for undefined file or not file at all
-    if (!req.file) {
-        const err = httpError('Invalid file', 400);
-        next(err);
-        return;
-    }
 
     // Resizing the image with thumbnail
     try {
-        const thumb = await makeThumbnail(req.file.path, req.file.filename);
         const user = req.body;
         user.email = req.body.email;
         user.name = req.body.name;
         user.password = bcrypt.hashSync(req.body.password, 12);
-        user.user_filename = req.file.filename;
-        const id = await registerUser(user);
-        if (thumb) {
-            res.json({ message: `Successfully registered!`});
+
+        // Add NULL to filename field for undefined file or not file at all
+        if (!req.file) {
+            user.user_filename = null;
+        } else {
+            const thumb = await makeThumbnail(req.file.path, req.file.filename);
+            user.user_filename = req.file.filename;
+            if (thumb) {
+                res.json({ message: `Successfully registered!`});
+            }
         }
+        const id = await registerUser(user);
     } catch (e) {
         console.log('register error', e.message);
         const err = httpError('Error registering user', 400);

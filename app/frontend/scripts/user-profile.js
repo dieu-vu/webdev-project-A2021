@@ -154,12 +154,12 @@ userEditForm.addEventListener('submit', async (editEvent) => {
     editEvent.preventDefault();
     const data = new FormData(userEditForm);
 
+    //Check if form data is having all blank fields:
     let isEmpty = true;
 
-    //Check if form data is having all blank fields:
     for (var pair of data.entries()) {
         console.log(pair[1]);
-        if (pair[1] !== "" && pair[1].name !== "") {
+        if (pair[1] !== "" || pair[1].name !== "") {
             isEmpty = false;
         }
      }
