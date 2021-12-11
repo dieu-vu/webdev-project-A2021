@@ -72,7 +72,10 @@ const createUserPic = (user, el) => {
 };
 
 // generate activity stack
-const createActivityStack = (activities, headerText) => {
+const createActivityStack = (activities, headerText, divName) => {
+    const listContainer = document.createElement('div');
+    listContainer.classList.add(divName);
+    
     const header = document.createElement('h2');
     header.innerHTML = headerText;
     header.classList.add('profile_headers');
@@ -121,8 +124,10 @@ const createActivityStack = (activities, headerText) => {
             figure.appendChild(gradient);
             figure.appendChild(p1);
 
-            stack.appendChild(header);
-            stack.appendChild(ul);
+            listContainer.appendChild(header);
+            listContainer.appendChild(ul);
+            stack.appendChild(listContainer);
+            
             stack.style.color = '#fcfcfc';
 
         });
@@ -150,8 +155,8 @@ const getProfile = async () => {
 
         createUserPic(user, userInfo);
         //Get list of all relevant activities of user in json response
-        createActivityStack(user.ownActivity, 'My own activities');
-        createActivityStack(user.participateActivity, 'Activities I participate in');
+        createActivityStack(user.ownActivity, 'My own activities', 'own_activities');
+        createActivityStack(user.participateActivity, 'Activities I participate in', 'joined_activities');
 
         console.log('participate', user.participateActivity);
     } catch (e) {
