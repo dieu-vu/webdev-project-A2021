@@ -199,6 +199,6 @@ userEditForm.addEventListener('submit', async (editEvent) => {
     
     if (json.error) {alert(json.error.message)};
     
-    //location.href = 'user.html';
+    location.href = 'user.html';
 });
 
