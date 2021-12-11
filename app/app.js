@@ -14,7 +14,6 @@ const passport = require('./backend/utils/pass');
 const app = express(); // start new express application
 const port = 3000;
 
-//TODO: error handling, passport, thumbnails
 
 app.use(cors());
 app.use(passport.initialize());
@@ -22,6 +21,7 @@ app.use(passport.initialize());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+app.use(express.static('./frontend'));
 app.use(express.static('./backend/uploads'));
 app.use('./thumbnails', express.static('thumbnails'));
 
@@ -33,9 +33,9 @@ app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 
 app.get('/', async (req,res) => {
     if (req.secure) {
-        res.send(await bcrypt.hash('qwer', 10));
+        res.send('Hello secure world');
     } else {
-        res.send('not secured');
+        res.sendFile("frontend/login.html", {root: __dirname});
     }
 });
 
