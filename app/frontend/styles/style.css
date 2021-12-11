@@ -332,9 +332,15 @@ a:hover {
   font-size: larger;
 }
 
+.navbar_links.active  {
+  color: #4db9b9;
+  font-size: x-large;
+}
+
 .side_nav {
   list-style-type: none;
 }
+
 
 
 /************* USER PAGE SECTION *************/
@@ -417,9 +423,9 @@ a:hover {
   border-radius: 20%;
   background-color: #181818;
   position: absolute;
-  top: 10.5%;
-  height: 1.5rem;
-  width: 1.5rem;
+  top: 10.2%;
+  height: 2rem;
+  width: 2rem;
 }
 
 .side-edit-menu {
