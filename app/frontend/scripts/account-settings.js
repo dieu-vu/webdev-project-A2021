@@ -18,18 +18,16 @@ const deleteFields = { confirm: `Type 'delete' to confirm`};
 
 //Toggle between input forms with class name of the seleted item in menu
 const generateInputForm = () => {
+    createFormByFieldList(generalFields, true);
     Object.values(menuItem).forEach((selectedItem) => {
         selectedItem.addEventListener('click', () => {
             if (selectedItem.classList.contains("general")) {
-                settingInputForm.innerHTML = '';
                 createFormByFieldList(generalFields, true);
             }
             else if (selectedItem.classList.contains("password")) {
-                settingInputForm.innerHTML = '';
                 createFormByFieldList(passwordFields, false);
             }
             else if (selectedItem.classList.contains("delete")) {
-                settingInputForm.innerHTML = '';
                 createFormByFieldList(deleteFields, false);
             }
 
@@ -40,6 +38,8 @@ const generateInputForm = () => {
 }
 
 const createFormByFieldList = (fieldList, haveUpload) => {
+    settingInputForm.innerHTML = '';
+
     const form = document.createElement('form');
     form.id = 'add_activity_form';
 
