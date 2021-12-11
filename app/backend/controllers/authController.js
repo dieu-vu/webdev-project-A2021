@@ -2,7 +2,7 @@
 'use strict'
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
-const {registerUser} = require('../models/userModel');
+const {validateEmail, registerUser} = require('../models/userModel');
 const { httpError } = require('../utils/errors');
 const {validationResult} = require("express-validator");
 const bcrypt = require('bcryptjs');
@@ -45,7 +45,6 @@ const user_register = async (req, res, next) => {
         return;
     }
 
-
     // Resizing the image with thumbnail
     try {
         const user = req.body;
@@ -59,11 +58,14 @@ const user_register = async (req, res, next) => {
         } else {
             const thumb = await makeThumbnail(req.file.path, req.file.filename);
             user.user_filename = req.file.filename;
-            if (thumb) {
-                res.json({ message: `Successfully registered!`});
-            }
         }
-        const id = await registerUser(user);
+        const validEmail = await validateEmail(user);
+        if (validEmail) {
+            const id = await registerUser(user);
+            res.json({ message: `Successfully registered!`, emailValid: true});
+        } else {
+            res.json({ message: `Invalid email address!`, emailValid: false});
+        }
     } catch (e) {
         console.log('register error', e.message);
         const err = httpError('Error registering user', 400);

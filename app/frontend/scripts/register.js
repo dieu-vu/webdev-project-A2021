@@ -25,8 +25,11 @@ registerForm.addEventListener('submit', async (evt) => {
  
     if (!response.ok) {
         alert("Error " + response.statusText + " occurred when updating profile");
-        window.location.href('register.html');
-    } else {
+        window.location.href = ('register.html');
+    } else if (!json.emailValid) {
+        window.location.href = ('register.html');
+    }
+    else {
         window.location.href = ('login.html');
     }
 });
