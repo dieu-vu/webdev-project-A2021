@@ -3,55 +3,65 @@
 // const url = 'http://localhost:3000'; // url for backend connection
 
 // select existing html elements
-const ul = document.querySelector('#activity_list');
+const div = document.querySelector('#activity_list');
 
 // create activity cards
 const createActivityCards = (activities) => {
   // clear ul
-  ul.innerHTML = '';
+  div.innerHTML = '';
   const header = document.createElement('h2');
   header.innerHTML = "All activities available now ";
   activities.forEach((activity) => {
     // create li with DOM methods
-    
+
     const img = document.createElement('img');
     img.src = url + '/' + activity.filename;
     // img.src = activity.filename;
 
     img.alt = activity.activity;
-    img.classList.add('activity_pic');
+    img.classList.add('activity_image');
 
-    const figure = document.createElement('figure').appendChild(img);
+    const figure = document.createElement('figure');
+    figure.classList.add('activity_container');
+
+    const gradient = document.createElement('figcaption');
+    gradient.classList.add('gradient_background');
 
     const h2 = document.createElement('h2');
     h2.innerHTML = activity.activity;
+    h2.classList.add('activity_name');
 
     const p1 = document.createElement('p');
-    p1.innerHTML = `Publisher: ${activity.owner}`;
+    p1.innerHTML = `${activity.owner}`;
+    p1.classList.add('publisher');
 
     const p2 = document.createElement('p');
     p2.innerHTML = `Location: ${activity.location}`;
+    p2.classList.add('activity_location');
 
     const p3 = document.createElement('p');
     p3.innerHTML = `Description: ${activity.description}`;
+    p3.classList.add('activity_description');
 
     const p4 = document.createElement('p');
     p4.innerHTML = `Time: ${activity.VET}`;
+    p4.classList.add('activity_time');
 
     const p5 = document.createElement('p');
     p5.innerHTML = `Participant: ${activity.participantNum}`;
+    p5.classList.add('participants');
 
-    const li = document.createElement('li');
-    li.classList.add('light-border');
 
-    li.appendChild(h2);
-    li.appendChild(figure);
-    li.appendChild(p1);
-    li.appendChild(p2);
-    li.appendChild(p3);
-    li.appendChild(p4);
-    li.appendChild(p5);
-    ul.appendChild(li);
+    const a = document.createElement('a');
+    a.classList.add('activity_link');
+
+
+    div.appendChild(a);
+    a.appendChild(figure);
+    figure.appendChild(img);
+    figure.appendChild(gradient);
+    figure.appendChild(p1);
+
   });
 };
 

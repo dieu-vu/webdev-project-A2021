@@ -9,8 +9,9 @@
 
 <body>
   <!--Left side navigation drawer-->
-  <nav class="nav_menu">
-    <div class="nav_container">
+<div class="content">
+
+    <nav class="nav_container">
       <div class="navbar_toggle" id="mobile-menu">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -24,7 +25,7 @@
           <a href="search.html" class="navbar_links">Search</a>
         </li>
         <li class="navbar_item">
-          <a href="addActivity.html" class="navbar_links">&plus;</a>
+          <a href="addActivity.html" class="navbar_links">New</a>
         </li>
         <li class="navbar_item">
           <a href="home.html" class="navbar_links">All</a>
@@ -42,23 +43,24 @@
           <a href="logout.html" class="navbar_links">Logout</a>
         </li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+
 
   <!--Main content-->
-  <div class="main_content">
-    <div class="user-header">
-      <div id="user-info">
+  <div class="activity_content">
+    <div class="user_header">
+      <div id="user_info">
         <!-- display user picture and name -->
       </div>
     </div>
-    <div id="user-activity">
+    <div id="user_activity">
       <!--Container for the activity images-->
-      <ul id="activity_list">
-        <!-- js creates activity image list here -->
-      </ul>
+
     </div>
 
+
+
+    <!--right side pop up menu-->
     <div id="edit-menu" class="side-edit-menu">
       <button class="close-button"></button>
       <form id="edit-profile-form">
@@ -71,6 +73,9 @@
       </form>
     </div>
   </div>
+
+
+</div>
   <!-- Define scripts here -->
   <script src="./scripts/serialize.js"></script>
   <script src="./scripts/navigation.js"></script>

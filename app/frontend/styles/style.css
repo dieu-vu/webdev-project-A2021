@@ -135,9 +135,18 @@ a:hover {
 }
 
 /*********** SEARCH PAGE SECTION *************/
-#search-form {
-  text-align: center;
-  margin-left: 20%;
+.search_content {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.form_container {
+  height: 20%;
+  width: 100%;
+  position: relative;
+  left: 40%;
+  margin-top: 5%;
 }
 
 #query {
@@ -160,14 +169,6 @@ a:hover {
   border-radius: 56px;
 }
 
-#title {
-  color: #fcfcfc;
-  font-size: 35px;
-  font-family: Roboto, sans-serif;
-  margin-left: auto;
-  margin-top: 2em;
-}
-
 #search_selector {
   padding: 1.4em;
   border-radius: 56px;
@@ -176,155 +177,132 @@ a:hover {
   color: #fcfcfc;
 }
 
-/*********** ACTIVITY LIST SECTION *************/
-.activity_pic {
-  width: 20rem;
-  height: 13rem;
-  border-radius: 10px;
-  opacity: 0.8;
-  transition: all 1s;
+.activity_list_search {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  left: 35%;
+  width: 70%;
+  transition: 0.3s;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
-.activity_pic:hover {
-  transform: scale(1.5);
-  opacity: 1;
+
+/*********** ACTIVITY LIST SECTION *************/
+.content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
 }
 
 .activity_list_home {
-  color: #fcfcfc;
-  text-align: center;
-  width: 90%;
-  margin: 1em;
-  padding: 1em;
-  list-style-type: none;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  float: right;
-  justify-content: space-evenly;
+  position: relative;
+  left: 22%;
+  width: 75%;
+  transition: 0.3s;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
-/*********FOR THE NEW DESIGN*******************/
-/*********** ACTIVITY LIST SECTION *************/
-/*.content {*/
-/*  display: flex;*/
-/*  flex-direction: row;*/
-/*  width: 100%;*/
-/*  height: 100%;*/
-/*}*/
+.activity_image {
+  filter: grayscale(1);
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  transition: 0.3s;
+}
 
-/*.main_content {*/
-/*  width: 60%;*/
-/*  transition: 0.3s;*/
-/*  position: relative;*/
-/*  left: 25%;*/
-/*  margin-top: 5%;*/
-/*}*/
+.activity_image:hover {
+  filter: grayscale(0);
+  transform: scale(1.1);
+}
 
-/*.activity_link {*/
-/*  filter: grayscale(1);*/
-/*}*/
+.activity_link {
+  display: flex;
+  width: 50%;
+  margin: 0;
+  overflow: hidden;
+}
 
-/*.activity_list_home {*/
-/*  column-count: 2;*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  flex-wrap: wrap;*/
-/*  width: 60%;*/
-/*  height: 60%;*/
-/*}*/
+.activity_container {
+  display: flex;
+  position: relative;
+  margin: 4px;
+}
 
-/*.activity_link {*/
-/*  margin: 0;*/
-/*  overflow: hidden;*/
-/*}:hover {*/
-/*   filter: grayscale(0);*/
-/* }*/
+.gradient_background {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  padding: 25px 15px 15px;
+  width: 100%;
+  height: 20%;
+  margin: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 0%, rgba(255, 255 ,255 , 0) 100%);
+);
+  transition: 0.3s;
+}
 
-/* .activity_image:hover {*/
-/*   transform: scale(1.1);*/
-/* }*/
+.button_participate {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  background-color: #60bfba;
+  padding: 3%;
+  border-radius: 20px;
+  border: none;
+}
+
+.participants {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  color: #FCFCFC;
+  font-weight: bold;
+}
+
+.publisher {
+  position: absolute;
+  top: 12%;
+  left: 16px;
+  color: #FCFCFC;
+}
+
+.activity_name {
+  position: absolute;
+  bottom: 25px;
+  left: 16px;
+  color: #60bfba;
+}
+
+.activity_description {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  color: #60bfba;
+}
+
+.activity_location {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  color: #FCFCFC;
+}
+
+.activity_time {
+  position: absolute;
+  top: 20%;
+  left: 16px;
+  color: #FCFCFC;
+}
 
 
-/*.activity_caption {*/
-/*  opacity: 1;*/
-/*}*/
-
-/*.activity_thumb {*/
-/*  position: relative;*/
-/*  margin: 4px;*/
-/*}*/
-
-/*.activity_image {*/
-/*  display: block;*/
-/*  width: 100%;*/
-/*  transition: 0.3s;*/
-/*}*/
-
-/*.gradient_background {*/
-/*   position: absolute;*/
-/*   bottom: 0;*/
-/*   left: 0;*/
-/*   padding: 25px 15px 15px;*/
-/*   width: 100%;*/
-/*   height: 100%;*/
-/*   background: linear-gradient(*/
-/*           0deg,*/
-/*           rgba(0, 0, 0, 0.91) 0%,*/
-/*           rgba(255, 255, 255, 0) 100%*/
-/*   );*/
-/*   transition: 0.3s;*/
-/* }*/
-
-/*.button_participate {*/
-/*  position: absolute;*/
-/*  bottom: 8px;*/
-/*  right: 16px;*/
-/*  background-color: #60bfba;*/
-/*  padding: 3%;*/
-/*  border-radius: 20px;*/
-/*  border: none;*/
-/*}*/
-
-/*.participants {*/
-/*  position: absolute;*/
-/*  top: 8px;*/
-/*  right: 16px;*/
-/*  color: #FCFCFC;*/
-/*  font-weight: bold;*/
-/*}*/
-
-/*.publisher {*/
-/*  position: absolute;*/
-/*  top: 8px;*/
-/*  left: 16px;*/
-/*  color: #FCFCFC;*/
-/*}*/
-
-/*.activity_name {*/
-/*  position: absolute;*/
-/*  bottom: 25px;*/
-/*  left: 16px;*/
-/*}*/
-
-/*.activity_description {*/
-/*  position: absolute;*/
-/*  bottom: 8px;*/
-/*  left: 16px;*/
-/*}*/
-
-/*.activity_location {*/
-/*  position: absolute;*/
-/*  top: 12%;*/
-/*  left: 3%;*/
-/*  color: #FCFCFC;*/
-/*}*/
-
-/*.activity_time {*/
-/*  position: absolute;*/
-/*  top: 20%;*/
-/*  left: 16px;*/
-/*  color: #FCFCFC;*/
-/*}*/
 /************* LEFT SIDE NAVIGATION *************/
 
 .nav_container {
@@ -360,25 +338,24 @@ a:hover {
 
 
 /************* USER PAGE SECTION *************/
-
 /*shared classes between user and account-settings*/
-.main_content {
+.activity_content {
   width: 80%;
   float: right;
   margin: auto;
   color: #fcfcfc;
 }
 
-.main_content h1 {
-  text-align: center;
+.activity_content h1 {
+  text-align: start;
   padding: 2em;
 }
 
-.user-header {
+.user_header {
   overflow: auto;
 }
 
-#user-info {
+#user_info {
   color: #fcfcfc;
   display: flex;
   flex-direction: column;
@@ -389,11 +366,11 @@ a:hover {
   font-family: Roboto, sans-serif;
 }
 
-#user-info p {
+#user_info p {
   text-align: center;
 }
 
-.user-image {
+.user_image {
   border-radius: 50%;
   margin: 20px 20px 5px 20px;
   float: right;
@@ -402,7 +379,7 @@ a:hover {
   object-fit: cover;
 }
 
-#user-activity {
+#user_activity {
   color: #fcfcfc;
   text-align: center;
   display: flex;
@@ -410,18 +387,26 @@ a:hover {
   justify-content: center;
 }
 
+.activity_content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 70%;
+  left: 5%;
+}
+
 .image-stack {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
-  margin: 40px;
-  float: right;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-
-.activity-image {
-  padding: 5px;
+.profile_headers{
+  display: flex;
+  float: left;
+  margin-left: 5%;
 }
+
 
 .edit-profile-button {
   background-image: url("../images/pencil.png");
@@ -788,34 +773,4 @@ a:hover {
     text-align: center;
     padding: 1em;
   }
-
-  /************* ACTIVITY LIST SECTION *************/
-
-
-
-}
-
-/* Transition image when hovering */
-.trans {
-  -webkit-transition: all 1.5s;
-  -moz-transition: all 1.5s;
-  -o-transition: all 1.5s;
-  transition: all 1.5s;
-}
-.trans:hover {
-  -webkit-transform: translate(50px, 70px) scale(1.5, 1.5);
-  -moz-transform: translate(50px, 70px) scale(1.5, 1.5);
-  -o-transform: translate(50px, 70px) scale(1.5, 1.5);
-  -ms-transform: translate(50px, 70px) scale(1.5, 1.5);
-  transform: translate(50px, 70px) scale(1.5, 1.5);
-
-  -webkit-transition-property: transform;
-  -moz-transition-property: transform;
-  -o-transition-property: transform;
-  transition-property: transform;
-
-  -webkit-transition-duration: 1.5s;
-  -moz-transition-duration: 1.5s;
-  -o-transition-duration: 1.5s;
-  transition-duration: 1.5s;
 }

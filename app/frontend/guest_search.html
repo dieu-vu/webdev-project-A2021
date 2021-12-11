@@ -1,61 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <title>Title</title>
-    <link href="./styles/style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <!--Left side navigation drawer-->
-    <nav class="nav_menu">
-      <div class="nav_container">
+    <link href="./styles/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<!--Left side navigation drawer-->
+<div class="content">
+
+    <nav class="nav_container">
         <div class="navbar_toggle" id="mobile-menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
         </div>
         <ul class="side_nav">
-          <li class="navbar_item">
-            <a href="guest_search.html" class="navbar_links">Search</a>
-          </li>
-          <li class="navbar_item">
-            <a href="guest_home.html" class="navbar_links">All</a>
-          </li>
-          <li class="navbar_item">
-            <a href="register.html" class="navbar_links">Register</a>
-          </li>
+            <li class="navbar_item">
+                <a href="guest_search.html" class="navbar_links">Search</a>
+            </li>
+            <li class="navbar_item">
+                <a href="guest_home.html" class="navbar_links">All</a>
+            </li>
+            <li class="navbar_item">
+                <a href="register.html" class="navbar_links">Register</a>
+            </li>
         </ul>
-      </div>
     </nav>
 
+
     <!--Main content-->
-    <div class="main_content">
-      <h1 id="title">Search by:</h1>
-      <form id="search-form">
-        <select id="search_selector">
-          <option value="location">Location</option>
-          <option value="date">Start date</option>
-          <option value="name" selected>Name or type</option>
-        </select>
-        <input
-          id="query"
-          type="text"
-          name="q"
-          placeholder="Search.."
-          required
-        />
-        <button id="search_button" type="submit">Search</button>
-      </form>
-      <!--Container for the activity images-->
-      <ul class="activity_list_home" id="hour_list">
-        <!-- js creates activity image list here -->
-      </ul>
+    <div class="search_content">
+        <div class="form_container">
+            <form id="search_form">
+                <select id="search_selector">
+                    <option value="location">Location</option>
+                    <option value="date">Start date</option>
+                    <option value="name" selected>Name or type</option>
+                </select>
+                <input
+                        id="query"
+                        type="text"
+                        name="q"
+                        placeholder="Search.."
+                        required
+                />
+                <button id="search_button" type="submit">Search</button>
+            </form>
+        </div>
+
+        <!--Container for the activity images-->
+        <ul class="activity_list_search" id="hour_list">
+            <!-- js creates activity image list here -->
+        </ul>
     </div>
-    <!-- Define scripts here -->
-    <!--    <script src="./scripts/check-login.js"></script>-->
-    <script src="./scripts/serialize.js"></script>
-    <script src="./scripts/login.js"></script>
-    <script src="./scripts/navigation.js"></script>
-    <script src="./scripts/guestSearch.js"></script>
-  </body>
+</div>
+
+
+<!-- Define scripts here -->
+<!--    <script src="./scripts/check-login.js"></script>-->
+<script src="./scripts/serialize.js"></script>
+<script src="./scripts/login.js"></script>
+<script src="./scripts/navigation.js"></script>
+<script src="./scripts/guestSearch.js"></script>
+</body>
 </html>

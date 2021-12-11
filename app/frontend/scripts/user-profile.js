@@ -4,9 +4,9 @@ const url = 'http://localhost:3000';
 
 
 // Select html element of the activity list
-const stack = document.querySelector('#user-activity');
+const stack = document.querySelector('#user_activity');
 // Select html element of user profile picture
-const userInfo = document.querySelector('#user-info');
+const userInfo = document.querySelector('#user_info');
 // Select html element of user edit profile info form:
 const userEditForm = document.querySelector('#edit-profile-form');
 
@@ -26,12 +26,14 @@ const openMenu = () => {
     stack.style.width = "60%";
     stack.style.float = "left";
     stack.style.marginLeft ='0%';
+    stack.style.transition = 'all 0.3s ease-in-out';
 };
 const closeMenu = () => {
     document.querySelector('.side-edit-menu').style.width = "0";
     document.querySelector('.side-edit-menu').style.padding = "0";
     stack.style.width = "100%";
     stack.style.float = "right";
+    stack.style.transition = 'all 0.3s ease-in-out';
 }
 
 // close side edit menu
@@ -51,7 +53,7 @@ const createUserPic = (user, el) => {
         img.src = url + '/' + user.user_filename;
     }
     img.alt = user.name;
-    img.classList.add('user-image');
+    img.classList.add('user_image');
 
     // user edit profile button:
     const editButton = document.createElement('button');
@@ -72,6 +74,7 @@ const createUserPic = (user, el) => {
 const createActivityStack = (activities, headerText) => {
     const header = document.createElement('h2');
     header.innerHTML = headerText;
+    header.classList.add('profile_headers');
 
     const ul = document.createElement('ul');
     ul.id = 'activity_list';
@@ -84,33 +87,38 @@ const createActivityStack = (activities, headerText) => {
             const img = document.createElement('img');
             img.src = url + '/' + activity.filename;
             img.alt = activity.name;
-            img.classList.add('activity_pic');
-            img.classList.add('trans');
+            img.classList.add('activity_image');
 
             img.addEventListener('click', () => {
                 location.href = 'activity.html?id=?' + activity.activity_id;
             });
 
-            const figure = document.createElement('figure').appendChild(img);
-            
+            const figure = document.createElement('figure');
+            figure.classList.add('activity_container');
+
             const h2 = document.createElement('h2');
             h2.innerHTML = activity.name;
+            h2.classList.add('activity_name');
 
             const p1 = document.createElement('p');
-            p1.innerHTML = `Location: ${activity.location}`;
+            p1.innerHTML = `${activity.location}`;
+            p1.classList.add('activity_location');
 
             const p2 = document.createElement('p');
             p2.innerHTML = activity.description;
+            p2.classList.add('activity_description');
 
-            const li = document.createElement('li');
-            li.classList.add('activity-pic');
+            const gradient = document.createElement('figcaption');
+            gradient.classList.add('gradient_background');
 
-            li.appendChild(h2);
-            li.appendChild(figure);
-            li.appendChild(p1);
-            li.appendChild(p2);
-            
-            ul.appendChild(li);
+            const a = document.createElement('a');
+            a.classList.add('activity_link');
+
+            ul.appendChild(a);
+            a.appendChild(figure);
+            figure.appendChild(img);
+            figure.appendChild(gradient);
+            figure.appendChild(p1);
 
             stack.appendChild(header);
             stack.appendChild(ul);
@@ -154,7 +162,7 @@ getProfile();
 
 // Submit user profile edit form:
 userEditForm.addEventListener('submit', async (editEvent) => {
-    
+
     editEvent.preventDefault();
     const data = new FormData(userEditForm);
 
@@ -187,7 +195,7 @@ userEditForm.addEventListener('submit', async (editEvent) => {
         },
         body: data,
     };
-    
+
     const response = await fetch(url + `/user/${loggedInUserId}`, options);
     const json = await response.json();
     
@@ -201,9 +209,9 @@ userEditForm.addEventListener('submit', async (editEvent) => {
     }
     
     console.log('USER PUT', response);
-    
+
     if (json.error) {alert(json.error.message)};
-    
+
     location.href = 'user.html';
 });
 

@@ -4,8 +4,8 @@
 
 const query = document.querySelector('#query');
 const option = document.querySelector('#search_selector');
-const ul = document.querySelector('#hour_list');
-const form = document.querySelector('#search-form');
+const div = document.querySelector('#hour_list');
+const form = document.querySelector('#search_form');
 const user = JSON.parse(sessionStorage.getItem('user'));
 let getActivityByName;
 let getActivityByLocation;
@@ -18,7 +18,7 @@ if (user.role === 0) {
 
 const createActivityCards = (activities) => {
     // clear ul
-    ul.innerHTML = '';
+    div.innerHTML = '';
     if (activities.length < 1){
         console.log("no activity");
         return;
@@ -34,38 +34,50 @@ const createActivityCards = (activities) => {
       img.src = url + '/' + activity.filename;
     //   img.src = activity.filename;
       img.alt = activity.activity;
-      img.classList.add('activity_pic');
-  
-      const figure = document.createElement('figure').appendChild(img);
-  
-      const h2 = document.createElement('h2');
-      h2.innerHTML = activity.activity;
-  
-      const p1 = document.createElement('p');
-      p1.innerHTML = `Publisher: ${activity.owner}`;
-  
-      const p2 = document.createElement('p');
-      p2.innerHTML = `Location: ${activity.location}`;
-  
-      const p3 = document.createElement('p');
-      p3.innerHTML = `Description: ${activity.description}`;
-  
-      const p4 = document.createElement('p');
-      p4.innerHTML = `Time: ${activity.VET}`;
-  
-      const p5 = document.createElement('p');
-      p5.innerHTML = `Participant: ${activity.participantNum}`;
+      img.classList.add('activity_image');
 
-      const li = document.createElement('li');
-      li.classList.add('light-border');
-  
-      li.appendChild(h2);
-      li.appendChild(figure);
-      li.appendChild(p1);
-      li.appendChild(p2);
-      li.appendChild(p3);
-      li.appendChild(p4);
-      li.appendChild(p5);
+        const figure = document.createElement('figure');
+        figure.classList.add('activity_container');
+
+        const gradient = document.createElement('figcaption');
+        gradient.classList.add('gradient_background');
+
+        const h2 = document.createElement('h2');
+        h2.innerHTML = activity.activity;
+        h2.classList.add('activity_name');
+
+        const p1 = document.createElement('p');
+        p1.innerHTML = `${activity.owner}`;
+        p1.classList.add('publisher');
+
+        const p2 = document.createElement('p');
+        p2.innerHTML = `${activity.location}`;
+        p2.classList.add('activity_location');
+
+        const p3 = document.createElement('p');
+        p3.innerHTML = `Description: ${activity.description}`;
+        p3.classList.add('activity_description');
+
+        const p4 = document.createElement('p');
+        p4.innerHTML = `Time: ${activity.VET}`;
+        p4.classList.add('activity_time');
+
+        const p5 = document.createElement('p');
+        p5.innerHTML = `Participant: ${activity.participantNum}`;
+        p5.classList.add('participants');
+
+
+        const a = document.createElement('a');
+        a.classList.add('activity_link');
+
+
+
+        a.appendChild(figure);
+        figure.appendChild(img);
+        figure.appendChild(gradient);
+        figure.appendChild(p2);
+
+
 
           //if user not participate this activity display participate button otherwise display quit button
     const getParticipationStatus = async () => {
@@ -82,8 +94,8 @@ const createActivityCards = (activities) => {
             // participate button
             const participateButton = document.createElement('button');
             participateButton.innerHTML = 'Participate';
-            participateButton.classList.add('button');
-            li.appendChild(participateButton);
+            participateButton.classList.add('button_participate');
+            figure.appendChild(participateButton);
             participateButton.addEventListener('click', async () => {
             const fetchOptions = {
            method: 'POST',
@@ -111,8 +123,8 @@ const createActivityCards = (activities) => {
           //quit button
           const quitButton = document.createElement('button');
           quitButton.innerHTML = 'Quit';
-          quitButton.classList.add('button');
-          li.appendChild(quitButton)
+          quitButton.classList.add('button_participate');
+          figure.appendChild(quitButton)
           quitButton.addEventListener('click', async () => {
           const fetchOptions = {
             method: 'DELETE',
@@ -147,8 +159,8 @@ const createActivityCards = (activities) => {
       if(user.role == 0){
         const deleteButton = document.createElement('button');
         deleteButton.innerHTML = 'Delete';
-        deleteButton.classList.add('button');
-        li.appendChild(deleteButton)
+        deleteButton.classList.add('button_participate');
+        figure.appendChild(deleteButton)
         deleteButton.addEventListener('click', async () => {
           const fetchOptions = {
             method: 'DELETE',
@@ -174,7 +186,7 @@ const createActivityCards = (activities) => {
       }
       
         
-      ul.appendChild(li);
+      div.appendChild(a);
     });
   };
 
