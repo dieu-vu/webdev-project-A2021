@@ -123,7 +123,7 @@ const createActivityCards = (activities) => {
           //quit button
           const quitButton = document.createElement('button');
           quitButton.innerHTML = 'Quit';
-          quitButton.classList.add('button_participate');
+          quitButton.classList.add('button_delete');
           figure.appendChild(quitButton)
           quitButton.addEventListener('click', async () => {
           const fetchOptions = {

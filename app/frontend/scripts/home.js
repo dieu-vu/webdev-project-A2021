@@ -136,7 +136,7 @@ const createActivityCards = (activities) => {
     if(user.role == 0){
       const deleteButton = document.createElement('button');
       deleteButton.innerHTML = 'Delete';
-      deleteButton.classList.add('button_participate');
+      deleteButton.classList.add('button_delete');
       figure.appendChild(deleteButton)
       deleteButton.addEventListener('click', async () => {
         const fetchOptions = {

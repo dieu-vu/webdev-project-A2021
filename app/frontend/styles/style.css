@@ -259,6 +259,16 @@ a:hover {
   border: none;
 }
 
+.button_delete {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  background-color: #60bfba;
+  padding: 3%;
+  border-radius: 20px;
+  border: none;
+}
+
 .participants {
   position: absolute;
   top: 8px;
