@@ -48,7 +48,7 @@ const createFormByFieldList = (fieldList, haveUpload, ifDelete) => {
         header.innerHTML = 'Account deletion'
         const warning = document.createElement('p');
         warning.class = 'delete';
-        warning.innerHTML = 'All your profile and learning data will be permanently deleted.'
+        warning.innerHTML = 'All your profile and activity data will be permanently deleted.'
 
         form.appendChild(header);
         form.appendChild(warning);
