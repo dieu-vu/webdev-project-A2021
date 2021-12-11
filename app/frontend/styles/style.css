@@ -312,6 +312,27 @@ a:hover {
   color: #FCFCFC;
 }
 
+.img-group {
+  position: relative;
+  display: inline-block;
+}
+        
+.img-tip {
+  position: absolute;
+  bottom: 100px;
+  background: #333;
+  color: #fff;
+  opacity: 0.6;
+  display: none;
+}
+        
+.img-group:hover .img-tip {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+
 
 /************* LEFT SIDE NAVIGATION *************/
 
