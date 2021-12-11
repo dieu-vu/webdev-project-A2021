@@ -1,4 +1,5 @@
 'use strict';
+
 const url = 'http://localhost:3000';
 
 
@@ -153,7 +154,27 @@ userEditForm.addEventListener('submit', async (editEvent) => {
     editEvent.preventDefault();
     const data = new FormData(userEditForm);
 
-    data.filename = document.getElementById('file-id').files[0].name;
+    let isEmpty = true;
+
+    //Check if form data is having all blank fields:
+    for (var pair of data.entries()) {
+        console.log(pair[1]);
+        if (pair[1] !== "" && pair[1].name !== "") {
+            isEmpty = false;
+        }
+     }
+    console.log('BLANK FORM', isEmpty);
+
+    if (!data.email){
+        data.set('email', loggedInUser.email);
+    }
+    if (!data.name){
+        data.set('name', loggedInUser.name);
+    }
+    if (document.getElementById('file-id').files.length !==0){
+        data.filename = document.getElementById('file-id').files[0].name;
+    } 
+    
     console.log('USER PUT REQ', data);
 
     const options = {
@@ -165,7 +186,10 @@ userEditForm.addEventListener('submit', async (editEvent) => {
     };
     
     const response = await fetch(url + `/user/${loggedInUserId}`, options);
-    if (response.status == 200) {
+   
+    if (isEmpty) {
+        alert("You submitted a blank form")
+    } else if (response.status === 200) {
         alert("Successfully updated!");
     } else {
         alert("Error " + response.status + " occurred when updating profile");
@@ -175,6 +199,6 @@ userEditForm.addEventListener('submit', async (editEvent) => {
     
     if (json.error) {alert(json.error.message)};
     
-    location.href = 'user.html';
+    //location.href = 'user.html';
 });
 

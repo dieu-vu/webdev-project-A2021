@@ -42,13 +42,14 @@ const user_put = async (req, res, next) => {
 
 	try {
 		const user = req.body;
-		user.user_id = parseInt(req.user.user_id); 
+		
+		user.user_id = parseInt(req.user.user_id);
 		user.email = req.body.email;
 		user.name = req.body.name;
 		//If user upload a new picture, create thumbnail
 		if (!req.file) {
 			user.user_filename = req.user.user_filename;
-			console.log('CANNOT GET FILE', req.file)
+			console.log('NO FILE IN PUT REQUEST', req.file)
 		}
 		else {
 			const thumb = await makeThumbnail(req.file.path, req.file.filename);
