@@ -33,7 +33,7 @@ app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 
 app.get('/', async (req,res) => {
     if (req.secure) {
-        res.send('Hello secure world');
+        res.sendFile("frontend/login.html", {root: __dirname});
     } else {
         res.sendFile("frontend/login.html", {root: __dirname});
     }
