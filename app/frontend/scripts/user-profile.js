@@ -62,6 +62,7 @@ const createUserPic = (user, el) => {
         openMenu()});
     const p2 = document.createElement('p');
     p2.innerHTML = user.name;
+    p2.classList.add('user_name');
 
     imgContainer.appendChild(img);
     imgContainer.appendChild(editButton);
