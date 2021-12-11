@@ -61,7 +61,9 @@ const createActivityCards = (activities) => {
     a.appendChild(figure);
     figure.appendChild(img);
     figure.appendChild(gradient);
-    figure.appendChild(p2)
+    figure.appendChild(p2);
+    figure.appendChild(p5);
+    figure.appendChild(h2);
 
     //if user not participate this activity display participate button otherwise display quit button
     const getParticipationStatus = async () => {

@@ -286,7 +286,7 @@ a:hover {
 
 .activity_name {
   position: absolute;
-  bottom: 25px;
+  top: 8px;
   left: 16px;
   color: #60bfba;
 }
@@ -300,7 +300,7 @@ a:hover {
 
 .activity_location {
   position: absolute;
-  top: 8px;
+  top: 40px;
   left: 16px;
   color: #FCFCFC;
 }

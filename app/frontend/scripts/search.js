@@ -76,6 +76,8 @@ const createActivityCards = (activities) => {
         figure.appendChild(img);
         figure.appendChild(gradient);
         figure.appendChild(p2);
+        figure.appendChild(p5);
+        figure.appendChild(h2);
 
 
 
@@ -123,7 +125,7 @@ const createActivityCards = (activities) => {
           //quit button
           const quitButton = document.createElement('button');
           quitButton.innerHTML = 'Quit';
-          quitButton.classList.add('button_delete');
+          quitButton.classList.add('button_participate');
           figure.appendChild(quitButton)
           quitButton.addEventListener('click', async () => {
           const fetchOptions = {
@@ -159,7 +161,7 @@ const createActivityCards = (activities) => {
       if(user.role == 0){
         const deleteButton = document.createElement('button');
         deleteButton.innerHTML = 'Delete';
-        deleteButton.classList.add('button_participate');
+        deleteButton.classList.add('button_delete');
         figure.appendChild(deleteButton)
         deleteButton.addEventListener('click', async () => {
           const fetchOptions = {
