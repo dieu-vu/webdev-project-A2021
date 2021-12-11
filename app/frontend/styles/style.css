@@ -361,7 +361,7 @@ a:hover {
 
 .user_name {
   position: absolute;
-  top: 9%;
+  top: 10%;
 }
 
 .container-image {
@@ -416,7 +416,7 @@ a:hover {
   border-radius: 20%;
   background-color: #181818;
   position: absolute;
-  top: 9.5%;
+  top: 10.5%;
   height: 1.5rem;
   width: 1.5rem;
 }
