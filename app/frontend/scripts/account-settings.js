@@ -22,26 +22,37 @@ const generateInputForm = () => {
     Object.values(menuItem).forEach((selectedItem) => {
         selectedItem.addEventListener('click', () => {
             if (selectedItem.classList.contains("general")) {
-                createFormByFieldList(generalFields, true);
+                createFormByFieldList(generalFields, true, false);
             }
             else if (selectedItem.classList.contains("password")) {
-                createFormByFieldList(passwordFields, false);
+                createFormByFieldList(passwordFields, false, false);
             }
             else if (selectedItem.classList.contains("delete")) {
-                createFormByFieldList(deleteFields, false);
+                createFormByFieldList(deleteFields, false, true);
             }
-
         });
     });
     
     
 }
 
-const createFormByFieldList = (fieldList, haveUpload) => {
+const createFormByFieldList = (fieldList, haveUpload, ifDelete) => {
     settingInputForm.innerHTML = '';
 
     const form = document.createElement('form');
     form.id = 'add_activity_form';
+
+    if (ifDelete){
+        const header = document.createElement('h3');
+        header.id = 'delete-header';
+        header.innerHTML = 'Account deletion'
+        const warning = document.createElement('p');
+        warning.class = 'delete';
+        warning.innerHTML = 'All your profile and learning data will be permanently deleted.'
+
+        form.appendChild(header);
+        form.appendChild(warning);
+    }
 
     //Creating input field for each item in field list:
     Object.keys(fieldList).forEach((key) => {
