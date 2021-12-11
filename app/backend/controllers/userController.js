@@ -17,7 +17,7 @@ const user_list_get = async (req, res) => {
 
 //User get return the user and all related activities:
 const user_get = async (req, res, next) => {
-	const user = await userModel.getUser(req.params.id, next); //TODO: Update this to get user_id from req.user
+	const user = await userModel.getUser(req.params.id, next); 
 	if (!user) {
 		const err = httpError('User not found', 404);
 		next(err);

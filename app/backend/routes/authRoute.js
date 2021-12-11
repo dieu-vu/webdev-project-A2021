@@ -32,7 +32,6 @@ router.post('/login', login);
 router.get('/logout', logout);
 
 
-// TODO Consider making data sanitation for checking if e-mail is in use
 // User registration route with server side validation
 router.post('/register',
     upload.single('user_filename'),
