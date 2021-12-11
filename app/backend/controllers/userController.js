@@ -57,8 +57,15 @@ const user_put = async (req, res, next) => {
 			user.user_filename = req.file.filename;
 		}
 		console.log('USER_PUT', user);
-		const updated = await userModel.editUser(user);
-    	res.send(updated);
+
+		//Validating if email address is existing in database and different from the current one
+		const validEmail = await userModel.validateEmailUpdate(user);
+		if (validEmail){ 
+			const updated = await userModel.editUser(user);
+			res.json({ message: `Successfully updated profile!`, emailValid: true});
+        } else {
+            res.json({ message: `Email address is taken!`, emailValid: false});
+		}
 	} catch (e) {
 		console.log('USER PUT ERROR', e.message);
 		const err = httpError('Error updating user', 404);

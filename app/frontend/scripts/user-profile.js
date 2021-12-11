@@ -162,17 +162,16 @@ userEditForm.addEventListener('submit', async (editEvent) => {
     let isEmpty = true;
 
     for (var pair of data.entries()) {
-        console.log(pair[1]);
-        if (pair[1] !== "" || pair[1].name !== "") {
+        if (pair[1] !== "" && pair[1].name !== "") {
             isEmpty = false;
         }
      }
     console.log('BLANK FORM', isEmpty);
 
-    if (!data.email){
+    if (data.get('email')=== "") {
         data.set('email', loggedInUser.email);
     }
-    if (!data.name){
+    if (data.get('name')=== ""){
         data.set('name', loggedInUser.name);
     }
     if (document.getElementById('file-id').files.length !==0){
@@ -190,15 +189,17 @@ userEditForm.addEventListener('submit', async (editEvent) => {
     };
     
     const response = await fetch(url + `/user/${loggedInUserId}`, options);
+    const json = await response.json();
+    
    
     if (isEmpty) {
-        alert("You submitted a blank form")
-    } else if (response.status === 200) {
-        alert("Successfully updated!");
-    } else {
+        alert("You submitted a blank form");
+    } else if (!response.ok) {
         alert("Error " + response.status + " occurred when updating profile");
+    } else {
+        alert(json.message);
     }
-    const json = await response.json();
+    
     console.log('USER PUT', response);
     
     if (json.error) {alert(json.error.message)};

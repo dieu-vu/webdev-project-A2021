@@ -4,9 +4,10 @@ const promisePool = pool.promise();
 
 
 //Check existing email in database
-const validateEmail = async (user) => {
+const emailValidateQuery = 'SELECT * FROM `p_user` WHERE email LIKE ?';
+const validateEmailRegister = async (user) => {
     try {
-        const [rows] = await promisePool.query('SELECT * FROM `p_user` WHERE email LIKE ?', [user.email]);
+        const [rows] = await promisePool.query(emailValidateQuery, [user.email]);
         console.log('EMAIL VALIDATING', rows);
         if (rows.length === 0){
             console.log('email OK!');
@@ -19,6 +20,24 @@ const validateEmail = async (user) => {
         console.error('EMAIL VALIDATING ERROR', e.message);
     }
 };
+
+const validateEmailUpdate = async (user) => {
+    try {
+        const [rows] = await promisePool.query(emailValidateQuery + ' AND user_id != ?', 
+            [user.email, user.user_id]);
+        console.log('EMAIL VALIDATING', rows);
+        if (rows.length === 0){
+            console.log('email OK!');
+            return true;
+        } else {
+            console.log('email existed!');
+            return false;
+        }
+    } catch (e){
+        console.error('EMAIL VALIDATING ERROR', e.message);
+    }
+};
+
 
 // Send user registration values to database
 const registerUser = async (user) => {
@@ -132,7 +151,8 @@ const deleteUser = async (currentUser, deletedUserId) => {
 
 
 module.exports = {
-    validateEmail,
+    validateEmailRegister,
+    validateEmailUpdate,
     registerUser,
     getUser,
     getAllUsers, 

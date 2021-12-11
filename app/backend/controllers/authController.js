@@ -2,7 +2,7 @@
 'use strict'
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
-const {validateEmail, registerUser} = require('../models/userModel');
+const {validateEmailRegister, registerUser} = require('../models/userModel');
 const { httpError } = require('../utils/errors');
 const {validationResult} = require("express-validator");
 const bcrypt = require('bcryptjs');
@@ -59,12 +59,14 @@ const user_register = async (req, res, next) => {
             const thumb = await makeThumbnail(req.file.path, req.file.filename);
             user.user_filename = req.file.filename;
         }
-        const validEmail = await validateEmail(user);
+
+        //Validating if email address is existing in database:
+        const validEmail = await validateEmailRegister(user);
         if (validEmail) {
             const id = await registerUser(user);
             res.json({ message: `Successfully registered!`, emailValid: true});
         } else {
-            res.json({ message: `Invalid email address!`, emailValid: false});
+            res.json({ message: `Email address is taken!`, emailValid: false});
         }
     } catch (e) {
         console.log('register error', e.message);
