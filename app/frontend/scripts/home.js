@@ -66,7 +66,7 @@ const createActivityCards = (activities) => {
     div2.classList.add('img-tip');
 
     div2.innerHTML = `Publisher:${activity.owner}<br/>Description: ${activity.description}<br/>Time: ${activity.VET}<br/>Location:${activity.location}`;
-
+    
     div1.appendChild(img);
     div1.appendChild(div2);
 
@@ -76,11 +76,11 @@ const createActivityCards = (activities) => {
 
     a.appendChild(figure);
     // figure.appendChild(img);
+    figure.appendChild(div1);
     figure.appendChild(gradient);
     // figure.appendChild(p2);
     figure.appendChild(p5);
     figure.appendChild(h2);
-    figure.appendChild(div1);
 
 
 
