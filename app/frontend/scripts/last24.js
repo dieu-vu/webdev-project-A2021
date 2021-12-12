@@ -29,6 +29,10 @@ const createActivityCards = (activities) => {
     img.alt = activity.activity;
     img.classList.add('activity_image');
 
+    img.addEventListener('click', async () => {
+      location.href = `activity_co.html?activityId=${activity.id}&activityName=${activity.activity}`;
+    });
+
     const figure = document.createElement('figure');
     figure.classList.add('activity_container');
 

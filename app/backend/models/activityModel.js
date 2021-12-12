@@ -188,6 +188,33 @@ const deleteParticipation = async (userId,activityId, next) => {
     }
 };
 
+const getCommentsByActivityId = async (activityId, next) => {
+    try {
+        const [rows] = await promisePool.execute('SELECT p_user.name as user, activity.name as activity,comment_in.u_comment as comment,comment_in.p_time as time FROM p_user INNER JOIN comment_in ON p_user.user_id = comment_in.participant_id INNER JOIN activity ON comment_in.activity_id = activity.activity_id WHERE comment_in.activity_id = ? GROUP BY comment_in.comment_id ORDER BY comment_in.p_time DESC',[activityId]);
+        console.log('model delete participation', rows);
+        return rows;
+
+    }catch(e) {
+        console.error('model get comment', e.message);
+        const err = httpError('Sql error', 500);
+        next(err);
+    }
+};
+
+const insertCommentsByActivityId = async (userId, activityId, comment, next) => {
+    try {
+        const [rows] = await promisePool.execute('INSERT INTO comment_in (participant_id, activity_id, u_comment) VALUES (?,?,?)',
+        [userId, activityId, comment.comment]);
+        console.log('model insert activity', rows);
+        return rows.insertId;
+
+    }catch(e) {
+        console.error('model delete activity', e.message);
+        const err = httpError('Sql error', 500);
+        next(err);
+    } 
+};
+
 module.exports = {
     getAllValidActivity,
     getAllValidActivityInLast24Hours,
@@ -204,4 +231,6 @@ module.exports = {
     getAllUsersParticipation,
     checkParticipationStatus,
     deleteParticipation,
+    getCommentsByActivityId,
+    insertCommentsByActivityId,  
 };

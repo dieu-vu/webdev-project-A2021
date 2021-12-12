@@ -20,7 +20,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage, fileFilter});
 
-const { activity_get, activity_delete, activity_list_get, activity_post, activity_update, activity_get_by_date, activity_get_by_location, activity_get_by_type, get_participants_by_activity, activity_get_by_user, participation_get_by_user, participation_post, last_24_hours_activity_list_get, participation_status_get, participation_delete } = require('../controllers/activityController');
+const { activity_get, activity_delete, activity_list_get, activity_post, activity_update, activity_get_by_date, activity_get_by_location, activity_get_by_type, get_participants_by_activity, activity_get_by_user, participation_get_by_user, participation_post, last_24_hours_activity_list_get, participation_status_get, participation_delete, comment_get, comment_post } = require('../controllers/activityController');
 const router = express.Router(); 
 const {body} = require('express-validator');
 
@@ -37,6 +37,12 @@ router.route('/:activityId')
 router.route('/participation/:activityId')
     .post(participation_post)
     .delete(participation_delete)
+
+router.route('/comment/:activityId')
+    .get(comment_get)
+    .post(comment_post)
+
+router.post('/comments/:activityId', comment_post)
 
 router.get('/last24hours/list', last_24_hours_activity_list_get) 
 

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link href="./styles/style.css" rel="stylesheet" />
+    <style>
+      .comment_list {
+        color: #fcfcfc;
+        margin-left: 5%;
+      }
+    </style>
+  </head>
+  <body>
+    <!--Left side navigation drawer-->
+    <div class="content">
+      <nav class="nav_container">
+        <div class="navbar_toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="side_nav" id="main_navigation">
+          <li class="navbar_item hidden admin-option">
+            <a href="admin.html" class="navbar_links">Admin page</a>
+          </li>
+          <li class="navbar_item">
+            <a href="search.html" class="navbar_links">Search</a>
+          </li>
+          <li class="navbar_item">
+            <a href="addActivity.html" class="navbar_links">New</a>
+          </li>
+          <li class="navbar_item">
+            <a href="home.html" class="navbar_links active">All</a>
+          </li>
+          <li class="navbar_item">
+            <a href="last24.html" class="navbar_links">Last 24hrs</a>
+          </li>
+          <li class="navbar_item">
+            <a href="user.html" class="navbar_links">My profile</a>
+          </li>
+          <li class="navbar_item">
+            <a href="account-settings.html" class="navbar_links">Settings</a>
+          </li>
+          <li class="navbar_item">
+            <a href="logout.html" class="navbar_links">Logout</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!--Main content-->
+      <!--Container for the activity images-->
+      <div class="search_content">
+      <div class="form_container">
+        <form id="search_form" method="post" enctype="x-www-form-urlencoded">
+          <input
+            id="comment"
+            type="text"
+            name="comment"
+            placeholder="Add your comment here......."
+            required
+          />
+          <button class="light-border" id="search_button" type="submit">
+            Add
+          </button>
+        </form>
+      </div>
+      <!--Container for the activity images-->
+      <div class="activity_list_search" id="comment_list">
+        <!-- js creates activity image list here -->
+      </div>
+    </div>
+    <!-- Define scripts here -->
+    <!--    <script src="./scripts/check-login.js"></scrip>-->
+    <script src="./scripts/serialize.js"></script>
+    <script src="./scripts/login.js"></script>
+    <script src="./scripts/navigation.js"></script>
+    <script src="./scripts/activity_comment.js"></script>
+  </body>
+</html>

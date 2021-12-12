@@ -1,6 +1,6 @@
 'use strict';
 const { validationResult } = require('express-validator');
-const {insertActivity, getActivity, deleteActivity, getActivityByDate, getActivityByLocation, getActivityByActivityName, getAllValidActivity, updateActivity, getParticipantList, getAllUsersValidActivity, getAllUsersParticipation, insertParticipation, getAllValidActivityInLast24Hours, checkParticipationStatus, deleteParticipation } = require('../models/activityModel');
+const {insertActivity, getActivity, deleteActivity, getActivityByDate, getActivityByLocation, getActivityByActivityName, getAllValidActivity, updateActivity, getParticipantList, getAllUsersValidActivity, getAllUsersParticipation, insertParticipation, getAllValidActivityInLast24Hours, checkParticipationStatus, deleteParticipation, getCommentsByActivityId, insertCommentsByActivityId } = require('../models/activityModel');
 const { httpError } = require('../utils/errors');
 
 
@@ -182,6 +182,32 @@ const participation_delete = async (req, res, next) => {
     res.json({message: `Participation deleted`});
 };
 
+const comment_get = async (req, res, next) => {
+    const comment = await getCommentsByActivityId(req.params.activityId, next);
+    if(comment.length < 1) {
+        const err = httpError('There is no comment yet', 404);
+        next(err);
+        return;
+    } 
+    res.json(comment);
+};
+
+const comment_post = async (req, res, next) => {
+
+    const errors = validationResult(req);
+    if(!errors.isEmpty()) {
+      console.error('comment_post validation', errors.array());
+    const err = httpError('data not valid', 400)
+    next(err);
+    return;
+    } 
+    console.log('add comment data', req.body);
+    const newComment = await insertCommentsByActivityId(req.user.user_id, req.params.activityId, req.body, next);
+    res.json({message: `nw comment id:${newComment}`});
+};
+
+
+
 module.exports = {
     activity_list_get,
     last_24_hours_activity_list_get,
@@ -198,4 +224,6 @@ module.exports = {
     participation_post,
     participation_status_get,
     participation_delete,
+    comment_get,
+    comment_post,
 }; 
