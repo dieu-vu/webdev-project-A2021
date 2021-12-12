@@ -32,7 +32,7 @@ const createCommentLists = (comments) => {
         // const div1 = document.createElement('div');
         // div1.appendChild(p1);
         div.appendChild(p1);
-    });
+    }); 
 }   
 
 
@@ -43,7 +43,7 @@ const id = getQueryVariable("activityId");
 
 addForm.addEventListener('submit', async (evt)=>{
     evt.preventDefault();
-    console.log("value is ",comment.value);
+    // console.log("value is ",comment.value);
     const fd = new FormData(addForm);
     try {
         const fetchOptions = {
