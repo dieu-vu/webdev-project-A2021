@@ -7,6 +7,7 @@
   </head>
   <body>
     <!--Left side navigation drawer-->
+    <div class="content">
     <nav class="nav_menu">
       <div class="nav_container">
         <div class="navbar__toggle" id="mobile-menu">
@@ -42,6 +43,7 @@
 
     <!--Main content-->
     <!--Container for the activity form-->
+    <div class="new_activity_background">
     <div class="container_new_activity">
       <div class="forms">
         <div class="form-wrapper" id="activity-wrapper">
@@ -76,6 +78,7 @@
               <div>
                 <input
                   class="activity_input"
+                  id="date_time_input"
                   type="datetime-local"
                   required
                   minlength="3"
@@ -110,11 +113,13 @@
             </div>
             <div id="fileList"></div>
             <div>
-              <button class="submit_activity" type="submit">Add</button>
+              <button class="submit_activity" type="submit">Save</button>
             </div>
           </form>
         </div>
       </div>
+    </div>
+    </div>
     </div>
     <!-- Define scripts here -->
     <!--    <script src="./scripts/check-login.js"></script>-->

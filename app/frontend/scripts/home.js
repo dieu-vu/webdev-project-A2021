@@ -65,26 +65,11 @@ const createActivityCards = (activities) => {
     const a = document.createElement('a');
     a.classList.add('activity_link');
 
-    const div1 = document.createElement('div');
-    div1.classList.add('img-group');
-    
-    const div2 = document.createElement('div');
-    div2.classList.add('img-tip');
-
-    div2.innerHTML = `Publisher:${activity.owner}<br/>Description: ${activity.description}<br/>Time: ${timeString}<br/>Location:${activity.location}`;
-    
-    div1.appendChild(img);
-    div1.appendChild(div2);
-
-    
-
-
 
     a.appendChild(figure);
-    // figure.appendChild(img);
-    figure.appendChild(div1);
+    figure.appendChild(img);
     figure.appendChild(gradient);
-    // figure.appendChild(p2);
+    figure.appendChild(p2);
     figure.appendChild(p5);
     figure.appendChild(h2);
 
