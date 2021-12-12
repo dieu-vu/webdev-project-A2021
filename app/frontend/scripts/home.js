@@ -17,10 +17,14 @@ const createActivityCards = (activities) => {
   div.innerHTML = '';
   activities.forEach((activity) => {
     // create li with DOM methods
-
+    
     const img = document.createElement('img');
-    img.src = url + '/' + activity.filename;
-    // img.src = activity.filename;
+    //Add a place holder picture if picture is not saved on server
+    if (activity.filename === null) {
+      img.src = 'https://picsum.photos/300/200';
+    } else {
+        img.src = url + '/' + activity.filename;
+    }
 
     img.alt = activity.activity;
     img.classList.add('activity_image');
@@ -48,7 +52,9 @@ const createActivityCards = (activities) => {
     p3.classList.add('activity_description');
 
     const p4 = document.createElement('p');
-    p4.innerHTML = `Time: ${activity.VET}`;
+    const timeString = `${activity.VET.toString().substring(0,10)} @ ${activity.VET.toString().substring(11,19)}`;
+    console.log(timeString);
+    p4.innerHTML = `Time: ${timeString}`;
     p4.classList.add('activity_time');
 
     const p5 = document.createElement('p');
@@ -65,7 +71,7 @@ const createActivityCards = (activities) => {
     const div2 = document.createElement('div');
     div2.classList.add('img-tip');
 
-    div2.innerHTML = `Publisher:${activity.owner}<br/>Description: ${activity.description}<br/>Time: ${activity.VET}<br/>Location:${activity.location}`;
+    div2.innerHTML = `Publisher:${activity.owner}<br/>Description: ${activity.description}<br/>Time: ${timeString}<br/>Location:${activity.location}`;
     
     div1.appendChild(img);
     div1.appendChild(div2);

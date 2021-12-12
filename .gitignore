@@ -108,9 +108,9 @@ Temporary Items
 
 
 # ignore content of uploads folder
-# app/backend/uploads/*
+app/backend/uploads/*
 # except one (empty) file to have the folder in version control
-#!*/uploads/.gitkeep
-#app/backend/thumbnails/*
+!*/uploads/.gitkeep
+app/backend/thumbnails/*
 
 .vscode/

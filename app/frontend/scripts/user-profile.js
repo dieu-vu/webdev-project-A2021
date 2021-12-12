@@ -89,13 +89,18 @@ const createActivityStack = (activities, headerText, divName) => {
     if (activities.length !==0){
         activities.forEach((activity) => {
             const img = document.createElement('img');
-            img.src = url + '/' + activity.filename;
+            //Add a place holder picture if picture is not saved on server
+            if (activity.filename === null) {
+            img.src = 'https://picsum.photos/300/200';
+            } else {
+                img.src = url + '/' + activity.filename;
+            }
             img.alt = activity.name;
             img.classList.add('activity_image');
 
-            img.addEventListener('click', () => {
-                location.href = 'activity.html?id=?' + activity.activity_id;
-            });
+            // img.addEventListener('click', () => {
+            //     location.href = 'activity.html?id=?' + activity.activity_id;
+            // });
 
             const figure = document.createElement('figure');
             figure.classList.add('activity_container');
