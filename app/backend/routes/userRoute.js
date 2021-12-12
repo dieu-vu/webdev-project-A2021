@@ -36,6 +36,14 @@ router.route('/:id')
 		userController.user_put)
     .delete(userController.user_delete);
 
+router.route('/:id/passwordChange')
+    .get(userController.user_get)
+    .put(
+        body('newPassword').matches('(?=.*[A-Z]).{8,}'),
+        body('checkPassword').matches('(?=.*[A-Z]).{8,}'),
+        userController.user_update_password
+    );
+
 router.get('/token', checkToken);
 
 module.exports = router;

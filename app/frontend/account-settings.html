@@ -1,74 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Nutivity</title>
-    <link href="./styles/style.css" rel="stylesheet" />
-  </head>
 
-  <body>
-    <!--Left side navigation drawer-->
+<head>
+  <meta charset="UTF-8" />
+  <title>Nutivity</title>
+  <link href="./styles/style.css" rel="stylesheet" />
+</head>
 
-      <nav class="nav_container">
-        <div class="navbar_toggle" id="mobile-menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
-        <ul class="side_nav">
-          <li class="navbar_item">
-            <a href="search.html" class="navbar_links">Search</a>
-          </li>
-          <li class="navbar_item">
-            <a href="addActivity.html" class="navbar_links">New</a>
-          </li>
-          <li class="navbar_item">
-            <a href="home.html" class="navbar_links">All</a>
-          </li>
-          <li class="navbar_item">
-            <a href="last24.html" class="navbar_links">Last 24hrs</a>
-          </li>
-          <li class="navbar_item">
-            <a href="user.html" class="navbar_links">My profile</a>
-          </li>
-            <li class="navbar_item">
-                <a href="account-settings.html" class="navbar_links active">Settings</a>
-            </li>
-          <li class="navbar_item">
-            <a href="logout.html" class="navbar_links">Logout</a>
-          </li>
-        </ul>
-      </nav>
+<body>
+  <!--Left side navigation drawer-->
+  <div class="content">
+    <nav class="nav_container">
+      <div class="navbar_toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="side_nav">
+        <li class="navbar_item">
+          <a href="search.html" class="navbar_links">Search</a>
+        </li>
+        <li class="navbar_item">
+          <a href="addActivity.html" class="navbar_links">New</a>
+        </li>
+        <li class="navbar_item">
+          <a href="home.html" class="navbar_links">All</a>
+        </li>
+        <li class="navbar_item">
+          <a href="last24.html" class="navbar_links">Last 24hrs</a>
+        </li>
+        <li class="navbar_item">
+          <a href="user.html" class="navbar_links">My profile</a>
+        </li>
+        <li class="navbar_item">
+          <a href="account-settings.html" class="navbar_links active">Settings</a>
+        </li>
+        <li class="navbar_item">
+          <a href="logout.html" class="navbar_links">Logout</a>
+        </li>
+      </ul>
+    </nav>
 
 
     <!--Main content-->
-        <div class="setting-menu">
-            <ul class="setting-menu-list">
-                <li class="setting-item general">General
-                  <span class="arrow">
-                    <img src="./images/right-arrow.png" class="arrow" alt="arrow">
-                  </span>
-                </li>
-                <li class="setting-item password"> Password
-                    <span class="arrow">
-                      <img src="./images/right-arrow.png" class="arrow" alt="arrow">
-                    </span>
-                </li>
-                <li class="setting-item delete"> Delete account
-                    <span class="arrow">
-                      <img src="./images/right-arrow.png" class="arrow" alt="arrow">
-                    </span>
-                </li>
-            </ul>
-        </div>
-        <div class="setting-input">
-            <!-- from account-settings.js -->
-        </div>
+    <div class="activity_content">
+      <div class="setting-menu">
+        <ul class="setting-menu-list">
+          <li class="setting-item general">General
+            <span class="arrow">
+              <img src="./images/right-arrow.png" class="arrow" alt="arrow">
+            </span>
+          </li>
+          <li class="setting-item password"> Password
+            <span class="arrow">
+              <img src="./images/right-arrow.png" class="arrow" alt="arrow">
+            </span>
+          </li>
+          <li class="setting-item delete"> Delete account
+            <span class="arrow">
+              <img src="./images/right-arrow.png" class="arrow" alt="arrow">
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div class="setting-input">
+        <!-- from account-settings.js -->
+      </div>
+    </div>
+  </div>
+  <!-- Define scripts here -->
+  <script src="./scripts/serialize.js"></script>
+  <script src="./scripts/navigation.js"></script>
+  <script src="./scripts/account-settings.js"></script>
+</body>
 
-
-    <!-- Define scripts here -->
-    <script src="./scripts/serialize.js"></script>
-    <script src="./scripts/navigation.js"></script>
-    <script src="./scripts/account-settings.js"></script>
-  </body>
 </html>

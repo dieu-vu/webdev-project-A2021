@@ -187,6 +187,7 @@ userEditForm.addEventListener('submit', async (editEvent) => {
      }
     console.log('BLANK FORM', isEmpty);
 
+    //Fill the existing data to form if the user leaves fields blank
     if (data.get('email')=== "") {
         data.set('email', loggedInUser.email);
     }

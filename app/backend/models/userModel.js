@@ -75,8 +75,7 @@ const getAllUsers = async() => {
     }
 };
 
-//TODO: allow user to upload file
-//TODO: auto fill with old information if json field is blank
+
 const editUser = async(user) => {
     const query = `UPDATE p_user SET name=?, email=?, user_filename=? WHERE user_id=?`;
     try {
@@ -127,7 +126,17 @@ const getUserLogin = async (params) => {
     }
 };
 
-
+// Update user password:
+const updatePassword = async (user) => {
+    try {
+        const query = `UPDATE p_user SET password= ? WHERE user_id = ?`;
+        const [rows] = await promisePool.execute(query, [user.newPassword, user.user_id]);
+        console.log('model change pw', rows);
+        return rows.affectedRows === 1;
+    } catch (e) {
+        console.log('USER MODEL UPDATE PW ERROR', e.message);
+    }
+};
 
 // Implement this for admin user only
 const deleteUser = async (currentUser, deletedUserId) => {
@@ -160,5 +169,6 @@ module.exports = {
     getOwnActivity,
     getParticipatingActivity,
     getUserLogin,
+    updatePassword,
     deleteUser,
 };
