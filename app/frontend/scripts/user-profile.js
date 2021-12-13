@@ -90,14 +90,14 @@ const createActivityStack = (activities, headerText, divName) => {
             //Add a place holder picture if picture is not saved on server
             
             img.src = url + '/' + activity.filename;
-        img.onerror = () => {img.src='https://picsum.photos/600/400'};
+            img.onerror = () => {img.src='https://picsum.photos/600/400'};
 
             
             img.alt = activity.name;
             img.classList.add('activity_image');
 
             const figure = document.createElement('figure');
-            figure.classList.add('activity_container');
+            figure.classList.add('activity_container_user');
 
             const h2 = document.createElement('h2');
             h2.innerHTML = activity.name;
@@ -115,7 +115,7 @@ const createActivityStack = (activities, headerText, divName) => {
             gradient.classList.add('gradient_background');
 
             const a = document.createElement('a');
-            a.classList.add('activity_link');
+            a.classList.add('activity_link_user');
 
             ul.appendChild(a);
             a.appendChild(figure);

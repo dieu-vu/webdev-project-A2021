@@ -226,16 +226,14 @@ a:hover {
 
 .activity_link {
     display: flex;
-    width: 100%;
+    width: 50%;
     margin: 0;
     overflow: hidden;
 }
-
 .activity_container {
     display: flex;
     position: relative;
     margin: 4px;
-    width: 100%;
 }
 
 .gradient_background {
@@ -247,7 +245,6 @@ a:hover {
     height: 20%;
     margin: 0;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 0%, rgba(255, 255, 255, 0) 100%);
-);
     transition: 0.3s;
 }
 
@@ -480,7 +477,7 @@ a:hover {
 }
 
 /************* USER PAGE SECTION *************/
-/*shared classes between user and account-settings*/
+
 .activity_content {
     display: flex;
     flex-direction: column;
@@ -490,9 +487,23 @@ a:hover {
     color: #fcfcfc;
 }
 
-#activity_list{
+#activity_list_user{
     display: flex;
     flex-direction: column;
+    width: 100%;
+}
+
+.activity_link_user {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.activity_container_user {
+    display: flex;
+    position: relative;
+    margin: 4px;
     width: 100%;
 }
 
