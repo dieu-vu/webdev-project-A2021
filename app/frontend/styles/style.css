@@ -226,7 +226,7 @@ a:hover {
 
 .activity_link {
     display: flex;
-    width: 50%;
+    width: 100%;
     margin: 0;
     overflow: hidden;
 }
@@ -235,6 +235,7 @@ a:hover {
     display: flex;
     position: relative;
     margin: 4px;
+    width: 100%;
 }
 
 .gradient_background {
@@ -524,28 +525,26 @@ a:hover {
     margin: 4%;
 }
 
-#user_activity {
+.user_activity {
     display: flex;
     flex-flow: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     position: relative;
     overflow: hidden;
+    width: 100%;
+    margin-bottom: 30%;
 }
 
 .own_activities {
     display: flex;
     flex-direction: column;
-    position: relative;
     width: 100%;
-    margin-bottom: 30%;
 }
 
 .joined_activities {
     display: flex;
     flex-direction: column;
-    position: absolute;
     width: 100%;
-    left: 50%;
 }
 
 .profile_headers {
@@ -1079,14 +1078,14 @@ a:hover {
         left: 70%;
     }
 
-    #user_activity {
+    /* #user_activity {
         display: flex;
         flex-flow: row;
         flex-wrap: wrap;
         position: relative;
         overflow: hidden;
         top: 10%;
-    }
+    } */
 
     .edit-profile-button {
         background-image: url("../images/pencil.png");

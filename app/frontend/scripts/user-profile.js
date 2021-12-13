@@ -4,7 +4,7 @@ const url = 'http://localhost:3000';
 
 
 // Select html element of the activity list
-const stack = document.querySelector('#user_activity');
+const stack = document.querySelector('.user_activity');
 // Select html element of user profile picture
 const userInfo = document.querySelector('#user_info');
 // Select html element of user edit profile info form:
@@ -96,10 +96,6 @@ const createActivityStack = (activities, headerText, divName) => {
             img.alt = activity.name;
             img.classList.add('activity_image');
 
-            // img.addEventListener('click', () => {
-            //     location.href = 'activity.html?id=?' + activity.activity_id;
-            // });
-
             const figure = document.createElement('figure');
             figure.classList.add('activity_container');
 
@@ -130,6 +126,7 @@ const createActivityStack = (activities, headerText, divName) => {
 
             listContainer.appendChild(header);
             listContainer.appendChild(ul);
+
             stack.appendChild(listContainer);
             
             stack.style.color = '#fcfcfc';

@@ -129,27 +129,27 @@ const createUserList = (users) => {
             });
 
             //Promote button
-            // const promoteButton = document.createElement('button');
-            // promoteButton.innerHTML = 'Promote to moderator';
-            // promoteButton.classList.add('admin_button');
-            // promoteButton.style.display = "inline";
-            // promoteButton.addEventListener('click', async () => {
-            //     const fetchOptions = {
-            //       method: 'PUT',
-            //       headers: {
-            //         Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-            //       },
-            //     };
-            //     alert("You are promoting this user to moderator, continue?");
-            //     try {
-            //       const response = await fetch(url + '/user/' + user.user_id, fetchOptions);
-            //       console.log('delete response', response);
-            //       alert(`User ${name.innerHTML} deleted`);
-            //       window.location.reload();
-            //     } catch (e) {
-            //       console.log(e.message);
-            //     }
-            // });
+            const promoteButton = document.createElement('button');
+            promoteButton.innerHTML = 'Promote to mod';
+            promoteButton.classList.add('admin_button');
+            promoteButton.style.display = "inline";
+            promoteButton.addEventListener('click', async () => {
+                const fetchOptions = {
+                  method: 'PUT',
+                  headers: {
+                    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                  },
+                };
+                alert("You are promoting this user to moderator, continue?");
+                try {
+                  const response = await fetch(url + '/user/' + user.user_id, fetchOptions);
+                  console.log('delete response', response);
+                  alert(`User ${name.innerHTML} deleted`);
+                  window.location.reload();
+                } catch (e) {
+                  console.log(e.message);
+                }
+            });
 
 
             span.appendChild(deleteButton);
