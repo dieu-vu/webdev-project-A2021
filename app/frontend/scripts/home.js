@@ -51,8 +51,9 @@ const createActivityCards = (activities) => {
 
         // FOR MODAL FUNCTIONALITY
         const hint = document.createElement('p');
-        hint.innerHTML = "click to participate";
+        //Text for hint is depending on the participation status below
         hint.classList.add('modal_hint');
+        hint.classList.add('gradient_background_reverse');
         // FOR MODAL FUNCTIONALITY
 
         a.appendChild(figure);
@@ -62,6 +63,7 @@ const createActivityCards = (activities) => {
         figure.appendChild(p5);
         figure.appendChild(h2);
         figure.appendChild(hint);
+
 
 
         // // FOR MODAL FUNCTIONALITY
@@ -82,6 +84,8 @@ const createActivityCards = (activities) => {
                 const participationStatus = await response.json();
                 if (participationStatus.message === "not yet participate") {
                     console.log(`no participated ${activity.id}`);
+                    //hint text 
+                    hint.innerHTML = "Click to participate";
                     // participate button
                     const participateButton = document.createElement('button');
                     participateButton.innerHTML = 'Participate';
@@ -105,6 +109,9 @@ const createActivityCards = (activities) => {
                         }
                     });
                 } else {
+                    //hint text
+                    hint.innerHTML = "Click to quit";
+
                     //quit button
                     const quitButton = document.createElement('button');
                     quitButton.innerHTML = 'Quit';

@@ -557,7 +557,9 @@ a:hover {
     width: 100%;
     min-width: 0;
     min-height: 0;
-    overflow: scroll;
+    overflow: auto;    
+    padding: 1%;
+
 }
 
 .joined_activities {
@@ -566,7 +568,8 @@ a:hover {
     width: 100%;
     min-width: 0;
     min-height: 0;
-    overflow: scroll;
+    overflow: auto;
+    padding: 1%;
 }
 
 .profile_headers {
