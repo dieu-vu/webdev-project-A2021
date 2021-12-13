@@ -20,9 +20,6 @@ const createTabs = (node) => {
     let tabs = Array.from(node.children).map ( node => {
         let button = document.createElement('button');
         button.textContent = node.getAttribute('data-tabname');
-        // let listDiv = document.createElement('div');
-        // listDiv.classList.add = node.getAttribute('data-tabname');
-        // listDiv.innerHTML = createUserList(userNameList);
 
         let tab = {node, button};
         button.addEventListener('click', () => selectTab(tab));
@@ -101,9 +98,13 @@ const createUserList = (users) => {
             const li = document.createElement('li');
             li.appendChild(name);
 
+            const span = document.createElement('span');
+            span.classList.add('admin_button_list');
+
+            //Delete button 
             const deleteButton = document.createElement('button');
             deleteButton.innerHTML = 'Delete';
-            deleteButton.classList.add('button');
+            deleteButton.classList.add('admin_button');
             deleteButton.style.display = "inline";
             deleteButton.addEventListener('click', async () => {
                 const fetchOptions = {
@@ -112,17 +113,49 @@ const createUserList = (users) => {
                     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
                   },
                 };
-                alert("You are deleting a user, continue?");
-                try {
-                  const response = await fetch(url + '/user/' + user.user_id, fetchOptions);
-                  console.log('delete response', response);
-                  alert(`User ${name.innerHTML} deleted`);
-                  window.location.reload();
-                } catch (e) {
-                  console.log(e.message);
-                }
+                if (confirm("You are deleting a user, continue?")) {
+                    try {
+                        const response = await fetch(url + '/user/' + user.user_id, fetchOptions);
+                        console.log('delete response', response);
+                        alert(`User ${name.innerHTML} deleted`);
+                        window.location.reload();
+                    } catch (e) {
+                    console.log(e.message);
+                    }
+                } else {
+                    alert("You cancelled the action");
+                } 
+                
             });
-            li.appendChild(deleteButton);
+
+            //Promote button
+            // const promoteButton = document.createElement('button');
+            // promoteButton.innerHTML = 'Promote to moderator';
+            // promoteButton.classList.add('admin_button');
+            // promoteButton.style.display = "inline";
+            // promoteButton.addEventListener('click', async () => {
+            //     const fetchOptions = {
+            //       method: 'PUT',
+            //       headers: {
+            //         Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            //       },
+            //     };
+            //     alert("You are promoting this user to moderator, continue?");
+            //     try {
+            //       const response = await fetch(url + '/user/' + user.user_id, fetchOptions);
+            //       console.log('delete response', response);
+            //       alert(`User ${name.innerHTML} deleted`);
+            //       window.location.reload();
+            //     } catch (e) {
+            //       console.log(e.message);
+            //     }
+            // });
+
+
+            span.appendChild(deleteButton);
+            span.appendChild(promoteButton);
+
+            li.appendChild(span);
             ul.appendChild(li);
         });
     }
