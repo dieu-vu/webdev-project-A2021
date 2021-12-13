@@ -190,7 +190,7 @@ const deleteParticipation = async (userId,activityId, next) => {
 
 const getCommentsByActivityId = async (activityId, next) => {
     try {
-        const [rows] = await promisePool.execute('SELECT p_user.name as user, activity.name as activity,comment_in.u_comment as comment,comment_in.p_time as time FROM p_user INNER JOIN comment_in ON p_user.user_id = comment_in.participant_id INNER JOIN activity ON comment_in.activity_id = activity.activity_id WHERE comment_in.activity_id = ? GROUP BY comment_in.comment_id ORDER BY comment_in.p_time DESC',[activityId]);
+        const [rows] = await promisePool.execute('SELECT p_user.name as user, p_user.user_id, activity.name as activity,comment_in.u_comment as comment,comment_in.p_time as time FROM p_user INNER JOIN comment_in ON p_user.user_id = comment_in.participant_id INNER JOIN activity ON comment_in.activity_id = activity.activity_id WHERE comment_in.activity_id = ? GROUP BY comment_in.comment_id ORDER BY comment_in.p_time DESC',[activityId]);
         console.log('model delete participation', rows);
         return rows;
 

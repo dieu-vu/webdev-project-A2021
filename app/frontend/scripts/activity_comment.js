@@ -1,6 +1,7 @@
 // file for home functionality
 // 'use strict';
-// const url = 'http://localhost:3000'; // url for backend connection
+const imgUrl = 'http://localhost:3000'; // url for backend connection
+
 
 // select existing html elements
 const div = document.querySelector('#comment_list');
@@ -41,14 +42,47 @@ const createCommentLists = (comments) => {
     div.innerHTML = '';
     
     comments.forEach((comment) => {
-        const p1 = document.createElement('p');
-        // const time = comment.time.
-        p1.innerHTML = ` <br> 🥲   <a href="">${comment.user}</a>: ${comment.comment} <br/>posted at ${comment.time.replace("T"," ").replace(".000Z","" )}<br/>`;
-        p1.classList.add('comment_list');
 
-        // const div1 = document.createElement('div');
-        // div1.appendChild(p1);
-        div.appendChild(p1);
+        const commentContainer = document.createElement('div');
+        commentContainer.classList.add('comment_container');
+
+        const img = document.createElement('img');
+        img.src = imgUrl + '/' + comments.user_id;
+        img.onerror = () => {img.src='https://picsum.photos/600/400'};
+        img.classList.add('comment_image');
+
+        const p1 = document.createElement('p');
+        p1.innerHTML = ` <br> 💬 <a href="">${comment.user}</a>: ${comment.comment}`;
+        p1.classList.add('comment_text');
+
+        const postedTime = document.createElement('p');
+        postedTime.classList.add('comment_text');
+        postedTime.classList.add('comment_time');
+
+        const timeText = () => {
+          const commentDatetime = new Date(comment.time);
+
+          const diffMinute = (Date.now() - commentDatetime)/(1000*60);
+          //Convert diff time to mins, hours and days
+          if (diffMinute < 60){
+            return(`Posted ${Math.floor(diffMinute)} mins ago`);
+          } else if ((diffMinute/60) < 24 ) {
+            return(`Posted ${Math.floor(diffMinute /60)} hours ago`); 
+          } else if ((diffMinute/60) > 24 ) {
+            return(`Posted ${Math.floor(diffMinute/ (60*24))} days ago`);
+            //if comment is older than 30 days, show date only
+          } else if ((diffMinute/60) > (24*30)){ 
+           return (`Posted on ${comment.time.substring(0,10)}`);
+          }
+        } 
+        postedTime.innerHTML = timeText();
+        
+
+        commentContainer.appendChild(img);
+        commentContainer.appendChild(p1);
+        commentContainer.appendChild(postedTime);
+
+        div.appendChild(commentContainer);
     });
 }   
 
@@ -57,10 +91,6 @@ const createCommentLists = (comments) => {
 console.log("activityId:", getQueryVariable("activityId") );
 const activityName = getQueryVariable("activityName").replace("%"," ").replace("20","");
 console.log("activityName:", activityName );
-
-
-         
-
 
 
 const getCommentByActivityId = async (activity_id) => {
