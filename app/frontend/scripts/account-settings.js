@@ -6,6 +6,11 @@ const url = 'http://localhost:3000';
 const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
 const loggedInUserId = loggedInUser.user_id;
 
+// Check if user is an admin to give access to admin page
+if (loggedInUser.role === 0) {
+    document.querySelector('.admin-option').style.display = "block";
+}
+
 const settingInputForm = document.querySelector('.setting-input');
 const menuItem = document.getElementsByClassName('setting-item');
 
