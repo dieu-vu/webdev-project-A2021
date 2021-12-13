@@ -47,11 +47,9 @@ const createUserPic = (user, el) => {
     imgContainer.classList.add('container-image');
 
     const img = document.createElement('img');
-    if (user.user_filename === null) {
-        img.src = 'https://picsum.photos/200';
-    } else {
-        img.src = url + '/' + user.user_filename;
-    }
+    
+    img.src = url + '/' + user.user_filename;
+    img.onerror = () => {img.src='https://picsum.photos/200'};
     img.alt = user.name;
     img.classList.add('user_image');
 
