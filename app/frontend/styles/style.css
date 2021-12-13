@@ -513,13 +513,7 @@ a:hover {
     position: relative;
     width: 20%;
     margin-top: 8%;
-    left: 75%;
-}
-
-.user_name {
-    display: flex;
-    position: relative;
-    top: 5%;
+    left: 80%;
 }
 
 .container-image {
@@ -538,17 +532,30 @@ a:hover {
     margin: 4%;
 }
 
+
+.user_name{
+    font-size: 1.25rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 1em;
+}
+
+.pencil_icon{
+    margin-left: 10px;
+    display: inline;
+}
+
 .user_activity {
     display: flex;
     flex-flow: row;
     flex-wrap: nowrap;
-    position: relative;
-    overflow: hidden;
     width: 100%;
     padding-bottom: 10%; 
     min-width: 0;
     min-height: 0;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .own_activities {
@@ -583,11 +590,9 @@ a:hover {
     background-image: url("../images/pencil.png");
     background-position: center;
     background-size: cover;
-    border-radius: 20%;
+    border: none;
     background-color: #181818;
     position: relative;
-    top: 14%;
-    right: -125%;
     height: 1.5rem;
     width: 1.5rem;
     cursor: pointer;
@@ -1129,7 +1134,6 @@ a:hover {
     /*CSS for browse file button ends*/
 
     /************* USER PAGE SECTION *************/
-    /*shared classes between user and account-settings*/
     .activity_content {
         display: flex;
         flex-direction: column;
@@ -1143,10 +1147,25 @@ a:hover {
         display: flex;
         flex-direction: column;
         position: relative;
-        width: 20%;
-        height: 20%;
+        width: 10%;
         margin-top: 20%;
         left: 75%;
+    }
+
+    .user_activity{
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow: scroll;
+        gap: 10px;
+        align-items: flex-start;
+        flex-shrink: 0;
+    }
+    .own_activities{
+        overflow: scroll;
+        flex-basis: auto;
+    }
+    .joined_activities{
+        overflow: scroll;
     }
 
     /************* LOGIN & REGISTER PAGE SECTION *************/
@@ -1242,14 +1261,6 @@ a:hover {
         left: 70%;
     }
 
-    /* #user_activity {
-        display: flex;
-        flex-flow: row;
-        flex-wrap: wrap;
-        position: relative;
-        overflow: hidden;
-        top: 10%;
-    } */
 
     .edit-profile-button {
         background-image: url("../images/pencil.png");
@@ -1258,8 +1269,7 @@ a:hover {
         border-radius: 20%;
         background-color: #181818;
         position: relative;
-        top: 14%;
-        right: -120%;
+
         height: 1.5rem;
         width: 1.5rem;
     }

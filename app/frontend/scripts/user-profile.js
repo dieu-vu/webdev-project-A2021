@@ -53,17 +53,21 @@ const createUserPic = (user, el) => {
     img.alt = user.name;
     img.classList.add('user_image');
 
+    const p2 = document.createElement('p');
+    p2.innerHTML = user.name;
+    p2.classList.add('user_name');
     // user edit profile button:
+    const span = document.createElement('span');
+    span.classList.add('pencil_icon');
     const editButton = document.createElement('button');
     editButton.classList.add('edit-profile-button');
     editButton.addEventListener('click', () => {
         openMenu()});
-    const p2 = document.createElement('p');
-    p2.innerHTML = user.name;
-    p2.classList.add('user_name');
+    
+    span.appendChild(editButton);
+    p2.appendChild(span);
 
     imgContainer.appendChild(img);
-    imgContainer.appendChild(editButton);
 
     el.appendChild(imgContainer);
     el.appendChild(p2);
