@@ -42,8 +42,6 @@ router.route('/comment/:activityId')
     .get(comment_get)
     .post(comment_post)
 
-router.post('/comments/:activityId', comment_post)
-
 router.get('/last24hours/list', last_24_hours_activity_list_get) 
 
 router.get('/searchDate/:searchDate', activity_get_by_date)

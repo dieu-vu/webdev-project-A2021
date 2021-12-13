@@ -205,11 +205,11 @@ const insertCommentsByActivityId = async (userId, activityId, comment, next) => 
     try {
         const [rows] = await promisePool.execute('INSERT INTO comment_in (participant_id, activity_id, u_comment) VALUES (?,?,?)',
         [userId, activityId, comment.comment]);
-        console.log('model insert activity', rows);
+        console.log('model insert comment', rows);
         return rows.insertId;
 
     }catch(e) {
-        console.error('model delete activity', e.message);
+        console.error('model insert comment', e.message);
         const err = httpError('Sql error', 500);
         next(err);
     } 

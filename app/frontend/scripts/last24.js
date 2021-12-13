@@ -30,7 +30,7 @@ const createActivityCards = (activities) => {
     img.classList.add('activity_image');
 
     img.addEventListener('click', async () => {
-      location.href = `activity_co.html?activityId=${activity.id}&activityName=${activity.activity}`;
+      location.href = `activity_comment.html?activityId=${activity.id}&activityName=${activity.activity}`;
     });
 
     const figure = document.createElement('figure');

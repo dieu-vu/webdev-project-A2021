@@ -203,7 +203,7 @@ const comment_post = async (req, res, next) => {
     } 
     console.log('add comment data', req.body);
     const newComment = await insertCommentsByActivityId(req.user.user_id, req.params.activityId, req.body, next);
-    res.json({message: `nw comment id:${newComment}`});
+    res.json({message: `new comment id:${newComment}`});
 };
 
 

@@ -1,23 +1,40 @@
 // file for home functionality
-'use strict';
+// 'use strict';
 // const url = 'http://localhost:3000'; // url for backend connection
 
 // select existing html elements
 const div = document.querySelector('#comment_list');
 const addForm = document.querySelector('#search_form');
 
-function getQueryVariable(variable)
+const getQueryVariable =(params) =>
 {
        var query = window.location.search.substring(1);
        var vars = query.split("&");
        for (var i=0;i<vars.length;i++) {
                var pair = vars[i].split("=");
-               if(pair[0] == variable){return pair[1];}
+               if(pair[0] == params){return pair[1];}
        }
        return(false);
 }
+const id = getQueryVariable("activityId");
 
-const activityName = getQueryVariable("activityName").replace("%"," ").replace("20","");
+addForm.addEventListener('submit', async (evt)=>{
+    evt.preventDefault();
+    const data = serializeJson(addForm);
+    const fetchOptions = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + sessionStorage.getItem('token'),  
+        },
+        body: JSON.stringify(data),
+      };
+        const response = await fetch(url + '/activity/comment/' + id, fetchOptions);
+        const comment = await response.json();
+        location.reload();
+        return false;
+});        
+
 
 const createCommentLists = (comments) => {
     // clear ul
@@ -32,36 +49,17 @@ const createCommentLists = (comments) => {
         // const div1 = document.createElement('div');
         // div1.appendChild(p1);
         div.appendChild(p1);
-    }); 
+    });
 }   
 
 
 
 console.log("activityId:", getQueryVariable("activityId") );
+const activityName = getQueryVariable("activityName").replace("%"," ").replace("20","");
 console.log("activityName:", activityName );
-const id = getQueryVariable("activityId");
 
-addForm.addEventListener('submit', async (evt)=>{
-    evt.preventDefault();
-    // console.log("value is ",comment.value);
-    const fd = new FormData(addForm);
-    try {
-        const fetchOptions = {
-              method: 'POST',
-              headers: {
-                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-              },
-              body: fd,
-            };
-        const response = await fetch(url + '/activity/comments/' + id, fetchOptions);
-        const comment = await response.json();
-        alert(comment.message);
-        // console.log(comment.message);
-      } catch (e) {
-        console.log(e.message);
-      }  
-    // getCommentByActivityId(id);
-});         
+
+         
 
 
 

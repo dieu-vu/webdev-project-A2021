@@ -52,15 +52,16 @@
       <!--Container for the activity images-->
       <div class="search_content">
       <div class="form_container">
-        <form id="search_form" method="post" enctype="x-www-form-urlencoded">
-          <input
-            id="comment"
-            type="text"
+        <form id="search_form" method="post" enctype="application/x-www-form-urlencoded">
+          <textarea
             name="comment"
+            id="query"
+            type="text"
             placeholder="Add your comment here......."
             required
-          />
-          <button class="light-border" id="search_button" type="submit">
+            rows="3" cols="20"
+          ></textarea>
+          <button id="search_button" type="submit">
             Add
           </button>
         </form>
