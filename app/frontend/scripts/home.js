@@ -139,9 +139,8 @@ const createActivityCards = (activities) => {
     };
     getParticipationStatus();
 
-
-    //delete button
-    if(user.role == 0){
+    //delete button is visible for admin or moderator role and the owner of the activity
+    if (user.role == 0 || user.role === 2 || user.user_id === activity.owner_id){
       const deleteButton = document.createElement('button');
       deleteButton.innerHTML = 'Delete';
       deleteButton.classList.add('button_delete');
