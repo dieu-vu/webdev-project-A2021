@@ -125,6 +125,7 @@ const createActivityStack = (activities, headerText, divName) => {
             a.appendChild(figure);
             figure.appendChild(img);
             figure.appendChild(gradient);
+            figure.appendChild(h2);
             figure.appendChild(p1);
 
             listContainer.appendChild(header);
@@ -158,8 +159,8 @@ const getProfile = async () => {
 
         createUserPic(user, userInfo);
         //Get list of all relevant activities of user in json response
-        createActivityStack(user.ownActivity, 'My own activities', 'own_activities');
-        createActivityStack(user.participateActivity, 'Activities I participate in', 'joined_activities');
+        createActivityStack(user.ownActivity, 'My activities', 'own_activities');
+        createActivityStack(user.participateActivity, 'Joining', 'joined_activities');
 
         console.log('participate', user.participateActivity);
     } catch (e) {
