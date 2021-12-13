@@ -2,6 +2,15 @@
 'use strict';
 // const url = 'http://localhost:3000'; // url for backend connection
 
+// get user data from session storage
+const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
+const loggedInUserId = loggedInUser.user_id;
+
+// Check if user is an admin to give access to admin page
+if (loggedInUser.role === 0) {
+    document.querySelector('.admin-option').style.display = "block";
+}
+
 const addForm = document.querySelector('#add_activity_form');
 
 addForm.addEventListener('submit', async (evt) => {
