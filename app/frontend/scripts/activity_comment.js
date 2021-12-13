@@ -1,4 +1,4 @@
-// file for home functionality
+// file for comment functionality
 // 'use strict';
 const imgUrl = 'http://localhost:3000'; // url for backend connection
 
@@ -47,7 +47,7 @@ const createCommentLists = (comments) => {
         commentContainer.classList.add('comment_container');
 
         const img = document.createElement('img');
-        img.src = imgUrl + '/' + comments.user_id;
+        fetchProfilePic(comment.user_id, img);
         img.onerror = () => {img.src='https://picsum.photos/600/400'};
         img.classList.add('comment_image');
 
@@ -112,3 +112,19 @@ const getCommentByActivityId = async (activity_id) => {
   getCommentByActivityId(id);
 
   
+const fetchProfilePic = async (userId, imgElement) => {
+  try {
+    const fetchOptions = {
+      headers: {
+        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(imgUrl + '/user/' + userId, fetchOptions);
+    const user = await response.json();
+
+    imgElement.src = imgUrl + '/' + user.user_filename;
+    
+  } catch (e) {
+    console.log(e.message);
+  }
+};

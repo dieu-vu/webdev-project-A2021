@@ -79,7 +79,7 @@ const createActivityStack = (activities, headerText, divName) => {
     header.classList.add('profile_headers');
 
     const ul = document.createElement('ul');
-    ul.id = 'activity_list';
+    ul.id = 'activity_list_user';
     ul.classList.add = 'image-stack';
 
     ul.innerHTML = '';
