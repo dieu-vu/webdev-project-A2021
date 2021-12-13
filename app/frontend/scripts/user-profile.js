@@ -210,6 +210,7 @@ userEditForm.addEventListener('submit', async (editEvent) => {
 
     const response = await fetch(url + `/user/${loggedInUserId}`, options);
     const json = await response.json();
+    console.log(json);
     
    
     if (isEmpty) {

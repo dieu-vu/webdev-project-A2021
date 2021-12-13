@@ -20,11 +20,10 @@ const createActivityCards = (activities) => {
     
     const img = document.createElement('img');
     //Add a place holder picture if picture is not saved on server
-    if (activity.filename === null) {
-      img.src = 'https://picsum.photos/300/200';
-    } else {
-        img.src = url + '/' + activity.filename;
-    }
+    
+    img.src = url + '/' + activity.filename;
+    img.onerror = () => {img.src='https://picsum.photos/600/400'};
+
 
     img.alt = activity.activity;
     img.classList.add('activity_image');
