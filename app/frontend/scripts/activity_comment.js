@@ -52,7 +52,7 @@ const createCommentLists = (comments) => {
         img.classList.add('comment_image');
 
         const p1 = document.createElement('p');
-        p1.innerHTML = ` <br> 💬 <a href="">${comment.user}</a>: ${comment.comment}`;
+        p1.innerHTML = `💬 <a href="">${comment.user}</a>: ${comment.comment}`;
         p1.classList.add('comment_text');
 
         const postedTime = document.createElement('p');
