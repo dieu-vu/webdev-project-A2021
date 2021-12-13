@@ -1093,3 +1093,13 @@ a:hover {
   border-radius: 25px;
   color: antiquewhite;
 }
+
+#comment_button{
+    width: 10%;
+    margin: auto;
+    padding: 10px;
+    background: #60bfba;
+    border-radius: 25px;
+    border: none;
+    color: #fcfcfc;
+}
