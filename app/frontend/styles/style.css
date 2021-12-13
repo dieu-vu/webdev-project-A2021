@@ -167,6 +167,7 @@ a:hover {
     border: none;
     box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.25);
     border-radius: 56px;
+    cursor: pointer;
 }
 
 #search_selector {
@@ -220,6 +221,7 @@ a:hover {
 .activity_image:hover {
     filter: grayscale(0);
     transform: scale(1.1);
+    cursor: pointer;
 }
 
 .activity_link {
@@ -250,12 +252,14 @@ a:hover {
 
 .button_participate {
     position: absolute;
-    bottom: 8px;
-    right: 16px;
+    width: 100px;
+    height: 40px;
+    right: 30%;
+    top: 25%;
     background-color: #60bfba;
-    padding: 3%;
-    border-radius: 20px;
+    border-radius: 40px;
     border: none;
+    cursor: pointer;
 }
 
 .button_delete {
@@ -266,6 +270,15 @@ a:hover {
     padding: 3%;
     border-radius: 20px;
     border: none;
+    cursor: pointer;
+}
+
+.modal_hint {
+    position: absolute;
+    top: 85%;
+    right: 16px;
+    color: #FCFCFC;
+    font-weight: bold;
 }
 
 .participants {
@@ -276,23 +289,9 @@ a:hover {
     font-weight: bold;
 }
 
-.publisher {
-    position: absolute;
-    top: 12%;
-    left: 16px;
-    color: #FCFCFC;
-}
-
 .activity_name {
     position: absolute;
     top: 8px;
-    left: 16px;
-    color: #60bfba;
-}
-
-.activity_description {
-    position: absolute;
-    bottom: 8px;
     left: 16px;
     color: #60bfba;
 }
@@ -304,12 +303,132 @@ a:hover {
     color: #FCFCFC;
 }
 
-.activity_time {
+/*********** MODAL SECTION *************/
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.49); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal_content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+    overflow: hidden;
+}
+
+.modal_image {
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    border-left: 1px solid #fcfcfc;
+    border-top: 1px solid #fcfcfc;
+    border-bottom: 1px solid #fcfcfc;
+    border-right: 1px solid #fcfcfc;
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.modal_close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.layer {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    padding: 25px 15px 15px;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.66) 0%, rgba(255, 255, 255, 0) 100%);
+);
+    transition: 0.3s;
+}
+
+.modal_description {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 33%;
+    left: 27%;
+    width: 40%;
+    color: #fcfcfc;
+    z-index: 10;
+}
+
+.modal_time {
+    position: absolute;
+    top: 23%;
+    left: 27%;
+    color: #FCFCFC;
+    z-index: 10;
+}
+
+.modal_publisher {
     position: absolute;
     top: 20%;
-    left: 16px;
+    left: 27%;
     color: #FCFCFC;
+    z-index: 10;
 }
+
+.modal_name {
+    position: absolute;
+    top: 15%;
+    left: 27%;
+    color: #FCFCFC;
+    z-index: 10;
+}
+
+.modal_participants {
+    position: absolute;
+    top: 15%;
+    right: 30%;
+    color: #FCFCFC;
+    font-weight: bold;
+}
+
+.modal_location {
+    position: absolute;
+    top: 18%;
+    right: 30%;
+    color: #FCFCFC;
+    font-weight: lighter;
+}
+
+
+.modal_close:hover,
+.modal_close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 
 /*********** LAST24 SECTION *************/
 .activity_list_last24 {
@@ -416,6 +535,7 @@ a:hover {
     flex-direction: column;
     position: relative;
     width: 100%;
+    margin-bottom: 30%;
 }
 
 .joined_activities {
@@ -444,6 +564,7 @@ a:hover {
     right: -125%;
     height: 1.5rem;
     width: 1.5rem;
+    cursor: pointer;
 }
 
 .side-edit-menu {
@@ -469,6 +590,7 @@ a:hover {
     background-size: cover;
     height: 2rem;
     width: 2rem;
+    cursor: pointer;
 }
 
 #edit-profile-form {
@@ -646,6 +768,7 @@ a:hover {
     font-size: larger;
     font-weight: 300;
     font-family: "Roboto Thin", sans-serif;
+    cursor: pointer;
 }
 
 /*CSS for browse file button begins*/
@@ -681,6 +804,7 @@ a:hover {
     left: 0;
     top: 0;
     opacity: 0;
+    cursor: pointer;
 }
 
 /*CSS for browse file button ends*/
