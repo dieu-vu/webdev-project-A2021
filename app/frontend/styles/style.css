@@ -1046,3 +1046,7 @@ a:hover {
   color: #f8f4e5;
 
 }
+
+#comment_list {
+  flex-direction: column;
+}
