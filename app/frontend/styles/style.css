@@ -1529,16 +1529,32 @@ a:hover {
           margin-left: 10px;
       }
 
-    .login_hint {
-        top: 70%;
-        right: 32%;
-    }
-
-    .login_hint_search {
-        top: 80%;
-        right: 38%;
-        font-size: 20px;
-    }
+      /* SETTING PAGE INPUT FORM */
+      .setting-input {
+        width: 90%;
+        margin-left: 5%;
+      }
+      .setting_input_form {
+        width: 100%;
+        margin: auto;
+      }
+      
+      .setting_input_form > label {
+        padding: 2%;
+      }
+      
+      .setting_input_form .description_input {
+        width: 100%; 
+        margin: auto; 
+      }
+      
+      .setting_input_form > button {
+        width: 40%;
+      }
+  
+      .activity_content {
+          width: 100%;
+      }
 
     /************* MODAL SECTION *************/
     .modal_comments {
@@ -1728,6 +1744,27 @@ a:hover {
           float: right;
           margin-left: 2px;
       }
+      /* SETTING PAGE INPUT FORM */
+    .setting-input {
+      width: 100%;
+      margin: auto;
+    }
+    .setting_input_form {
+      width: 100%;
+    }
+    
+    .setting_input_form > label {
+      padding: 2%;
+    }
+    
+    .setting_input_form .description_input {
+      width: 100%;  
+    }
+    
+    .setting_input_form > button {
+      width: 50%;
+    }
+
     /************* ADMIN PAGE SECTION *************/
 
     .tab-panel {
@@ -1753,9 +1790,7 @@ a:hover {
 }
 
 .setting_input_form {
-  width: 100%;
-  margin: auto;
-  float: right;
+  width: 80%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -1765,10 +1800,21 @@ a:hover {
   padding: 2%;
 }
 
-.setting_input_form > input {
+.setting_input_form .description_input {
   background: rgba(0, 65, 85, 0.7);
   border-color: #f8f4e5;
   color: #f8f4e5;
+  width: 80%;  
+}
+
+.setting_input_form > button {
+    background-color: #60bfba;
+    margin: 2%;
+    padding: 2%;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    width: 30%;
 }
 
 

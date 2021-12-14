@@ -108,7 +108,7 @@ const createFormByFieldList = (fieldList, haveUpload, ifDelete) => {
     const button = document.createElement('button');
     button.type = 'submit';
     button.innerHTML = 'Save changes';
-    button.id = 'save-profile-btn'; // CSS ID OF THE BUTTON
+    button.classList.add('admin_button'); // CSS ID OF THE BUTTON
 
     form.appendChild(button);
 
