@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Nutivity</title>
-    <link rel="icon" type="image/x-icon" href="./images/icon.ico">
-    <link href="./styles/style.css" rel="stylesheet" />
-  </head>
 
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Nutivity</title>
+  <link rel="icon" type="image/x-icon" href="./images/icon.ico">
+  <link href="./styles/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="content">
     <!--Left side navigation drawer-->
     <nav class="nav_menu">
       <div class="nav_container">
@@ -43,32 +45,33 @@
     </nav>
 
     <!--Main content-->
-    <div class="main_content">
-        <div class="user-header">
-            <div id="user-info">
-            <!-- display user picture and name -->
-            </div>
+    <div class="activity_content">
+      <div class="user-header">
+        <div id="user-info">
+          <!-- display user picture and name -->
         </div>
-        <div class="tab-panel">
-            <div data-tabname="Users">
-                <div class="user-list">
-                    <h2>User list</h2>
-                <!-- js to generate user list -->
-                </div>
-            </div>
-            <div data-tabname="Activities">
-                <div class="activity-list"> 
-                    <h2>Activity list</h2>
-                <!-- js to generate user list -->
-                </div>
-            </div>
+      </div>
+      <div class="tab-panel">
+        <div data-tabname="Users" class="tab_content">
+          <div class="user-list">
+            <h2>User list</h2>
+            <!-- js to generate user list -->
+          </div>
         </div>
+        <div data-tabname="Activities" class="tab_content">
+          <div class="activity-list">
+            <h2>Activity list</h2>
+            <!-- js to generate user list -->
+          </div>
+        </div>
+      </div>
 
-      
     </div>
-    <!-- Define scripts here -->
-    <script src="./scripts/serialize.js"></script>
-    <script src="./scripts/navigation.js"></script>
-    <script src="./scripts/admin.js"></script>
-  </body>
+  </div>
+  <!-- Define scripts here -->
+  <script src="./scripts/serialize.js"></script>
+  <script src="./scripts/navigation.js"></script>
+  <script src="./scripts/admin.js"></script>
+</body>
+
 </html>

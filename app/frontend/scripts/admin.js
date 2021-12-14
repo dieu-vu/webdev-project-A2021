@@ -19,6 +19,7 @@ const activityList = document.querySelector('.activity-list');
 const createTabs = (node) => {
     let tabs = Array.from(node.children).map ( node => {
         let button = document.createElement('button');
+        button.classList.add('admin_tab_button');
         button.textContent = node.getAttribute('data-tabname');
 
         let tab = {node, button};
@@ -27,6 +28,7 @@ const createTabs = (node) => {
     });
 
     let tabList = document.createElement('div');
+    tabList.classList.add('admin_tab_button_container');
     for ( let {button} of tabs) tabList.appendChild(button);
     node.insertBefore(tabList, node.firstChild);
 
