@@ -1256,6 +1256,24 @@ a:hover {
         height: 100%;
         width: 100%;
     }
+
+    /************* ADMIN PAGE SECTION *************/
+
+    .tab-panel {
+        margin-top: 20%;
+    }
+    
+    .admin_tab_button_container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        overflow: auto;
+    }
+    
+    .tab_content {
+        margin: auto;
+        width: 50%;
+    }
       
 }
 
@@ -1468,6 +1486,22 @@ a:hover {
           float: right;
           margin-left: 2px;
       }
+    /************* ADMIN PAGE SECTION *************/
+
+    .tab-panel {
+        margin-top: 25%;
+    }
+    
+    .admin_tab_button_container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        overflow: auto;
+    }
+
+    .tab_content {
+        width: 80%;
+    }
 }
 
 /* SETTING PAGE INPUT FORM */
