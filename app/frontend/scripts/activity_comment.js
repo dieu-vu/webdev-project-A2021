@@ -92,7 +92,7 @@ console.log("activityId:", getQueryVariable("activityId") );
 const activityName = getQueryVariable("activityName").replace("%"," ").replace("20","");
 console.log("activityName:", activityName );
 
-
+// exported
 const getCommentByActivityId = async (activity_id) => {
     try {
       const fetchOptions = {

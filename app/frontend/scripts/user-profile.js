@@ -47,7 +47,6 @@ const createUserPic = (user, el) => {
     imgContainer.classList.add('container-image');
 
     const img = document.createElement('img');
-    
     img.src = url + '/' + user.user_filename;
     img.onerror = () => {img.src='https://picsum.photos/200'};
     img.alt = user.name;
@@ -95,11 +94,8 @@ const createActivityStack = (activities, headerText, divName) => {
         activities.forEach((activity) => {
             const img = document.createElement('img');
             //Add a place holder picture if picture is not saved on server
-            
             img.src = url + '/' + activity.filename;
             img.onerror = () => {img.src='https://picsum.photos/600/400'};
-
-            
             img.alt = activity.name;
             img.classList.add('activity_image');
 
@@ -114,15 +110,17 @@ const createActivityStack = (activities, headerText, divName) => {
             p1.innerHTML = `${activity.location}`;
             p1.classList.add('activity_location');
 
-            const p2 = document.createElement('p');
-            p2.innerHTML = activity.description;
-            p2.classList.add('activity_description');
-
             const gradient = document.createElement('figcaption');
             gradient.classList.add('gradient_background');
 
             const a = document.createElement('a');
             a.classList.add('activity_link_user');
+
+            // FOR MODAL FUNCTIONALITY
+            const hint = document.createElement('p');
+            //Text for hint is depending on the participation status below
+            hint.classList.add('modal_hint');
+            // FOR MODAL FUNCTIONALITY
 
             ul.appendChild(a);
             a.appendChild(figure);
@@ -135,9 +133,93 @@ const createActivityStack = (activities, headerText, divName) => {
             listContainer.appendChild(ul);
 
             stack.appendChild(listContainer);
+
+            // // FOR MODAL FUNCTIONALITY
+            const layer = document.createElement('div');
+            layer.classList.add('layer');
+            // // FOR MODAL FUNCTIONALITY
             
             stack.style.color = '#fcfcfc';
 
+
+            // FOR MODAL FUNCTIONALITY
+            // Triggering the modal to open
+            const image = document.createElement('img');
+            image.alt = activity.activity;
+            image.classList.add('modal_image');
+
+            // Creating modal
+            const modal = document.createElement('div');
+            modal.classList.add('modal')
+            const modalContent = document.createElement('div');
+            modalContent.classList.add('modal_content');
+
+            // Modal close button
+            const close = document.createElement('span');
+            close.innerHTML = "x";
+            close.classList.add('modal_close');
+
+            const activityName = document.createElement('h2');
+            activityName.innerHTML = activity.name;
+            activityName.classList.add('modal_name');
+
+            const publisher = document.createElement('p');
+            publisher.innerHTML = `PLACEHOLDER`;
+            publisher.classList.add('modal_publisher');
+
+            const p3 = document.createElement('p');
+            p3.innerHTML = `${activity.description}`;
+            p3.classList.add('modal_description');
+
+            const p4 = document.createElement('p');
+            const timeString = `${activity.VET.toString().substring(0, 10)} @ ${activity.VET.toString().substring(11, 19)}`;
+            console.log(timeString);
+            p4.innerHTML = `Time: ${timeString}`;
+            p4.classList.add('modal_time');
+
+            const participantCount = document.createElement('p');
+            participantCount.innerHTML = `PLACEHOLDER`;
+            participantCount.classList.add('modal_participants');
+
+            const activityLocation = document.createElement('p');
+            activityLocation.innerHTML = `${activity.location}`;
+            activityLocation.classList.add('modal_location');
+
+            const id = `${activity.id}`;
+
+            const viewComments = document.createElement('button');
+            viewComments.innerHTML = 'Chat about this topic';
+            viewComments.classList.add('modal_comments');
+
+
+            // Modal opens clicked image and displays image specific details
+            img.onclick = function () {
+                modal.style.display = "block";
+                image.src = this.src;
+                image.id = id;
+                ul.appendChild(modal);
+                modal.appendChild(modalContent);
+                modalContent.appendChild(image);
+                modalContent.appendChild(layer);
+                layer.appendChild(p4);
+                layer.appendChild(p3);
+                layer.appendChild(publisher);
+                layer.appendChild(activityName);
+                layer.appendChild(participantCount);
+                layer.appendChild(activityLocation);
+                layer.appendChild(viewComments);
+                modalContent.appendChild(close);
+            }
+
+            viewComments.addEventListener('click', async () => {
+                location.href = `activity_comment.html?activityId=${image.id}&activityName=${activity.activity}`
+            });
+
+            // When the user clicks on (x), close the modal
+            close.onclick = function () {
+                modal.style.display = "none";
+            }
+            // MODAL FUNCTIONALITY ENDS
         });
     } else {
         const noActivityMessage = document.createElement('p');

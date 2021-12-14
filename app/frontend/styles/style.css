@@ -417,6 +417,16 @@ a:hover {
     font-weight: lighter;
 }
 
+.modal_comments {
+    position: absolute;
+    top: 75%;
+    right: 38%;
+    color: #181818;
+    width: 180px;
+    height: 40px;
+    cursor: pointer;
+}
+
 
 .modal_close:hover,
 .modal_close:focus {
@@ -482,7 +492,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 70%;
+    width: 80%;
     left: 20%;
     color: #fcfcfc;
 }
@@ -495,7 +505,7 @@ a:hover {
 
 .activity_link_user {
     display: flex;
-    width: 100%;
+    width: 80%;
     margin: 0;
     overflow: hidden;
 }
@@ -1363,6 +1373,7 @@ a:hover {
 #comment_list {
   flex-direction: column;
   width: 90%;
+  margin-top: 10%;
 }
 
 .comment_image {

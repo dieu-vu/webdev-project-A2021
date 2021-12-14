@@ -22,9 +22,7 @@ const createActivityCards = (activities) => {
         const img = document.createElement('img');
         //Add a place holder picture if picture is not saved on server
         img.src = url + '/' + activity.filename;
-        img.onerror = () => {
-            img.src = 'https://picsum.photos/600/400'
-        }
+        img.onerror = () => {img.src = 'https://picsum.photos/600/400'}
         img.alt = activity.activity;
         img.classList.add('activity_image');
 
@@ -53,7 +51,6 @@ const createActivityCards = (activities) => {
         const hint = document.createElement('p');
         //Text for hint is depending on the participation status below
         hint.classList.add('modal_hint');
-        hint.classList.add('gradient_background_reverse');
         // FOR MODAL FUNCTIONALITY
 
         a.appendChild(figure);
@@ -128,7 +125,7 @@ const createActivityCards = (activities) => {
                             const response = await fetch(url + '/activity/participation/' + activity.id, fetchOptions);
                             const json = await response.json();
                             console.log('delete response', json);
-                            alert("You have quitted this activity.")
+                            alert("You have left this activity.")
                             getActivity();
                         } catch (e) {
                             console.log(e.message);
@@ -207,28 +204,39 @@ const createActivityCards = (activities) => {
         participantCount.innerHTML = `Joining: ${activity.participantNum}`;
         participantCount.classList.add('modal_participants');
 
-        const location = document.createElement('p');
-        location.innerHTML = `${activity.location}`;
-        location.classList.add('modal_location');
+        const activityLocation = document.createElement('p');
+        activityLocation.innerHTML = `${activity.location}`;
+        activityLocation.classList.add('modal_location');
+
+        const id = `${activity.id}`;
+
+        const viewComments = document.createElement('button');
+        viewComments.innerHTML = 'Chat about this topic';
+        viewComments.classList.add('modal_comments');
 
 
         // Modal opens clicked image and displays image specific details
         img.onclick = function () {
             modal.style.display = "block";
             image.src = this.src;
+            image.id = id;
             div.appendChild(modal);
             modal.appendChild(modalContent);
             modalContent.appendChild(image);
             modalContent.appendChild(layer);
-            modalContent.appendChild(close);
             layer.appendChild(p4);
             layer.appendChild(p3);
             layer.appendChild(p1);
             layer.appendChild(activityName);
             layer.appendChild(participantCount);
-            layer.appendChild(location);
+            layer.appendChild(activityLocation);
+            layer.appendChild(viewComments);
             modalContent.appendChild(close);
         }
+
+        viewComments.addEventListener('click', async () => {
+            location.href = `activity_comment.html?activityId=${image.id}&activityName=${activity.activity}`
+        });
 
 // When the user clicks on (x), close the modal
         close.onclick = function () {
