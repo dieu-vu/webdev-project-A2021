@@ -52,6 +52,9 @@ const createUserPic = (user, el) => {
     img.onerror = () => {img.src='https://picsum.photos/200'};
     img.alt = user.name;
     img.classList.add('user_image');
+    img.addEventListener('click', () => {
+        openMenu();
+    });
 
     const p2 = document.createElement('p');
     p2.innerHTML = user.name;

@@ -44,6 +44,10 @@ router.route('/:id/passwordChange')
         userController.user_update_password
     );
 
+router.route('/:id/promoteUser')
+    .get(userController.user_get)
+    .put(userController.user_change_role);
+
 router.get('/token', checkToken);
 
 module.exports = router;

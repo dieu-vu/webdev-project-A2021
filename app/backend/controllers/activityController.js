@@ -6,7 +6,7 @@ const { httpError } = require('../utils/errors');
 
 const activity_list_get = async (req, res, next) => {
     const activities = await getAllValidActivity(next);
-    console.log('all activities', activities);
+    //console.log('all activities', activities);
     if(activities.length < 1) {
         const err = httpError('No valid activity can be found at present!', 404);
         next(err);

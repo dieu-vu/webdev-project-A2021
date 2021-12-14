@@ -138,6 +138,20 @@ const updatePassword = async (user) => {
     }
 };
 
+// Update user role to/from mode:
+const changeUserModRole = async (userId, newRole) => {
+    try {
+        const query = `UPDATE p_user SET role = ? WHERE user_id = ?`;
+        const [rows] = await promisePool.execute(query, [newRole, userId]);
+        console.log('User model change mod role', rows);
+        return rows.affectedRows === 1;
+    } catch (e) {
+        console.log('USER MODEL CHANGE MOD ROLE ERROR', e.message);
+    }
+};
+
+
+
 // Implement this for admin user only
 const deleteUser = async (currentUser, deletedUserId) => {
     try {
@@ -170,5 +184,6 @@ module.exports = {
     getParticipatingActivity,
     getUserLogin,
     updatePassword,
+    changeUserModRole,
     deleteUser,
 };

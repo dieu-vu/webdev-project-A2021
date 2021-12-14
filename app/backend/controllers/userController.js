@@ -75,10 +75,11 @@ const user_put = async (req, res, next) => {
 
 };
 
+
 const user_update_password = async (req, res, next) => {
 	const errors = validationResult(req);
 	if (!errors.isEmpty()){
-		console.error('user_put validation', errors.array());
+		console.error('user change password validation', errors.array());
 		const err = httpError('data not valid', 400);
 		next(err);
 		return;
@@ -107,9 +108,40 @@ const user_update_password = async (req, res, next) => {
 		next(err);
 		return;
 	}
-
 };
 
+const user_change_role = async (req, res, next) => {
+	const errors = validationResult(req);
+	if (!errors.isEmpty()){
+		console.error('user promote validation', errors.array());
+		const err = httpError('data not valid', 400);
+		next(err);
+		return;
+	}
+	try {
+		const promotedUserId = req.params.id;	
+		const user = await userModel.getUser(promotedUserId, next); 
+		console.log('promoted user current role', user.role);
+		
+		//Check if the user's curent role in database:
+		if (user.role === 0){
+			res.json({ message: `User is a mighty admin`});
+		} else if (user.role === 2) {
+			const updated = await userModel.changeUserModRole(promotedUserId, 1);
+			res.json({ message: `User demotion succeeded`});
+			console.log("demoted role");
+		} else { 
+			const updated = await userModel.changeUserModRole(promotedUserId, 2);
+			res.json({ message: `User promotion succeeded`});
+			console.log("promoted role");
+		};
+	} catch (e) {
+		console.log('USER PROMOTE ERROR', e.message);
+		const err = httpError('Error update user role', 404);
+		next(err);
+		return;
+	}
+};
 
 const user_delete = async (req, res) => {
 	const deletedUserId = req.params.id;
@@ -133,7 +165,8 @@ module.exports = {
 	user_list_get,
 	user_get,
 	user_put,
-	user_update_password,
+	user_update_password, 
+	user_change_role,
 	user_delete,
 	checkToken,
 };

@@ -50,7 +50,6 @@ const getAllUsers = async () => {
                 Authorization: 'Bearer ' + sessionStorage.getItem('token'),
             },
         };
-        console.log('LOGGED IN USER', loggedInUserId);
         const response = await fetch(url + `/user/`, fetchOptions);
         const users = await response.json();
         console.log('USERS RETRIEVED', users.length);
@@ -69,11 +68,9 @@ const getAllActitivities = async () => {
                 Authorization: 'Bearer ' + sessionStorage.getItem('token'),
             },
         };
-        console.log('LOGGED IN USER', loggedInUserId);
         const response = await fetch(url + '/activity/', fetchOptions);
         const activities = await response.json();
         console.log('ACTIVITIES RETRIEVED', activities.length);
-        console.log('ACTIVITIES RETRIEVED', activities);
 
         createActivityList(activities);
 
@@ -84,16 +81,20 @@ const getAllActitivities = async () => {
 
 
 // create list for displaying user in user tab:
-const createUserList = (users) => {
+const createUserList = async (users) => {
     const ul = document.createElement('ul');
     ul.classList.add('tab-list');
     ul.innerHTML = '';
 
     if (users.length !== 0) {
-        users.forEach((user) => {
+        users.forEach(async (user) => {
             const name = document.createElement('p');
             name.classList.add('item-name');
-            name.innerHTML = `${user.name}`;
+
+            if (user.role === 0) {name.innerHTML = `${user.name} (Admin)` }
+            else if (user.role === 2) {name.innerHTML = `${user.name} (Mod)`}
+            else {name.innerHTML = `${user.name}`};
+
     
             const li = document.createElement('li');
             li.appendChild(name);
@@ -130,27 +131,15 @@ const createUserList = (users) => {
 
             //Promote button
             const promoteButton = document.createElement('button');
-            promoteButton.innerHTML = 'Promote to mod';
             promoteButton.classList.add('admin_button');
             promoteButton.style.display = "inline";
-            promoteButton.addEventListener('click', async () => {
-                const fetchOptions = {
-                  method: 'PUT',
-                  headers: {
-                    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-                  },
-                };
-                alert("You are promoting this user to moderator, continue?");
-                try {
-                  const response = await fetch(url + '/user/' + user.user_id, fetchOptions);
-                  console.log('delete response', response);
-                  alert(`User ${name.innerHTML} deleted`);
-                  window.location.reload();
-                } catch (e) {
-                  console.log(e.message);
-                }
-            });
-
+            if (user.role === 1) {
+                await handleChangeRoleButton(promoteButton, 'Promote', user);
+            } else if (user.role === 0) {
+                promoteButton.style.display = 'none';
+            } else if (user.role === 2) {
+                await handleChangeRoleButton(promoteButton, 'Demote', user);
+            };
 
             span.appendChild(deleteButton);
             span.appendChild(promoteButton);
@@ -161,6 +150,7 @@ const createUserList = (users) => {
     }
     userList.appendChild(ul);    
 };
+
 
 // create list for displaying activity in activity tab:
 const createActivityList = (activities) => {
@@ -177,7 +167,6 @@ const createActivityList = (activities) => {
             const li = document.createElement('li');
             li.appendChild(name);
 
-            console.log("activity name", name.innerHTML);
             const deleteButton = document.createElement('button');
             deleteButton.innerHTML = 'Delete';
             deleteButton.classList.add('button');
@@ -200,11 +189,37 @@ const createActivityList = (activities) => {
                 }
             });
             li.appendChild(deleteButton);
-
             ul.appendChild(li);
         });
     }
     activityList.appendChild(ul);    
+};
+
+const handleChangeRoleButton = async (buttonElement, changeType, user) => {
+    if (changeType ==='Promote') {buttonElement.innerHTML = `${changeType} to mod` } 
+    else { buttonElement.innerHTML = `${changeType} from mod`};
+    
+    buttonElement.addEventListener('click', async () => {
+        const fetchOptions = {
+            method: 'PUT',
+            headers: {
+            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        if (confirm(`You will ${changeType} this user, continue?`)) {
+            try {
+                const response = await fetch(url + `/user/${user.user_id}/promoteUser`, fetchOptions);
+                const json = await response.json();
+                console.log('promote response', response);
+                alert(json.message);
+                window.location.reload();
+            } catch (e) {
+                console.log(e.message);
+            }
+        } else {
+            alert("You cancelled the action");
+        }
+    });
 };
 
 getAllUsers();
