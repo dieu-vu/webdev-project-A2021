@@ -92,10 +92,19 @@ const createActivityStack = (activities, headerText, divName) => {
 
     if (activities.length !==0){
         activities.forEach((activity) => {
+
+
+            const randomText = document.createElement('p');
+            randomText.innerHTML = ('Randomly generated image');
+            randomText.classList.add('random_text');
+
             const img = document.createElement('img');
             //Add a place holder picture if picture is not saved on server
             img.src = url + '/' + activity.filename;
-            img.onerror = () => {img.src='https://picsum.photos/600/400'};
+            img.onerror = () => {
+                img.src = 'https://picsum.photos/600/400'
+                figure.appendChild(randomText);
+            }
             img.alt = activity.name;
             img.classList.add('activity_image');
 

@@ -58,10 +58,11 @@ const createActivityCards = (activities) => {
 
         const loginHint = document.createElement('p');
         loginHint.innerHTML = `Login to view`;
-        loginHint.classList.add('login_hint');
+        loginHint.classList.add('login_hint_search');
 
         const a = document.createElement('a');
         a.classList.add('activity_link');
+        a.id = "search_image";
 
 
         div.appendChild(a);

@@ -17,11 +17,18 @@ const createActivityCards = (activities) => {
   div.innerHTML = '';
   activities.forEach((activity) => {
     // create li with DOM methods
+
+    const randomText = document.createElement('p');
+    randomText.innerHTML = ('Randomly generated image');
+    randomText.classList.add('random_text_last24');
     
     const img = document.createElement('img');
     //Add a place holder picture if picture is not saved on server
     img.src = url + '/' + activity.filename;
-    img.onerror = () => {img.src='https://picsum.photos/600/400'};
+    img.onerror = () => {
+      img.src = 'https://picsum.photos/600/400'
+      figure.appendChild(randomText);
+    }
     img.alt = activity.activity;
     img.classList.add('activity_image');
 
@@ -33,7 +40,7 @@ const createActivityCards = (activities) => {
 
     const h2 = document.createElement('h2');
     h2.innerHTML = activity.activity;
-    h2.classList.add('activity_name');
+    h2.classList.add('activity_name_last24');
 
     const p2 = document.createElement('p');
     p2.innerHTML = `${activity.location}`;
@@ -45,11 +52,12 @@ const createActivityCards = (activities) => {
 
     const a = document.createElement('a');
     a.classList.add('activity_link');
+    a.id = "image_last24";
 
     // FOR MODAL FUNCTIONALITY
     const hint = document.createElement('p');
     //Text for hint is depending on the participation status below
-    hint.classList.add('modal_hint');
+    hint.classList.add('modal_hint_last24');
     // FOR MODAL FUNCTIONALITY
 
     a.appendChild(figure);

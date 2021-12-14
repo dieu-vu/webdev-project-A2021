@@ -30,9 +30,17 @@ const createActivityCards = (activities) => {
         console.log("no activity");
         return;
     };
+
+        const randomText = document.createElement('p');
+        randomText.innerHTML = ('Randomly generated image');
+        randomText.classList.add('random_text');
+
       const img = document.createElement('img');
-      img.src = url + '/' + activity.filename;
-    //   img.src = activity.filename;
+        img.src = url + '/' + activity.filename;
+        img.onerror = () => {
+            img.src = 'https://picsum.photos/600/400'
+            figure.appendChild(randomText);
+        }
       img.alt = activity.activity;
       img.classList.add('activity_image');
 
@@ -57,12 +65,13 @@ const createActivityCards = (activities) => {
 
         const a = document.createElement('a');
         a.classList.add('activity_link');
+        a.id = "search_image";
 
 
         // FOR MODAL FUNCTIONALITY
         const hint = document.createElement('p');
         //Text for hint is depending on the participation status below
-        hint.classList.add('modal_hint');
+        hint.classList.add('modal_hint_search');
         // FOR MODAL FUNCTIONALITY
 
         a.appendChild(figure);
