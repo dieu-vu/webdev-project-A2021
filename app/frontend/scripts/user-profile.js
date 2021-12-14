@@ -152,6 +152,98 @@ const createActivityStack = (activities, headerText, divName) => {
             stack.style.color = '#fcfcfc';
 
 
+            //if user not participate this activity display participate button otherwise display quit button
+            const getParticipationStatus = async () => {
+                try {
+                    const fetchOptions = {
+                        headers: {
+                            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                        },
+                    };
+                    const response = await fetch(url + '/activity/participationStatus/' + activity.activity_id, fetchOptions);
+                    const participationStatus = await response.json();
+                    if (participationStatus.message === "not yet participate") {
+                        console.log(`no participated ${activity.activity_id}`);
+                        //hint text 
+                        hint.innerHTML = "Click to join";
+                        // participate button
+                        const participateButton = document.createElement('button');
+                        participateButton.innerHTML = 'Join';
+                        participateButton.classList.add('button_participate');
+                        layer.appendChild(participateButton);
+                        participateButton.addEventListener('click', async () => {
+                            const fetchOptions = {
+                                method: 'POST',
+                                headers: {
+                                    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                                },
+                            };
+                            try {
+                                const response = await fetch(url + '/activity/participation/' + activity.activity_id, fetchOptions);
+                                const json = await response.json();
+                                console.log('post response', json);
+                                alert("Welcome to join this activity.");
+                            } catch (e) {
+                                console.log(e.message);
+                            }
+                        });
+                    } else {
+                        //hint text
+                        hint.innerHTML = "Click to opt out";
+
+                        //quit button
+                        const quitButton = document.createElement('button');
+                        quitButton.innerHTML = 'Opt out';
+                        quitButton.classList.add('button_participate');
+                        layer.appendChild(quitButton);
+                        quitButton.addEventListener('click', async () => {
+                            const fetchOptions = {
+                                method: 'DELETE',
+                                headers: {
+                                    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                                },
+                            };
+                            try {
+                                const response = await fetch(url + '/activity/participation/' + activity.id, fetchOptions);
+                                const json = await response.json();
+                                console.log('delete response', json);
+                                alert("You have left this activity.")
+                            } catch (e) {
+                                console.log(e.message);
+                            }
+                        });
+                    }
+                } catch (e) {
+                    console.log(e.message);
+                }
+            };
+            getParticipationStatus();
+
+            //delete button is visible for admin or moderator role and the owner of the activity
+            if (loggedInUser.role == 0 || loggedInUser.role === 2 || loggedInUser.user_id === activity.owner) {
+                const deleteButton = document.createElement('button');
+                deleteButton.innerHTML = 'Delete';
+                deleteButton.classList.add('button_delete');
+                figure.appendChild(deleteButton);
+                deleteButton.addEventListener('click', async () => {
+                    const fetchOptions = {
+                        method: 'DELETE',
+                        headers: {
+                            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                        },
+                    };
+                    try {
+                        const response = await fetch(url + '/activity/' + activity.activity_id, fetchOptions);
+                        const json = await response.json();
+                        console.log('delete response', json);
+                        getActivity();
+                    } catch (e) {
+                        console.log(e.message);
+                    }
+                });
+            }
+
+
             // FOR MODAL FUNCTIONALITY
             // Triggering the modal to open
             const image = document.createElement('img');
@@ -195,7 +287,7 @@ const createActivityStack = (activities, headerText, divName) => {
             activityLocation.innerHTML = `${activity.location}`;
             activityLocation.classList.add('modal_location');
 
-            const id = `${activity.id}`;
+            const id = `${activity.activity_id}`;
 
             const viewComments = document.createElement('button');
             viewComments.innerHTML = 'Chat about this topic';
@@ -222,7 +314,7 @@ const createActivityStack = (activities, headerText, divName) => {
             }
 
             viewComments.addEventListener('click', async () => {
-                location.href = `activity_comment.html?activityId=${image.id}&activityName=${activity.activity}`
+                location.href = `activity_comment.html?activityId=${activity.activity_id}&activityName=${activity.name}`
             });
 
             // When the user clicks on (x), close the modal

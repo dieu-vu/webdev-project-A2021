@@ -3,12 +3,8 @@
 
 const url = 'http://localhost:3000';
 
-//// TODO: if have time, try adding admin profile picture here:
 const loggedInUserId = JSON.parse(sessionStorage.getItem('user')).user_id;
-// const userInfo = document.querySelector('#user-info');
 
-// console.log("createUserPic func loaded");
-// console.log(userInfo);
 
 // Create tabs for displaying user and activity list:
 const tabs = document.querySelector('.tab-panel');
