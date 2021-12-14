@@ -690,6 +690,11 @@ a:hover {
     overflow: auto;
 }
 
+.admin_tab_button{
+    border-radius: 5px;
+    margin: 5px;
+}
+    
 .tab_content {
     margin: auto;
     width: 50%;
