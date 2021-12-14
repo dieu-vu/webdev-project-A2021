@@ -174,7 +174,7 @@ const createActivityStack = (activities, headerText, divName) => {
             activityName.classList.add('modal_name');
 
             const publisher = document.createElement('p');
-            publisher.innerHTML = `PLACEHOLDER`;
+            publisher.innerHTML = `${activity.owner_name}`;
             publisher.classList.add('modal_publisher');
 
             const p3 = document.createElement('p');
@@ -188,7 +188,7 @@ const createActivityStack = (activities, headerText, divName) => {
             p4.classList.add('modal_time');
 
             const participantCount = document.createElement('p');
-            participantCount.innerHTML = `PLACEHOLDER`;
+            participantCount.innerHTML = `Joining: ${activity.num_participant}`;
             participantCount.classList.add('modal_participants');
 
             const activityLocation = document.createElement('p');

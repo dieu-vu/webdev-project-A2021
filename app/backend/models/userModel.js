@@ -89,8 +89,18 @@ const editUser = async(user) => {
 };
 
 const getOwnActivity = async (user) => {
-    const query = `SELECT * FROM activity 
-        WHERE owner = ? AND (ISNULL(VET) OR VET > CURRENT_DATE())`;
+    const query = `SELECT a.*, u.name as owner_name, p.num_participant AS num_participant
+    FROM activity AS a
+    LEFT JOIN p_user AS u
+    ON a.owner = u.user_id
+    LEFT JOIN (
+    SELECT DISTINCT activity AS activity_id, 
+    COUNT(DISTINCT participant) AS num_participant 
+    FROM participate_in GROUP BY activity_id
+    ) AS p
+    ON a.activity_id = p.activity_id
+    WHERE a.owner = ?
+    AND (ISNULL(a.VET) OR a.VET > CURRENT_DATE());`;
     try {
         const [results] = await promisePool.query(query, [user.user_id]);
         return results;
@@ -101,10 +111,19 @@ const getOwnActivity = async (user) => {
 
 const getParticipatingActivity = async (user) => {
     try {
-        const query = `SELECT p.*, a.* FROM participate_in AS p 
-            LEFT JOIN activity AS a 
-            ON p.activity = a.activity_id 
-            WHERE p.participant = ? AND (ISNULL(VET) OR VET > CURRENT_DATE())`;
+        const query = `SELECT p.*, a.*, u.name AS owner_name, 
+        p_summary.num_participant AS num_participant
+        FROM participate_in AS p 
+        LEFT JOIN activity AS a 
+        ON p.activity = a.activity_id
+        LEFT JOIN p_user as u
+        ON u.user_id = a.owner
+        LEFT JOIN (
+        SELECT DISTINCT activity AS activity_id, 
+        COUNT(DISTINCT participant) AS num_participant 
+        FROM participate_in GROUP BY activity_id) AS p_summary
+        ON a.activity_id = p_summary.activity_id
+        WHERE p.participant = ? AND (ISNULL(a.VET) OR a.VET > CURRENT_DATE())`;
         const results = await promisePool.query(query, [user.user_id]);
         return results[0];
     } catch (e) {
