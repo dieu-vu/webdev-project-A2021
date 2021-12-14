@@ -40,7 +40,7 @@ const createActivityCards = (activities) => {
     p2.classList.add('activity_location');
 
     const p5 = document.createElement('p');
-    p5.innerHTML = `Participants: ${activity.participantNum}`;
+    p5.innerHTML = `Joining: ${activity.participantNum}`;
     p5.classList.add('participants');
 
     const a = document.createElement('a');
@@ -58,6 +58,7 @@ const createActivityCards = (activities) => {
     figure.appendChild(p2);
     figure.appendChild(p5);
     figure.appendChild(h2);
+    figure.appendChild(hint);
 
 
     // // FOR MODAL FUNCTIONALITY
@@ -79,10 +80,10 @@ const createActivityCards = (activities) => {
         if (participationStatus.message == "not yet participate"){
           console.log(`no participated ${activity.id}`);
           //hint text
-          hint.innerHTML = "Click to participate";
+          hint.innerHTML = "Click to join";
           // participate button
           const participateButton = document.createElement('button');
-          participateButton.innerHTML = 'Participate';
+          participateButton.innerHTML = 'Join';
           participateButton.classList.add('button_participate');
           layer.appendChild(participateButton);
           participateButton.addEventListener('click', async () => {
@@ -104,11 +105,11 @@ const createActivityCards = (activities) => {
     });
         } else{
           //hint text
-          hint.innerHTML = "Click to quit";
+          hint.innerHTML = "Click to opt out";
 
         //quit button
         const quitButton = document.createElement('button');
-        quitButton.innerHTML = 'Quit';
+        quitButton.innerHTML = 'Opt out';
         quitButton.classList.add('button_participate');
         layer.appendChild(quitButton)
         quitButton.addEventListener('click', async () => {

@@ -14,14 +14,17 @@ const createActivityCards = (activities) => {
   activities.forEach((activity) => {
     // create li with DOM methods
 
+    const randomText = document.createElement('p');
+    randomText.innerHTML = ('Randomly generated image');
+    randomText.classList.add('random_text');
+
     const img = document.createElement('img');
     //Add a place holder picture if picture is not saved on server
-    if (activity.filename === null) {
-      img.src = 'https://picsum.photos/300/200';
-    } else {
-        img.src = url + '/' + activity.filename;
+    img.src = url + '/' + activity.filename;
+    img.onerror = () => {
+      img.src = 'https://picsum.photos/600/400'
+      figure.appendChild(randomText);
     }
-
     img.alt = activity.activity;
     img.classList.add('activity_image');
 
@@ -35,27 +38,17 @@ const createActivityCards = (activities) => {
     h2.innerHTML = activity.activity;
     h2.classList.add('activity_name');
 
-    const p1 = document.createElement('p');
-    p1.innerHTML = `${activity.owner}`;
-    p1.classList.add('publisher');
-
     const p2 = document.createElement('p');
-    p2.innerHTML = `Location: ${activity.location}`;
+    p2.innerHTML = `${activity.location}`;
     p2.classList.add('activity_location');
 
-    const p3 = document.createElement('p');
-    p3.innerHTML = `Description: ${activity.description}`;
-    p3.classList.add('activity_description');
-
-    const p4 = document.createElement('p');
-    const timeString = `${activity.VET.toString().substring(0,9)} @ ${activity.VET.toString().substring(10,17)}`;
-    p4.innerHTML = `Time: ${timeString}`;
-    p4.classList.add('activity_time');
-
     const p5 = document.createElement('p');
-    p5.innerHTML = `Participant: ${activity.participantNum}`;
+    p5.innerHTML = `Joining: ${activity.participantNum}`;
     p5.classList.add('participants');
 
+    const loginHint = document.createElement('p');
+    loginHint.innerHTML = `Login to view`;
+    loginHint.classList.add('login_hint');
 
     const a = document.createElement('a');
     a.classList.add('activity_link');
@@ -65,7 +58,14 @@ const createActivityCards = (activities) => {
     a.appendChild(figure);
     figure.appendChild(img);
     figure.appendChild(gradient);
-    figure.appendChild(p1);
+    figure.appendChild(h2);
+    figure.appendChild(p2);
+    figure.appendChild(p5);
+    figure.appendChild(loginHint);
+
+    img.addEventListener('click', async () => {
+      alert('Login to view');
+    });
 
   });
 };

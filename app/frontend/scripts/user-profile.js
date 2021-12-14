@@ -128,6 +128,7 @@ const createActivityStack = (activities, headerText, divName) => {
             figure.appendChild(gradient);
             figure.appendChild(h2);
             figure.appendChild(p1);
+            figure.appendChild(hint);
 
             listContainer.appendChild(header);
             listContainer.appendChild(ul);

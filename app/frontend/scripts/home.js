@@ -19,10 +19,17 @@ const createActivityCards = (activities) => {
     activities.forEach((activity) => {
         // create li with DOM methods
 
+        const randomText = document.createElement('p');
+        randomText.innerHTML = ('Randomly generated image');
+        randomText.classList.add('random_text');
+
         const img = document.createElement('img');
         //Add a place holder picture if picture is not saved on server
         img.src = url + '/' + activity.filename;
-        img.onerror = () => {img.src = 'https://picsum.photos/600/400'}
+        img.onerror = () => {
+            img.src = 'https://picsum.photos/600/400'
+            figure.appendChild(randomText);
+        }
         img.alt = activity.activity;
         img.classList.add('activity_image');
 
@@ -41,7 +48,7 @@ const createActivityCards = (activities) => {
         p2.classList.add('activity_location');
 
         const p5 = document.createElement('p');
-        p5.innerHTML = `Participant: ${activity.participantNum}`;
+        p5.innerHTML = `Joining: ${activity.participantNum}`;
         p5.classList.add('participants');
 
         const a = document.createElement('a');
@@ -82,10 +89,10 @@ const createActivityCards = (activities) => {
                 if (participationStatus.message === "not yet participate") {
                     console.log(`no participated ${activity.id}`);
                     //hint text 
-                    hint.innerHTML = "Click to participate";
+                    hint.innerHTML = "Click to join";
                     // participate button
                     const participateButton = document.createElement('button');
-                    participateButton.innerHTML = 'Participate';
+                    participateButton.innerHTML = 'Join';
                     participateButton.classList.add('button_participate');
                     layer.appendChild(participateButton);
                     participateButton.addEventListener('click', async () => {
@@ -107,11 +114,11 @@ const createActivityCards = (activities) => {
                     });
                 } else {
                     //hint text
-                    hint.innerHTML = "Click to quit";
+                    hint.innerHTML = "Click to opt out";
 
                     //quit button
                     const quitButton = document.createElement('button');
-                    quitButton.innerHTML = 'Quit';
+                    quitButton.innerHTML = 'Opt out';
                     quitButton.classList.add('button_participate');
                     layer.appendChild(quitButton);
                     quitButton.addEventListener('click', async () => {
