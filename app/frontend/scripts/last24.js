@@ -157,13 +157,17 @@ const createActivityCards = (activities) => {
                   Authorization: 'Bearer ' + sessionStorage.getItem('token'),
                 },
               };
-              try {
-                const response = await fetch(url + '/activity/' + activity.id, fetchOptions);
-                const json = await response.json();
-                console.log('delete response', json);
-                getLast24HoursActivity();         
-              } catch (e) {
-                console.log(e.message);
+              if (confirm("You are deleting an activity, continue?")) {
+                try {
+                  const response = await fetch(url + '/activity/' + activity.id, fetchOptions);
+                  const json = await response.json();
+                  console.log('delete response', json);
+                  getLast24HoursActivity();         
+                } catch (e) {
+                  console.log(e.message);
+                }
+              } else {
+                alert("You cancelled the action");
               }
             });
           }

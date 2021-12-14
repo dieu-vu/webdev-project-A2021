@@ -183,6 +183,7 @@ const createActivityStack = (activities, headerText, divName) => {
                                 const json = await response.json();
                                 console.log('post response', json);
                                 alert("Welcome to join this activity.");
+                                location.href = 'user.html';
                             } catch (e) {
                                 console.log(e.message);
                             }
@@ -208,6 +209,7 @@ const createActivityStack = (activities, headerText, divName) => {
                                 const json = await response.json();
                                 console.log('delete response', json);
                                 alert("You have left this activity.")
+                                location.href = 'user.html';
                             } catch (e) {
                                 console.log(e.message);
                             }
@@ -217,7 +219,7 @@ const createActivityStack = (activities, headerText, divName) => {
                     console.log(e.message);
                 }
             };
-            getParticipationStatus();
+            if (divName != 'own_activities') {getParticipationStatus()};
 
             //delete button is visible for admin or moderator role and the owner of the activity
             if (loggedInUser.role == 0 || loggedInUser.role === 2 || loggedInUser.user_id === activity.owner) {
@@ -232,13 +234,17 @@ const createActivityStack = (activities, headerText, divName) => {
                             Authorization: 'Bearer ' + sessionStorage.getItem('token'),
                         },
                     };
-                    try {
-                        const response = await fetch(url + '/activity/' + activity.activity_id, fetchOptions);
-                        const json = await response.json();
-                        console.log('delete response', json);
-                        getActivity();
-                    } catch (e) {
-                        console.log(e.message);
+                    if (confirm("You are deleting an activity, continue?")) {
+                        try {
+                            const response = await fetch(url + '/activity/' + activity.activity_id, fetchOptions);
+                            const json = await response.json();
+                            console.log('delete response', json);
+                            location.href = 'user.html';
+                        } catch (e) {
+                            console.log(e.message);
+                        }
+                    } else {
+                        alert("You cancelled the action");
                     }
                 });
             }

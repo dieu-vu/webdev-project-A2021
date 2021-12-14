@@ -172,7 +172,7 @@ const createActivityCards = (activities) => {
       getParticipationStatus();
     
       //delete button
-      if(user.role == 0){
+      if (user.role == 0 || user.role === 2){
         const deleteButton = document.createElement('button');
         deleteButton.innerHTML = 'Delete';
         deleteButton.classList.add('button_delete');
@@ -184,19 +184,23 @@ const createActivityCards = (activities) => {
               Authorization: 'Bearer ' + sessionStorage.getItem('token'),
             },
           };
-          try {
-            const response = await fetch(url + '/activity/' + activity.id, fetchOptions);
-            const json = await response.json();
-            console.log('delete response', json);
-            if(option.value == "name"){
-                getActivityByName();
-            } else if(option.value == "location") {
-                getActivityByLocation();
-            } else if(option.value == "date") {
-                getActivityByDate();
-            }        
-          } catch (e) {
-            console.log(e.message);
+          if (confirm("You are deleting an activity, continue?")) {
+            try {
+              const response = await fetch(url + '/activity/' + activity.id, fetchOptions);
+              const json = await response.json();
+              console.log('delete response', json);
+              if(option.value == "name"){
+                  getActivityByName();
+              } else if(option.value == "location") {
+                  getActivityByLocation();
+              } else if(option.value == "date") {
+                  getActivityByDate();
+              }        
+            } catch (e) {
+              console.log(e.message);
+            }
+          } else {
+            alert("You cancelled the action");
           }
         });
       }
