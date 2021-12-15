@@ -13,7 +13,7 @@ const bcrypt = require('bcryptjs');
 passport.use(new Strategy({
         usernameField: 'email',
         passwordField: 'password'
-},
+    },
     async (username, password, done) => {
         const params = [username];
         try {

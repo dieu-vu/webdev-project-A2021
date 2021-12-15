@@ -4,14 +4,14 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController.js');
 const {checkToken} = require('../controllers/userController');
-const { body, validationResult } = require('express-validator');
+const {body, validationResult} = require('express-validator');
 const multer = require('multer');
 
 const fileFilter = (req, file, cb) => {
-	if(file.mimetype.includes('image')){
-		cb(null, true);
-	};
-	cb(null, false);
+    if (file.mimetype.includes('image')) {
+        cb(null, true);
+    }
+    cb(null, false);
 };
 // Use disk storage to control storing files:
 const storage = multer.diskStorage({
@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
     filename: function (req, file, cb) {
         cb(null, Date.now() + '.' + file.originalname.split('.').pop());
     }
-  })
+})
 
 const upload = multer({storage: storage, fileFilter});
 
@@ -32,8 +32,8 @@ router.route('/:id')
     .put(
         upload.single('user_filename'),
         body('name', 'minimum 3 characters'),
-		body('email', 'email is not valid').isEmail(),
-		userController.user_put)
+        body('email', 'email is not valid').isEmail(),
+        userController.user_put)
     .delete(userController.user_delete);
 
 router.route('/:id/passwordChange')
