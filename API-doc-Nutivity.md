@@ -67,7 +67,7 @@ Response:
 
 ```http
   Authorization: Bearer token
-  Guest mode does not required authorization
+  Guest mode does not require authorization
 ```
 
 Response:
@@ -534,7 +534,7 @@ Response:
 
 ```http
   Authorization: Bearer token
-  Guest mode does not required authorization
+  Guest mode does not require authorization
 ```
 
 Response:
@@ -575,7 +575,7 @@ Response:
 
 ```http
   Authorization: Bearer token
-  Guest mode does not required authorization
+  Guest mode does not require authorization
 ```
 
 | Parameter | Type     | Description                       |
@@ -619,7 +619,7 @@ Response: For example searchDate = '2022-01-01'
 
 ```http
   Authorization: Bearer token
-  Guest mode does not required authorization
+  Guest mode does not require authorization
 ```
 
 | Parameter | Type     | Description                       |
@@ -663,7 +663,7 @@ Response: For example location = 'espoo'
 
 ```http
   Authorization: Bearer token
-  Guest mode does not required authorization
+  Guest mode does not require authorization
 
 ```
 
@@ -698,7 +698,6 @@ Response: For example location = 'badminton'
 
 ```http
   Authorization: Bearer token
-  Guest mode does not required authorization
 ```
 
 | Parameter | Type     | Description                       |
