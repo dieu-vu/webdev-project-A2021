@@ -106,9 +106,9 @@ Response:
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `name`     | `string` | **Required, min length 3** |
-| `location` | `date` | **Required, YYYY-MM-DD** |
-| `description`    | `number` | **Required** |
-| `VET`    | `number` | **Required** |
+| `location` | `string` | **Required, YYYY-MM-DD** |
+| `description`    | `string` | **Required** |
+| `VET`    | `datetime` | **Required** |
 | `filename`       | `file` | **Required, jpg, png, gif** |
 
 Response:
@@ -393,7 +393,7 @@ Response:
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`     | `int` | **Optional**, user_id of the user, admin only|
+| `id`     | `int` |**Required**, user_id of the user, admin only|
 | `name`     | `string` | **Optional, min length 3** |
 | `email` | `email` | **Optional, email**  |
 | `filename`    | `file` | **Optional** |
@@ -432,7 +432,7 @@ Response:
 | :-------- | :------- | :-------------------------------- |
 | `currentPassword`    | `string` | **Required, min length 8 characters, at least one capital letter** |
 | `newPassword`    | `string` | **Required, min length 8 characters, at least one capital letter** |
-| `checkPassword`    | `file` | **Required, min length 8 characters, at least one capital letter** |
+| `checkPassword`    | `string` | **Required, min length 8 characters, at least one capital letter** |
 | `id`      | `int` | **Required**, user_id of the user |
 
 Response:
@@ -463,7 +463,7 @@ Response:
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `int` | **Optional**, user_id of the user, admin only |
+| `id`      | `int` | **Required**, user_id of the user, admin only |
 
 Response:
  - If demoting user:
@@ -493,7 +493,7 @@ Response:
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `int` | **Optional**, user_id of the user, admin only |
+| `id`      | `int` | **Required**, user_id of the user, admin only |
 
 Response:
 
