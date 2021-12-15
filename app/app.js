@@ -35,7 +35,7 @@ app.get('/', async (req,res) => {
     if (req.secure) {
         res.sendFile("frontend/login.html", {root: __dirname});
     } else {
-        //res.send(bcrypt.hashSync('Test1234',12)); //To add test hashed pw
+        //res.send(bcrypt.hashSync('1234',12)); //To add test hashed pw
         res.sendFile("frontend/login.html", {root: __dirname});
     }
 });

@@ -1,5 +1,5 @@
 // file for comment functionality
-// 'use strict';
+'use strict';
 const imgUrl = 'http://localhost:3000'; // url for backend connection
 
 
@@ -47,6 +47,7 @@ const createCommentLists = (comments) => {
         const commentContainer = document.createElement('div');
         commentContainer.classList.add('comment_container');
 
+        //Get the user profile picture for comment list. If error then place a random pic
         const img = document.createElement('img');
         fetchProfilePic(comment.user_id, img);
         img.onerror = () => {

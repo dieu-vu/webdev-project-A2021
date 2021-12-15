@@ -5,7 +5,7 @@ const url = 'http://localhost:3000';
 const loggedInUserId = JSON.parse(sessionStorage.getItem('user')).user_id;
 
 
-// Create tabs for displaying user and activity list:
+// Create tabs for displaying/toggling between user and activity list:
 const tabs = document.querySelector('.tab-panel');
 const userList = document.querySelector('.user-list');
 const activityList = document.querySelector('.activity-list');
@@ -132,20 +132,19 @@ const createUserList = async (users) => {
             });
 
             //Promote button
-            const promoteButton = document.createElement('button');
-            promoteButton.classList.add('admin_button');
-            promoteButton.style.display = "inline";
+            const changeRoleButton = document.createElement('button');
+            changeRoleButton.classList.add('admin_button');
+            changeRoleButton.style.display = "inline";
             if (user.role === 1) {
-                await handleChangeRoleButton(promoteButton, 'Promote', user);
+                await handleChangeRoleButton(changeRoleButton, 'Promote', user);
             } else if (user.role === 0) {
-                promoteButton.style.display = 'none';
+                changeRoleButton.style.display = 'none';
             } else if (user.role === 2) {
-                await handleChangeRoleButton(promoteButton, 'Demote', user);
-            }
-            ;
+                await handleChangeRoleButton(changeRoleButton, 'Demote', user);
+            };
 
             span.appendChild(deleteButton);
-            span.appendChild(promoteButton);
+            span.appendChild(changeRoleButton);
 
             li.appendChild(span);
             ul.appendChild(li);
@@ -198,6 +197,7 @@ const createActivityList = (activities) => {
     activityList.appendChild(ul);
 };
 
+// Handle click event on change role buttons:
 const handleChangeRoleButton = async (buttonElement, changeType, user) => {
     if (changeType === 'Promote') {
         buttonElement.innerHTML = `${changeType} to mod`

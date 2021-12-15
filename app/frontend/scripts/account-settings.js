@@ -47,7 +47,7 @@ const generateInputForm = () => {
 
 // Create form when menu item is selected:
 const createFormByFieldList = (fieldList, haveUpload, ifDelete) => {
-    console.log("Creating form")
+    console.log("Creating form");
     settingInputForm.innerHTML = '';
     const h2 = document.createElement('h2');
     h2.innerHTML = 'Change Account settings';
@@ -89,8 +89,8 @@ const createFormByFieldList = (fieldList, haveUpload, ifDelete) => {
         }
     });
 
-    // add field if having file upload
-    if (haveUpload) {
+    // add input file field if having file upload
+    if (haveUpload){
         const label = document.createElement('label');
         label.innerHTML = 'Upload an image';
 
@@ -167,7 +167,7 @@ const handleGeneralForm = async () => {
     });
 }
 
-
+//Form to handle password change form submission:
 const handlePasswordForm = async () => {
     const passwordForm = document.querySelector('#password');
     passwordForm.addEventListener('submit', async (evt) => {
@@ -204,7 +204,9 @@ const handlePasswordForm = async () => {
     });
 };
 
-const handleDeleteForm = () => {
+//Form to handle deletion request form submission:
+
+const handleDeleteForm = async () => {
     const deleteForm = document.querySelector('#delete');
     deleteForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();

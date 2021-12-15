@@ -114,3 +114,9 @@ app/backend/uploads/*
 app/backend/thumbnails/*
 
 .vscode/
+
+
+# ignore tls cert and private key
+certrequest.csr
+ssl-cert.pem
+ssl-key.pem
