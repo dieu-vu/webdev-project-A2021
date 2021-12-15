@@ -269,8 +269,8 @@ a:hover {
 
 .button_delete {
     position: absolute;
-    bottom: 8px;
-    left: 16px;
+    bottom: 2%;
+    left: 3%;
     background-color: #60bfba;
     padding: 3%;
     border-radius: 20px;
@@ -325,7 +325,7 @@ a:hover {
 .random_text {
     position: absolute;
     top: 0;
-    left: 16px;
+    left: 3%;
     color: #fcfcfc;
     font-size: 14px;
     font-weight: 300;
@@ -334,7 +334,7 @@ a:hover {
 .random_text_last24 {
     position: absolute;
     top: 0;
-    left: 16px;
+    left: 3%;
     color: #fcfcfc;
     font-size: 14px;
     font-weight: 300;
@@ -342,23 +342,23 @@ a:hover {
 
 .participants {
     position: absolute;
-    top: 14px;
-    right: 16px;
+    top: 7%;
+    right: 3%;
     color: #FCFCFC;
     font-weight: bold;
 }
 
 .activity_name {
     position: absolute;
-    top: 12px;
-    left: 15px;
+    top: 5%;
+    left: 3%;
     color: #60bfba;
 }
 
 .activity_name_last24 {
     position: absolute;
-    top: 12px;
-    left: 15px;
+    top: 5%;
+    left: 3%;
     font-size: 22px;
     color: #60bfba;
 }
@@ -376,8 +376,8 @@ a:hover {
 
 .activity_location {
     position: absolute;
-    top: 44px;
-    left: 16px;
+    top: 15%;
+    left: 3%;
     color: #FCFCFC;
 }
 
@@ -428,8 +428,8 @@ a:hover {
 /* The Close Button */
 .modal_close {
     position: absolute;
-    top: 15px;
-    right: 35px;
+    top: 3%;
+    right: 5%;
     color: #f1f1f1;
     font-size: 40px;
     font-weight: bold;
@@ -753,6 +753,11 @@ a:hover {
     border-radius: 50px;
     border: none;
     color: #fcfcfc;
+}
+
+#activity_location_profile {
+    display: flex;
+    top: 20%;
 }
 
 /************* ADMIN PAGE SECTION *************/

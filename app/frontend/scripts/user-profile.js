@@ -118,6 +118,7 @@ const createActivityStack = (activities, headerText, divName) => {
             const p1 = document.createElement('p');
             p1.innerHTML = `${activity.location}`;
             p1.classList.add('activity_location');
+            p1.id = "activity_location_profile";
 
             const gradient = document.createElement('figcaption');
             gradient.classList.add('gradient_background');
