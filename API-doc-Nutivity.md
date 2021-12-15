@@ -40,7 +40,7 @@ Response:
 ```
 
 ```http
-  Content-type: application/json
+  Content-type: multipart/form-data
 ```
 
 | Parameter | Type     | Description                       |
@@ -213,35 +213,10 @@ Response:
 }
 ```
 
-
-
-#### Get all users
+#### Get comments of an activity
 
 ```http
-  GET /user
-```
-
-```http
-  Authorization: Bearer token
-```
-
-Response:
-
-```json
-[
-  {
-    "user_id": 3,
-    "name": "John Doe",
-    "email": "john@metropolia.fi",
-    "role": 1
-  }
-]
-```
-
-#### Get one user
-
-```http
-  GET /user/:id
+  GET /activity/comment/:activityId
 ```
 
 ```http
@@ -250,23 +225,24 @@ Response:
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `cat_id`      | `int` | **Required**. cat_id of user to fetch |
+| `activityId`      | `int` | **Required**. Id of activity to fetch |
 
 Response:
 
 ```json
 {
-  "user_id": 3,
-  "name": "John Doe",
-  "email": "john@metropolia.fi",
-  "role": 1
+    "user": "The mighty admin",
+    "user_id": 1,
+    "activity": "Hiking",
+    "comment": "Yay play",
+    "time": "2021-12-14T19:02:59.000Z"
 }
 ```
 
-#### Modify user
+#### Post comment on an activity
 
 ```http
-  PUT /user
+  GET /activity/comment/:activityId
 ```
 
 ```http
@@ -279,23 +255,49 @@ Response:
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`     | `int` | **Optional**, user_id of the user, admin only|
-| `name`     | `string` | **Optional, min length 3** |
-| `email` | `email` | **Optional, email**  |
-| `passwd`    | `number` | **Optional, min length 8 characters, at least one capital letter** |
+| `activityId`      | `int` | **Required**. Id of activity to fetch |
+| `comment`      | `text` | **Required**. Content of the comment |
 
 Response:
 
 ```json
-{
-  "message": "user modified"
-}
+{"message": "new comment id: 122"}
 ```
 
-#### Delete user
+
+#### Get all users 
 
 ```http
-  DELETE /user
+  GET /user/:id
+```
+
+```http
+  Authorization: Bearer token
+```
+
+```json
+[
+    {
+        "user_id": 1,
+        "email": "dieu-test@metropolia.fi",
+        "name": "The mighty admin",
+        "user_filename": "1639584006904.png",
+        "role": 0
+    },
+    {
+        "user_id": 4,
+        "email": "xiaoming@metropolia.fi",
+        "name": "Alex",
+        "user_filename": "1639564826179.png",
+        "role": 0
+    }
+]
+```
+
+#### Get an user by user ID
+
+```http
+  GET /user/:id
 ```
 
 ```http
@@ -304,13 +306,198 @@ Response:
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `user_id`      | `int` | **Optional**, user_id of the user, admin only |
+| `id`      | `int` | **Required**. Id of the user to fetch |
 
 Response:
 
 ```json
 {
-  "message": "user deleted"
+    "user_id": 1,
+    "email": "dieu-test@metropolia.fi",
+    "name": "The mighty admin",
+    "user_filename": "1639584006904.png",
+    "role": 0,
+    "ownActivity": [
+        {
+            "activity_id": 17,
+            "name": "Swimming",
+            "location": "Helsinki",
+            "description": "Swimming in this weekend",
+            "filename": "a00f631933d073d58219cd0959e89296",
+            "owner": 1,
+            "VST": "2021-12-03T11:13:08.000Z",
+            "VET": "2022-01-29T10:00:00.000Z",
+            "owner_name": "The mighty admin",
+            "num_participant": 2
+        },
+        {
+            "activity_id": 87,
+            "name": "Skateboarding",
+            "location": "Helsinki",
+            "description": "Skateboarding in Helsinki",
+            "filename": "1639560269822.jpg",
+            "owner": 1,
+            "VST": "2021-12-15T09:24:29.000Z",
+            "VET": "2022-01-16T10:00:00.000Z",
+            "owner_name": "The mighty admin",
+            "num_participant": null
+        }
+    ],
+    "participateActivity": [
+        {
+            "participant": 1,
+            "activity": 14,
+            "activity_id": 14,
+            "name": "Hiking",
+            "location": "Espoo",
+            "description": "Hiking in Nuuksio",
+            "filename": "f7ab22def71d542757f65fcb8ea3258a",
+            "owner": 8,
+            "VST": "2021-12-08T09:18:03.000Z",
+            "VET": "2022-11-30T15:00:00.000Z",
+            "owner_name": "Jessica Medrod",
+            "num_participant": 2
+        },
+        {
+            "participant": 1,
+            "activity": 15,
+            "activity_id": 15,
+            "name": "Fishing",
+            "location": "Espoo",
+            "description": "Fishing in Nuuksio",
+            "filename": "34a10943cfd1e406ef28d2d9150769ab",
+            "owner": 7,
+            "VST": "2021-12-01T09:57:44.000Z",
+            "VET": "2022-01-01T10:00:00.000Z",
+            "owner_name": "Khava Gali",
+            "num_participant": 4
+        }
+    ]
+}
+```
+
+#### Modify user
+
+```http
+  PUT /user/:id
+```
+
+```http
+  Authorization: Bearer token
+```
+
+```http
+  Content-type: multipart/form-data
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`     | `int` | **Optional**, user_id of the user, admin only|
+| `name`     | `string` | **Optional, min length 3** |
+| `email` | `email` | **Optional, email**  |
+| `filename`    | `file` | **Optional** |
+
+Response:
+ - If email input is not existing in database:
+```json
+{
+  "message": "Successfully updated profile!", "emailValid": true}
+}
+```
+ - If email input is existing in database:
+
+```json
+{
+  "message": "Email address is taken!", "emailValid": true}
+}
+```
+
+#### Change user password:
+
+```http
+  PUT /user/:id/passwordChange
+```
+
+```http
+  Authorization: Bearer token
+```
+
+```http
+  Content-type: application/json
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `currentPassword`    | `text` | **Required, min length 8 characters, at least one capital letter** |
+| `newPassword`    | `text` | **Required, min length 8 characters, at least one capital letter** |
+| `checkPassword`    | `file` | **Required, min length 8 characters, at least one capital letter** |
+
+
+Response:
+ - If current password correct:
+```json
+{
+  "message": "Update password succeeded"
+}
+```
+
+ - If current password incorrect:
+```json
+{
+  "message": "Update password failed, old password incorrect"
+}
+```
+
+
+#### Change user role between Moderator and Normal user:
+
+```http
+  PUT /user/:id
+```
+
+```http
+  Authorization: Bearer token
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `int` | **Optional**, user_id of the user, admin only |
+
+Response:
+ - If demoting user:
+```json
+{
+  "message": "User demotion succeeded"
+}
+```
+
+ - If promoting user:
+```json
+{
+  "message": "User promotion succeeded"
+}
+```
+
+
+#### Delete user
+
+```http
+  DELETE /user/:id
+```
+
+```http
+  Authorization: Bearer token
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `int` | **Optional**, user_id of the user, admin only |
+
+Response:
+
+```json
+{
+  "message": "Account has been deleted."
 }
 ```
 
@@ -328,9 +515,10 @@ Response:
 
 ```json
 {
-  "user_id": 3,
-  "name": "John Doe",
-  "email": "john@metropolia.fi",
-  "role": 1
+    "user_id":1,
+    "email":"dieu-test@metropolia.fi",
+    "name":"The mighty admin",
+    "user_filename":"1639568891350.png",
+    "role":0
 }
 ```
