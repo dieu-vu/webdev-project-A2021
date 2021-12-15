@@ -268,7 +268,7 @@ Response:
 #### Get all users 
 
 ```http
-  GET /user/:id
+  GET /user
 ```
 
 ```http
@@ -401,14 +401,15 @@ Response:
  - If email input is not existing in database:
 ```json
 {
-  "message": "Successfully updated profile!", "emailValid": true}
+    "message": "Successfully updated profile!", "emailValid": true
 }
 ```
  - If email input is existing in database:
 
 ```json
 {
-  "message": "Email address is taken!", "emailValid": true}
+    "message": "Email address is taken!",
+    "emailValid": true
 }
 ```
 
