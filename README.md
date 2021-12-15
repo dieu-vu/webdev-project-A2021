@@ -5,6 +5,15 @@ Web development group project - Autumn 2021 - Metropolia
 
 To create a web application for different sorts of activity sharing for registered users. 
 
+## SCREENSHOTS OF THE DEPLOYED APP
+
+Landing page
+
+<img src="/app/assets/landing_page.png" width="200">
+
+Home page
+<img src="/app/assets/home_page.png" width="200">
+
 ## BUILD
 
 1. Clone the project
@@ -70,15 +79,14 @@ Create a new username - after creation redirect to login
 - User can delete their own account with a confirmation required
 
 ## DATABASE STRUCTURE
-
-![Database structure](/version2/assets/database.png?raw=true "Database") <br>
+![Database structure](/app/assets/database.png?raw=true "Database") <br>
 
 We have created a database with four tables. The foreign key constraint ONDELETE and ONUPDATE is implemented for all table to keep integrity of whole database, e.g. so if one user has been deleted, all activities, his/her participation and comments will be automatically deleted as well.
 
 For participate_in table, we have implemented double identifiers, so the same user can never join the same activity twice.
 
 We also implement uni-temporal data for the activity table and comment_in table.
-
+ 
 
 ## CONTRIBUTORS
 [Dieu Vu](https://github.com/dieu-vu) <br>
