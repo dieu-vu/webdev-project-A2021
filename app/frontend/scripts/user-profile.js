@@ -157,6 +157,7 @@ const createActivityStack = (activities, headerText, divName) => {
                 const quitButton = document.createElement('button');
                 quitButton.innerHTML = 'Opt out';
                 quitButton.classList.add('button_participate');
+                hint.innerHTML = 'Click to opt out';
                 layer.appendChild(quitButton);
                 quitButton.addEventListener('click', async () => {
                     const fetchOptions = {
