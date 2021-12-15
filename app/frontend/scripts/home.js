@@ -205,7 +205,6 @@ const createActivityCards = (activities) => {
 
         const p4 = document.createElement('p');
         const timeString = `${activity.VET.toString().substring(0, 10)} @ ${activity.VET.toString().substring(11, 19)}`;
-        console.log(timeString);
         p4.innerHTML = `Time: ${timeString}`;
         p4.classList.add('modal_time');
 

@@ -88,6 +88,34 @@ Response:
 ]
 ```
 
+#### Add new activity
+
+```http
+  POST /activity
+```
+
+```http
+  Authorization: Bearer token
+```
+
+```http
+  Content-type: multipart/form-data
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `name`     | `string` | **Required, min length 3** |
+| `location` | `date` | **Required, YYYY-MM-DD** |
+| `description`    | `number` | **Required** |
+| `VET`    | `number` | **Required** |
+| `filename`       | `file` | **Required, jpg, png, gif** |
+
+Response:
+
+```json
+message	"activity added with id: 97"
+```
+
 #### Get one activity by id
 
 ```http
@@ -119,70 +147,33 @@ Response:
 }
 ```
 
-#### Add new activity
+#### Delete one activity by id
 
 ```http
-  POST /cat
-```
-
-```http
-  Authorization: Bearer token
-```
-
-```http
-  Content-type: multipart/form-data
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `name`     | `string` | **Required, min length 3** |
-| `birthdate` | `date` | **Required, YYYY-MM-DD** |
-| `weight`    | `number` | **Required** |
-| `cat`       | `file` | **Required, jpg, png, gif** |
-
-Response:
-
-```json
-{
-  "message": "cat added",
-  "id": 3
-}
-```
-
-#### Modify cat
-
-```http
-  PUT /cat/:id
+  DELETE /activity/:activityId
 ```
 
 ```http
   Authorization: Bearer token
 ```
 
-```http
-  Content-type: application/json
-```
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`     | `int` | **Required**, cat_id of the cat|
-| `name`     | `string` | **Optional, min length 3** |
-| `birthdate` | `date` | **Optional, YYYY-MM-DD** |
-| `weight`    | `number` | **Optional** |
-| `owner`     | `int` | **Optional**, user_id of the owner, admin only|
+| `activityId`      | `int` | **Required**. Id of activity to delete |
 
 Response:
 
 ```json
 {
-  "message": "cat modified"
+    "message": "Activity deleted"
 }
 ```
 
-#### Delete cat
+#### Post a participation entry
 
 ```http
-  DELETE /cat/:id
+  POST /activity/participation/:activityId
 ```
 
 ```http
@@ -191,15 +182,38 @@ Response:
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `int` | **Required**. Id of cat to delete |
-
+| `activityId`      | `int` | **Required**. Id of activity |
+| `userId`      | `int` | **Required**. Id of the logged in user from the session storage |
 Response:
 
 ```json
 {
-  "message": "cat deleted"
+  "message": "add participation data { userId: '6' }"
 }
 ```
+#### Delete a participation entry
+
+```http
+  DELETE /activity/participation/:activityId
+```
+
+```http
+  Authorization: Bearer token
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `activityId`      | `int` | **Required**. Id of activity |
+| `userId`      | `int` | **Required**. Id of the logged in user from the session storage |
+Response:
+
+```json
+{
+  "message": "Participation deleted"
+}
+```
+
+
 
 #### Get all users
 
