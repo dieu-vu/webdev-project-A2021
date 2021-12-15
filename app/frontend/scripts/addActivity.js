@@ -15,6 +15,8 @@ const addForm = document.querySelector('#add_activity_form');
 addForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
     const fd = new FormData(addForm);
+    console.log("form data");
+    console.log(fd.get('VET'));
     const fetchOptions = {
         method: 'POST',
         headers: {

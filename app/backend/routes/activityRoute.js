@@ -44,7 +44,12 @@ const {body} = require('express-validator');
 
 router.route('/')
     .get(activity_list_get)
-    .post(upload.single('activity_pic'), activity_post)
+    .post(upload.single('activity_pic'),
+     body('name').notEmpty(),
+     body('location').notEmpty(),
+     body('description').notEmpty(),
+     body('VET').matches(/^\d{4}-(0[0-9]|1[0-3])-[0-3]\dT([0-1][0-9]|2[0-3]):[0-5]\d/),
+     activity_post) 
     .put(activity_update)
 
 
@@ -58,7 +63,9 @@ router.route('/participation/:activityId')
 
 router.route('/comment/:activityId')
     .get(comment_get)
-    .post(comment_post)
+    .post(
+     body('comment').notEmpty(),
+     comment_post)
 
 router.get('/last24hours/list', last_24_hours_activity_list_get)
 
