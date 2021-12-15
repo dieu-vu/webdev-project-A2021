@@ -71,7 +71,7 @@ Create a new username - after creation redirect to login
 
 ## DATABASE STRUCTURE
 
-![Database structure](./assets/database.png "Database") <br>
+![Database structure](/version2/assets/database.png?raw=true "Database") <br>
 
 We have created a database with four tables. The foreign key constraint ONDELETE and ONUPDATE is implemented for all table to keep integrity of whole database, e.g. so if one user has been deleted, all activities, his/her participation and comments will be automatically deleted as well.
 
