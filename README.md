@@ -71,7 +71,7 @@ Create a new username - after creation redirect to login
 
 ## DATABASE STRUCTURE
 
-![Database structure](/assets/database.png "Database")
+![Database structure](./assets/database.png "Database") <br>
 
 We have created a database with four tables. The foreign key constraint ONDELETE and ONUPDATE is implemented for all table to keep integrity of whole database, e.g. so if one user has been deleted, all activities, his/her participation and comments will be automatically deleted as well.
 
@@ -81,7 +81,7 @@ We also implement uni-temporal data for the activity table and comment_in table.
 
 
 ## CONTRIBUTORS
-[Dieu Vu](https://github.com/dieu-vu)
-[Jasmin Partanen](https://github.com/jasminsp)
-[Xiaoming Ma](https://github.com/myxmxm)
+[Dieu Vu](https://github.com/dieu-vu) <br>
+[Jasmin Partanen](https://github.com/jasminsp)<br>
+[Xiaoming Ma](https://github.com/myxmxm)<br>
 Contact contributors for help if neccessary
