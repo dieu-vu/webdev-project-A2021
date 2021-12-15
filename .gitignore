@@ -117,6 +117,6 @@ app/backend/thumbnails/*
 
 
 # ignore tls cert and private key
-certrequest.csr
-ssl-cert.pem
-ssl-key.pem
+app/certrequest.csr
+app/ssl-cert.pem
+app/ssl-key.pem

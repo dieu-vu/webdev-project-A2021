@@ -1,6 +1,6 @@
 // file for login functionality
 'use strict';
-const url = 'http://localhost:3000'; // url for backend connection
+const url = 'https://localhost:8000'; // url for backend connection
 
 // select existing html elements
 const loginForm = document.querySelector('#login-form');

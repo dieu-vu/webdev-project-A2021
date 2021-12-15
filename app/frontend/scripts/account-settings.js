@@ -1,6 +1,6 @@
 'use strict';
 
-const url = 'http://localhost:3000';
+const url = 'https://localhost:8000';
 
 // get user data from session storage
 const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
@@ -128,7 +128,6 @@ const handleGeneralForm = async () => {
         //Check if form data is having all blank fields:
         let isEmpty = true;
         for (var pair of data.entries()) {
-            console.log(pair[1]);
             if (pair[1] !== "" && pair[1].name !== "") {
                 isEmpty = false;
             }

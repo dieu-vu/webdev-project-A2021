@@ -14,6 +14,13 @@ const passport = require('./backend/utils/pass');
 const app = express(); // start new express application
 const port = 3000;
 
+//Load node modules by environment variables:
+var environment = process.env.NODE_ENV || 'development';
+if (environment == 'production') {
+	require('./backend/utils/production')(app, process.env.PORT || 3000, process.env.HTTPS_PORT || 8000);
+} else {
+	require('./backend/utils/localhost')(app, process.env.HTTPS_PORT || 8000, process.env.HTTP_PORT || 3000);
+}
 
 app.use(cors());
 app.use(passport.initialize());
@@ -35,7 +42,6 @@ app.get('/', async (req,res) => {
     if (req.secure) {
         res.sendFile("frontend/login.html", {root: __dirname});
     } else {
-        //res.send(bcrypt.hashSync('1234',12)); //To add test hashed pw
         res.sendFile("frontend/login.html", {root: __dirname});
     }
 });
@@ -52,5 +58,3 @@ app.use((err, req, res, next) => {
     res.status(status).json({message: err.message || "internal error"});
 });
 
-
-app.listen(port, () => console.log(`Example app listening on port ${port}`));

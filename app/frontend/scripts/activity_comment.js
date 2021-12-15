@@ -1,6 +1,6 @@
 // file for comment functionality
 'use strict';
-const imgUrl = 'http://localhost:3000'; // url for backend connection
+const imgUrl = 'https://localhost:8000'; // url for backend connection
 
 
 // select existing html elements

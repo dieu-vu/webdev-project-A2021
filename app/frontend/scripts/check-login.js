@@ -1,7 +1,7 @@
 // For checking if user is logged in or not
 (async () => {
     'use strict';
-    const url = 'http://localhost:3000'; // url for backend connection
+    const url = 'https://localhost:8000'; // url for backend connection
 
     // check sessionStorage and if token || user does not exist - reload login.html
     if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
