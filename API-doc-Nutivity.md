@@ -257,7 +257,7 @@ Response:
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `activityId`      | `int` | **Required**. Id of activity to fetch |
-| `comment`      | `text` | **Required**. Content of the comment |
+| `comment`      | `string` | **Required**. Content of the comment |
 
 Response:
 
@@ -430,8 +430,8 @@ Response:
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `currentPassword`    | `text` | **Required, min length 8 characters, at least one capital letter** |
-| `newPassword`    | `text` | **Required, min length 8 characters, at least one capital letter** |
+| `currentPassword`    | `string` | **Required, min length 8 characters, at least one capital letter** |
+| `newPassword`    | `string` | **Required, min length 8 characters, at least one capital letter** |
 | `checkPassword`    | `file` | **Required, min length 8 characters, at least one capital letter** |
 | `id`      | `int` | **Required**, user_id of the user |
 
@@ -624,7 +624,7 @@ Response: For example searchDate = '2022-01-01'
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `searchLocation`      | `text` | **Required**, search location |
+| `searchLocation`      | `string` | **Required**, search location |
 
 
 Response: For example location = 'espoo'
@@ -669,7 +669,7 @@ Response: For example location = 'espoo'
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `searchType`      | `text` | **Required**, search text |
+| `searchType`      | `string` | **Required**, search string |
 
 
 Response: For example location = 'badminton'
