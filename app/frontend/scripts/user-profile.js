@@ -152,74 +152,31 @@ const createActivityStack = (activities, headerText, divName) => {
             stack.style.color = '#fcfcfc';
 
 
-            //if user not participate this activity display participate button otherwise display quit button
-            const getParticipationStatus = async () => {
-                try {
+            // // Show quit button on the joining activity list only. We don't need to check the participant status as this page shows only participated activity:
+            if (divName != 'own_activities') { // Users should not opt out from their own activity
+                const quitButton = document.createElement('button');
+                quitButton.innerHTML = 'Opt out';
+                quitButton.classList.add('button_participate');
+                layer.appendChild(quitButton);
+                quitButton.addEventListener('click', async () => {
                     const fetchOptions = {
+                        method: 'DELETE',
                         headers: {
                             Authorization: 'Bearer ' + sessionStorage.getItem('token'),
                         },
                     };
-                    const response = await fetch(url + '/activity/participationStatus/' + activity.activity_id, fetchOptions);
-                    const participationStatus = await response.json();
-                    if (participationStatus.message === "not yet participate") {
-                        console.log(`no participated ${activity.activity_id}`);
-                        //hint text 
-                        hint.innerHTML = "Click to join";
-                        // participate button
-                        const participateButton = document.createElement('button');
-                        participateButton.innerHTML = 'Join';
-                        participateButton.classList.add('button_participate');
-                        layer.appendChild(participateButton);
-                        participateButton.addEventListener('click', async () => {
-                            const fetchOptions = {
-                                method: 'POST',
-                                headers: {
-                                    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-                                },
-                            };
-                            try {
-                                const response = await fetch(url + '/activity/participation/' + activity.activity_id, fetchOptions);
-                                const json = await response.json();
-                                console.log('post response', json);
-                                alert("Welcome to join this activity.");
-                                location.href = 'user.html';
-                            } catch (e) {
-                                console.log(e.message);
-                            }
-                        });
-                    } else {
-                        //hint text
-                        hint.innerHTML = "Click to opt out";
-
-                        //quit button
-                        const quitButton = document.createElement('button');
-                        quitButton.innerHTML = 'Opt out';
-                        quitButton.classList.add('button_participate');
-                        layer.appendChild(quitButton);
-                        quitButton.addEventListener('click', async () => {
-                            const fetchOptions = {
-                                method: 'DELETE',
-                                headers: {
-                                    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-                                },
-                            };
-                            try {
-                                const response = await fetch(url + '/activity/participation/' + activity.id, fetchOptions);
-                                const json = await response.json();
-                                console.log('delete response', json);
-                                alert("You have left this activity.")
-                                location.href = 'user.html';
-                            } catch (e) {
-                                console.log(e.message);
-                            }
-                        });
+                    try {
+                        const response = await fetch(url + '/activity/participation/' + activity.activity_id, fetchOptions);
+                        const json = await response.json();
+                        console.log('delete response', json);
+                        alert("You have left this activity.")
+                        window.location.reload();
+                    } catch (e) {
+                        console.log(e.message);
                     }
-                } catch (e) {
-                    console.log(e.message);
-                }
+                });
+                
             };
-            if (divName != 'own_activities') {getParticipationStatus()};
 
             //delete button is visible for admin or moderator role and the owner of the activity
             if (loggedInUser.role == 0 || loggedInUser.role === 2 || loggedInUser.user_id === activity.owner) {
@@ -239,7 +196,7 @@ const createActivityStack = (activities, headerText, divName) => {
                             const response = await fetch(url + '/activity/' + activity.activity_id, fetchOptions);
                             const json = await response.json();
                             console.log('delete response', json);
-                            location.href = 'user.html';
+                            window.location.reload();
                         } catch (e) {
                             console.log(e.message);
                         }

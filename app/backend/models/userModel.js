@@ -88,16 +88,18 @@ const editUser = async(user) => {
     }
 };
 
+// Get list of own activities and participating activities for the user json sent to user page frontend:
+
+const ownerAndParticipantNumQuery = `SELECT DISTINCT activity AS activity_id, 
+COUNT(DISTINCT participant) AS num_participant 
+FROM participate_in GROUP BY activity_id`;
+
 const getOwnActivity = async (user) => {
     const query = `SELECT a.*, u.name as owner_name, p.num_participant AS num_participant
     FROM activity AS a
     LEFT JOIN p_user AS u
     ON a.owner = u.user_id
-    LEFT JOIN (
-    SELECT DISTINCT activity AS activity_id, 
-    COUNT(DISTINCT participant) AS num_participant 
-    FROM participate_in GROUP BY activity_id
-    ) AS p
+    LEFT JOIN (${ownerAndParticipantNumQuery}) AS p
     ON a.activity_id = p.activity_id
     WHERE a.owner = ?
     AND (ISNULL(a.VET) OR a.VET > CURRENT_DATE());`;
@@ -118,10 +120,7 @@ const getParticipatingActivity = async (user) => {
         ON p.activity = a.activity_id
         LEFT JOIN p_user as u
         ON u.user_id = a.owner
-        LEFT JOIN (
-        SELECT DISTINCT activity AS activity_id, 
-        COUNT(DISTINCT participant) AS num_participant 
-        FROM participate_in GROUP BY activity_id) AS p_summary
+        LEFT JOIN (${ownerAndParticipantNumQuery}) AS p_summary
         ON a.activity_id = p_summary.activity_id
         WHERE p.participant = ? AND (ISNULL(a.VET) OR a.VET > CURRENT_DATE())`;
         const results = await promisePool.query(query, [user.user_id]);
