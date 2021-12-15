@@ -51,6 +51,7 @@ const createFormByFieldList = (fieldList, haveUpload, ifDelete) => {
     settingInputForm.innerHTML = '';
     const h2 = document.createElement('h2');
     h2.innerHTML = 'Change Account settings';
+    h2.classList.add('setting_headers');
 
     const form = document.createElement('form');
     form.classList.add('setting_input_form'); // CSS CLASS OF THE FORM
@@ -60,9 +61,11 @@ const createFormByFieldList = (fieldList, haveUpload, ifDelete) => {
         const header = document.createElement('h3');
         header.id = 'delete-header';
         header.innerHTML = 'Account deletion'
+        header.classList.add('setting_headers');
         const warning = document.createElement('p');
         warning.class = 'delete';
         warning.innerHTML = 'All your profile and activity data will be permanently deleted.'
+        warning.classList.add('setting_headers');
 
         form.appendChild(header);
         form.appendChild(warning);
