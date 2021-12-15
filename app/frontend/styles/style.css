@@ -280,18 +280,24 @@ a:hover {
 
 .modal_hint {
     position: absolute;
-    top: 85%;
-    right: 16px;
+    top: 82%;
+    right: 5%;
     color: #FCFCFC;
     font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.55);
+    border-radius: 10px;
+    padding: 7px;
 }
 
 .modal_hint_search {
     position: absolute;
-    top: 83%;
-    right: 16px;
+    top: 80%;
+    right: 5%;
     color: #FCFCFC;
     font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.55);
+    border-radius: 10px;
+    padding: 7px;
 }
 
 .login_hint {
@@ -300,6 +306,9 @@ a:hover {
     right: 38%;
     color: #fcfcfc;
     font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.55);
+    border-radius: 10px;
+    padding: 7px;
 }
 
 .login_hint_search {
@@ -308,11 +317,14 @@ a:hover {
     right: 38%;
     color: #fcfcfc;
     font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.55);
+    border-radius: 10px;
+    padding: 7px;
 }
 
 .random_text {
     position: absolute;
-    top: 0px;
+    top: 0;
     left: 16px;
     color: #fcfcfc;
     font-size: 14px;
@@ -321,7 +333,7 @@ a:hover {
 
 .random_text_last24 {
     position: absolute;
-    top: 0px;
+    top: 0;
     left: 16px;
     color: #fcfcfc;
     font-size: 14px;
@@ -353,10 +365,13 @@ a:hover {
 
 .modal_hint_last24 {
     position: absolute;
-    top: 83%;
-    right: 16px;
+    top: 80%;
+    right: 5%;
     color: #FCFCFC;
     font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.55);
+    border-radius: 10px;
+    padding: 7px;
 }
 
 .activity_location {
@@ -1106,8 +1121,8 @@ a:hover {
     }
 
     .modal_hint {
-        top: 80%;
-        right: 16px;
+        top: 78%;
+        right: 5%;
         font-size: 15px;
     }
 
@@ -1119,6 +1134,7 @@ a:hover {
     }
 
     .login_hint {
+        top: 76%;
         right: 35%;
     }
 
@@ -1576,19 +1592,19 @@ a:hover {
     }
 
     .login_hint {
-        top: 60%;
+        top: 65%;
         right: 25%;
         color: #fcfcfc;
         font-weight: bold;
     }
 
     .login_hint_search {
-        top: 80%;
+        top: 73%;
         right: 33%;
     }
 
     .modal_hint_search {
-        top: 85%;
+        top: 80%;
         right: 5%;
         font-size: 15px;
     }
@@ -1621,8 +1637,8 @@ a:hover {
     }
 
     .modal_hint {
-        top: 80%;
-        right: 16px;
+        top: 70%;
+        right: 5%;
         font-size: 12px;
     }
 

@@ -6,6 +6,7 @@ const url = 'http://localhost:3000';
 const loggedInUserId = JSON.parse(sessionStorage.getItem('user')).user_id;
 
 
+
 // Create tabs for displaying user and activity list:
 const tabs = document.querySelector('.tab-panel');
 const userList = document.querySelector('.user-list');
