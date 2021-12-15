@@ -129,7 +129,7 @@ const createActivityStack = (activities, headerText, divName) => {
             // FOR MODAL FUNCTIONALITY
             const hint = document.createElement('p');
             //Text for hint is depending on the participation status below
-            hint.classList.add('modal_hint');
+            hint.classList.add('modal_hint_profile');
             // FOR MODAL FUNCTIONALITY
 
             ul.appendChild(a);

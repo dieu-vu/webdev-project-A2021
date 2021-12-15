@@ -300,6 +300,17 @@ a:hover {
     padding: 7px;
 }
 
+.modal_hint_profile {
+    position: absolute;
+    top: 70%;
+    right: 7%;
+    color: #FCFCFC;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.55);
+    border-radius: 10px;
+    padding: 7px;
+}
+
 .login_hint {
     position: absolute;
     top: 78%;
@@ -1645,6 +1656,12 @@ a:hover {
         top: 70%;
         right: 5%;
         font-size: 12px;
+    }
+
+    .modal_hint_profile {
+        font-size: 12px;
+        top: 65%;
+        right: 5%;
     }
 
 
