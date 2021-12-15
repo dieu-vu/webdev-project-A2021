@@ -42,10 +42,15 @@ const user_put = async (req, res, next) => {
     }
     try {
         const user = req.body;
-
+        console.log('USER PUT REQ', user);
         user.user_id = parseInt(req.user.user_id);
         user.email = req.body.email;
         user.name = req.body.name;
+
+        const originalUser = await userModel.getUser(user.user_id);
+
+        if (user.email === "blank@blank.fi"){ user.email = originalUser.email };
+        if (user.name === "blank") { user.name = originalUser.name };
         //If user upload a new picture, create thumbnail
         if (!req.file) {
             user.user_filename = req.user.user_filename;

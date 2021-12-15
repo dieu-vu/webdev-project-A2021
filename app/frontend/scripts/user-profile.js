@@ -348,12 +348,12 @@ userEditForm.addEventListener('submit', async (editEvent) => {
     }
     console.log('BLANK FORM', isEmpty);
 
-    //Fill the existing data to form if the user leaves fields blank
+    //Fill the dummy data to form if the user leaves fields blank
     if (data.get('email') === "") {
-        data.set('email', loggedInUser.email);
+        data.set('email', "blank@blank.fi"); //Need this form for validation
     }
     if (data.get('name') === "") {
-        data.set('name', loggedInUser.name);
+        data.set('name', "blank");
     }
     if (document.getElementById('file-id').files.length !== 0) {
         data.filename = document.getElementById('file-id').files[0].name;
