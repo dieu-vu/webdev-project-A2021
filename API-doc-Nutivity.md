@@ -432,7 +432,7 @@ Response:
 | `currentPassword`    | `text` | **Required, min length 8 characters, at least one capital letter** |
 | `newPassword`    | `text` | **Required, min length 8 characters, at least one capital letter** |
 | `checkPassword`    | `file` | **Required, min length 8 characters, at least one capital letter** |
-
+| `id`      | `int` | **Required**, user_id of the user |
 
 Response:
  - If current password correct:
@@ -522,4 +522,159 @@ Response:
     "user_filename":"1639568891350.png",
     "role":0
 }
+```
+
+
+#### Get list of activity in the last 24 hours
+
+```http
+  GET /activity/last24hours/list
+```
+
+Response:
+```json
+[
+    {
+        "owner": "The mighty admin",
+        "owner_id": 1,
+        "activity": "Skateboarding",
+        "id": 87,
+        "location": "Helsinki",
+        "description": "Skateboarding in Helsinki",
+        "filename": "1639560269822.jpg",
+        "VST": "2021-12-15T09:24:29.000Z",
+        "VET": "2022-01-16T10:00:00.000Z",
+        "participantNum": 0
+    },
+    {
+        "owner": "The mighty admin",
+        "owner_id": 1,
+        "activity": "Movie night",
+        "id": 96,
+        "location": "Lapland",
+        "description": "Have fun with friends",
+        "filename": "1639585203987.jpg",
+        "VST": "2021-12-15T16:20:04.000Z",
+        "VET": "2022-01-01T21:00:00.000Z",
+        "participantNum": 0
+    }
+]
+```
+
+#### Get list if activity by a date
+
+```http
+  GET /activity/searchDate/:searchDate
+```
+
+```http
+  Authorization: Bearer token
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `searchDate`      | `datetime` | **Required**, search date |
+
+
+Response: For example searchDate = '2022-01-01'
+```json
+[
+    {
+        "owner": "Khava Gali",
+        "activity": "Fishing",
+        "id": 15,
+        "location": "Espoo",
+        "description": "Fishing in Nuuksio",
+        "filename": "34a10943cfd1e406ef28d2d9150769ab",
+        "VST": "2021-12-01T09:57:44.000Z",
+        "VET": "2022-01-01T10:00:00.000Z",
+        "participantNum": 4
+    },
+    {
+        "owner": "The mighty admin",
+        "activity": "Movie night",
+        "id": 96,
+        "location": "Lapland",
+        "description": "Have fun with friends",
+        "filename": "1639585203987.jpg",
+        "VST": "2021-12-15T16:20:04.000Z",
+        "VET": "2022-01-01T21:00:00.000Z",
+        "participantNum": 0
+    }
+]
+```
+
+#### Get list if activity by location
+
+```http
+  GET /activity/searchDate/:searchLocation
+```
+
+```http
+  Authorization: Bearer token
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `searchLocation`      | `text` | **Required**, search location |
+
+
+Response: For example location = 'espoo'
+```json
+[[
+    {
+        "owner": "Jessica Medrod",
+        "activity": "Hiking",
+        "id": 14,
+        "location": "Espoo",
+        "description": "Hiking in Nuuksio",
+        "filename": "f7ab22def71d542757f65fcb8ea3258a",
+        "VST": "2021-12-08T09:18:03.000Z",
+        "VET": "2022-11-30T15:00:00.000Z",
+        "participantNum": 2
+    },
+    {
+        "owner": "Khava Gali",
+        "activity": "Fishing",
+        "id": 15,
+        "location": "Espoo",
+        "description": "Fishing in Nuuksio",
+        "filename": "34a10943cfd1e406ef28d2d9150769ab",
+        "VST": "2021-12-01T09:57:44.000Z",
+        "VET": "2022-01-01T10:00:00.000Z",
+        "participantNum": 4
+    }
+]
+```
+
+#### Get list if activity by name or type
+
+```http
+  GET /activity/searchDate/:searchType
+```
+
+```http
+  Authorization: Bearer token
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `searchType`      | `text` | **Required**, search text |
+
+
+Response: For example location = 'badminton'
+```json
+[
+    {
+        "owner": "Jasmin P.",
+        "activity": "Badminton",
+        "id": 82,
+        "location": "Turku",
+        "description": "Looking for a badminton buddy.",
+        "filename": "1639407176755.jpg",
+        "VST": "2021-12-13T14:52:56.000Z",
+        "VET": "2021-12-30T07:00:00.000Z",
+        "participantNum": 1
+    }
+]
 ```
