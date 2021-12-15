@@ -185,6 +185,8 @@ Response:
 | :-------- | :------- | :-------------------------------- |
 | `activityId`      | `int` | **Required**. Id of activity |
 | `userId`      | `int` | **Required**. Id of the logged in user from the session storage |
+
+
 Response:
 
 ```json
@@ -206,6 +208,8 @@ Response:
 | :-------- | :------- | :-------------------------------- |
 | `activityId`      | `int` | **Required**. Id of activity |
 | `userId`      | `int` | **Required**. Id of the logged in user from the session storage |
+
+
 Response:
 
 ```json
