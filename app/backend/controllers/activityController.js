@@ -1,30 +1,12 @@
 'use strict';
-const {validationResult} = require('express-validator');
-const {
-    insertActivity,
-    getActivity,
-    deleteActivity,
-    getActivityByDate,
-    getActivityByLocation,
-    getActivityByActivityName,
-    getAllValidActivity,
-    updateActivity,
-    getParticipantList,
-    getAllUsersValidActivity,
-    insertParticipation,
-    getAllValidActivityInLast24Hours,
-    checkParticipationStatus,
-    deleteParticipation,
-    getCommentsByActivityId,
-    insertCommentsByActivityId
-} = require('../models/activityModel');
-const {httpError} = require('../utils/errors');
+const { validationResult } = require('express-validator');
+const {insertActivity, getActivity, deleteActivity, getActivityByDate, getActivityByLocation, getActivityByActivityName, getAllValidActivity, updateActivity, getParticipantList, getAllUsersValidActivity, insertParticipation, getAllValidActivityInLast24Hours, checkParticipationStatus, deleteParticipation, getCommentsByActivityId, insertCommentsByActivityId } = require('../models/activityModel');
+const { httpError } = require('../utils/errors');
 
 
 const activity_list_get = async (req, res, next) => {
     const activities = await getAllValidActivity(next);
-    //console.log('all activities', activities);
-    if (activities.length < 1) {
+    if(activities.length < 1) {
         const err = httpError('No valid activity can be found at present!', 404);
         next(err);
         return;
