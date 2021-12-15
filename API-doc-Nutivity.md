@@ -4,7 +4,7 @@ API document for Nutivity App
 
 ## API Reference v.0.1
 
-#### Login
+### Login
 
 ```http
   POST /auth/login
@@ -33,7 +33,7 @@ Response:
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMywiZW1haWwiOiJsaXNhU21haUBtZXRyb3BvbGlhLmZpIiwibmFtZSI6Ikxpc2EgU21haSIsInVzZXJfZmlsZW5hbWUiOiIiLCJyb2xlIjoyLCJpYXQiOjE2Mzk1ODAxNTZ9.0fHjziSRq5MaUSPu_wxpet9EWQEJBUncjYnWnzLRHmk"
 ```
 
-#### Register
+### Register
 
 ```http
   POST /auth/register
@@ -59,7 +59,7 @@ Response:
 }
 ```
 
-#### Get all activities
+### Get all activities
 
 ```http
   GET /activity
@@ -67,6 +67,7 @@ Response:
 
 ```http
   Authorization: Bearer token
+  Guest mode does not required authorization
 ```
 
 Response:
@@ -88,7 +89,7 @@ Response:
 ]
 ```
 
-#### Add new activity
+### Add new activity
 
 ```http
   POST /activity
@@ -116,7 +117,7 @@ Response:
 message	"activity added with id: 97"
 ```
 
-#### Get one activity by id
+### Get one activity by id
 
 ```http
   GET /activity/:activityId
@@ -147,7 +148,7 @@ Response:
 }
 ```
 
-#### Delete one activity by id
+### Delete one activity by id
 
 ```http
   DELETE /activity/:activityId
@@ -170,7 +171,7 @@ Response:
 }
 ```
 
-#### Post a participation entry
+### Post a participation entry
 
 ```http
   POST /activity/participation/:activityId
@@ -191,7 +192,7 @@ Response:
   "message": "add participation data { userId: '6' }"
 }
 ```
-#### Delete a participation entry
+### Delete a participation entry
 
 ```http
   DELETE /activity/participation/:activityId
@@ -213,7 +214,7 @@ Response:
 }
 ```
 
-#### Get comments of an activity
+### Get comments of an activity
 
 ```http
   GET /activity/comment/:activityId
@@ -239,7 +240,7 @@ Response:
 }
 ```
 
-#### Post comment on an activity
+### Post comment on an activity
 
 ```http
   GET /activity/comment/:activityId
@@ -265,7 +266,7 @@ Response:
 ```
 
 
-#### Get all users 
+### Get all users 
 
 ```http
   GET /user
@@ -294,7 +295,7 @@ Response:
 ]
 ```
 
-#### Get an user by user ID
+### Get an user by user ID
 
 ```http
   GET /user/:id
@@ -376,7 +377,7 @@ Response:
 }
 ```
 
-#### Modify user
+### Modify user
 
 ```http
   PUT /user/:id
@@ -413,7 +414,7 @@ Response:
 }
 ```
 
-#### Change user password:
+### Change user password:
 
 ```http
   PUT /user/:id/passwordChange
@@ -450,7 +451,7 @@ Response:
 ```
 
 
-#### Change user role between Moderator and Normal user:
+### Change user role between Moderator and Normal user:
 
 ```http
   PUT /user/:id
@@ -480,7 +481,7 @@ Response:
 ```
 
 
-#### Delete user
+### Delete user
 
 ```http
   DELETE /user/:id
@@ -502,7 +503,7 @@ Response:
 }
 ```
 
-#### Check token
+### Check token
 
 ```http
   GET /user/token
@@ -525,10 +526,15 @@ Response:
 ```
 
 
-#### Get list of activity in the last 24 hours
+### Get list of activity in the last 24 hours
 
 ```http
   GET /activity/last24hours/list
+```
+
+```http
+  Authorization: Bearer token
+  Guest mode does not required authorization
 ```
 
 Response:
@@ -561,7 +567,7 @@ Response:
 ]
 ```
 
-#### Get list if activity by a date
+### Get list if activity by a date
 
 ```http
   GET /activity/searchDate/:searchDate
@@ -569,6 +575,7 @@ Response:
 
 ```http
   Authorization: Bearer token
+  Guest mode does not required authorization
 ```
 
 | Parameter | Type     | Description                       |
@@ -604,7 +611,7 @@ Response: For example searchDate = '2022-01-01'
 ]
 ```
 
-#### Get list if activity by location
+### Get list of activity by location
 
 ```http
   GET /activity/searchDate/:searchLocation
@@ -612,6 +619,7 @@ Response: For example searchDate = '2022-01-01'
 
 ```http
   Authorization: Bearer token
+  Guest mode does not required authorization
 ```
 
 | Parameter | Type     | Description                       |
@@ -647,7 +655,7 @@ Response: For example location = 'espoo'
 ]
 ```
 
-#### Get list if activity by name or type
+### Get list if activity by name or type
 
 ```http
   GET /activity/searchDate/:searchType
@@ -655,6 +663,8 @@ Response: For example location = 'espoo'
 
 ```http
   Authorization: Bearer token
+  Guest mode does not required authorization
+
 ```
 
 | Parameter | Type     | Description                       |
@@ -678,3 +688,36 @@ Response: For example location = 'badminton'
     }
 ]
 ```
+
+
+### Get list of participant by activity ID
+
+```http
+  GET /activity/participants/:activityId
+```
+
+```http
+  Authorization: Bearer token
+  Guest mode does not required authorization
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `searchDate`      | `datetime` | **Required**, search date |
+
+Response:
+
+```json
+[
+    {
+        "name": "The mighty admin",
+        "activity": 14
+    },
+    {
+        "name": "alifah",
+        "activity": 14
+    }
+]
+```
+
+
