@@ -2,86 +2,86 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <title>Nutivity</title>
-  <link rel="icon" type="image/x-icon" href="./images/icon.ico">
-  <link href="./styles/style.css" rel="stylesheet" />
+    <meta charset="UTF-8"/>
+    <title>Nutivity</title>
+    <link rel="icon" type="image/x-icon" href="./images/icon.ico">
+    <link href="./styles/style.css" rel="stylesheet"/>
 </head>
 
 <body>
-  <!--Left side navigation drawer-->
+<!--Left side navigation drawer-->
 <div class="content">
 
     <nav class="nav_container">
-      <div class="navbar_toggle" id="mobile-menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-      <ul class="side_nav">
-        <li class="navbar_item hidden admin-option">
-          <a href="admin.html" class="navbar_links">Admin page</a>
-        </li>
-        <li class="navbar_item">
-          <a href="search.html" class="navbar_links">Search</a>
-        </li>
-        <li class="navbar_item">
-          <a href="addActivity.html" class="navbar_links">New</a>
-        </li>
-        <li class="navbar_item">
-          <a href="home.html" class="navbar_links">All</a>
-        </li>
-        <li class="navbar_item">
-          <a href="last24.html" class="navbar_links">Last 24hrs</a>
-        </li>
-        <li class="navbar_item">
-          <a href="user.html" class="navbar_links active">My profile</a>
-        </li>
-        <li class="navbar_item">
-          <a href="account-settings.html" class="navbar_links">Settings</a>
-        </li>
-        <li class="navbar_item">
-          <a href="logout.html" class="navbar_links">Logout</a>
-        </li>
-      </ul>
+        <div class="navbar_toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="side_nav">
+            <li class="navbar_item hidden admin-option">
+                <a href="admin.html" class="navbar_links">Admin page</a>
+            </li>
+            <li class="navbar_item">
+                <a href="search.html" class="navbar_links">Search</a>
+            </li>
+            <li class="navbar_item">
+                <a href="addActivity.html" class="navbar_links">New</a>
+            </li>
+            <li class="navbar_item">
+                <a href="home.html" class="navbar_links">All</a>
+            </li>
+            <li class="navbar_item">
+                <a href="last24.html" class="navbar_links">Last 24hrs</a>
+            </li>
+            <li class="navbar_item">
+                <a href="user.html" class="navbar_links active">My profile</a>
+            </li>
+            <li class="navbar_item">
+                <a href="account-settings.html" class="navbar_links">Settings</a>
+            </li>
+            <li class="navbar_item">
+                <a href="logout.html" class="navbar_links">Logout</a>
+            </li>
+        </ul>
     </nav>
 
 
-  <!--Main content-->
-  <div class="activity_content">
-    <div class="user_header">
-      <div id="user_info">
-        <!-- display user picture and name -->
-      </div>
+    <!--Main content-->
+    <div class="activity_content">
+        <div class="user_header">
+            <div id="user_info">
+                <!-- display user picture and name -->
+            </div>
+        </div>
+        <div id="user_activity" class="user_activity">
+            <!--Container for the activity images-->
+
+        </div>
+
+
+        <!--right side pop up menu-->
+        <div id="edit-menu" class="side-edit-menu">
+            <button class="close-button"></button>
+            <h2> Edit profile</h2>
+            <form id="edit-profile-form">
+                <input type="text" class="edit-profile-field" placeholder="Name" name="name"/>
+                <input type="text" class="edit-profile-field" placeholder="Email" name="email"/>
+                <label class="edit-profile-field hint" for="filename">Upload new profile pic:</label>
+                <input class="edit-profile-field" type="file" name="user_filename" accept="image/*"
+                       placeholder="Choose file"
+                       id="file-id"/>
+                <button type="submit" class="edit-profile-field" id="save-profile-btn"> Save</button>
+            </form>
+        </div>
     </div>
-    <div id="user_activity" class="user_activity">
-      <!--Container for the activity images-->
-
-    </div>
-
-
-
-    <!--right side pop up menu-->
-    <div id="edit-menu" class="side-edit-menu">
-      <button class="close-button"></button>
-      <h2> Edit profile</h2>
-      <form id="edit-profile-form">
-        <input type="text" class="edit-profile-field" placeholder="Name" name="name" />
-        <input type="text" class="edit-profile-field" placeholder="Email" name="email" />
-        <label class="edit-profile-field hint" for="filename">Upload new profile pic:</label>
-        <input class="edit-profile-field" type="file" name="user_filename" accept="image/*" placeholder="Choose file"
-          id="file-id" />
-        <button type="submit" class="edit-profile-field" id="save-profile-btn"> Save </button>
-      </form>
-    </div>
-  </div>
 
 
 </div>
-  <!-- Define scripts here -->
-  <script src="./scripts/serialize.js"></script>
-  <script src="./scripts/navigation.js"></script>
-  <script src="./scripts/user-profile.js"></script>
+<!-- Define scripts here -->
+<script src="./scripts/serialize.js"></script>
+<script src="./scripts/navigation.js"></script>
+<script src="./scripts/user-profile.js"></script>
 </body>
 
 </html>

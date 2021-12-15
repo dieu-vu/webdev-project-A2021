@@ -13,36 +13,36 @@ let getActivityByDate;
 
 // Check if user is an admin to give access to admin page
 if (user.role === 0) {
-  document.querySelector('.admin-option').style.display = "block";
-};
+    document.querySelector('.admin-option').style.display = "block";
+}
 
 const createActivityCards = (activities) => {
     // clear ul
     div.innerHTML = '';
-    if (activities.length < 1){
+    if (activities.length < 1) {
         console.log("no activity");
         return;
-    };
+    }
 
     activities.forEach((activity) => {
-    //   create li with DOM methods
-    if (activity < 1){
-        console.log("no activity");
-        return;
-    };
+        //   create li with DOM methods
+        if (activity < 1) {
+            console.log("no activity");
+            return;
+        }
 
         const randomText = document.createElement('p');
         randomText.innerHTML = ('Randomly generated image');
         randomText.classList.add('random_text');
 
-      const img = document.createElement('img');
+        const img = document.createElement('img');
         img.src = url + '/' + activity.filename;
         img.onerror = () => {
             img.src = 'https://picsum.photos/600/400'
             figure.appendChild(randomText);
         }
-      img.alt = activity.activity;
-      img.classList.add('activity_image');
+        img.alt = activity.activity;
+        img.classList.add('activity_image');
 
         const figure = document.createElement('figure');
         figure.classList.add('activity_container');
@@ -88,123 +88,122 @@ const createActivityCards = (activities) => {
         // // FOR MODAL FUNCTIONALITY
 
 
-
-          //if user not participate this activity display participate button otherwise display quit button
-    const getParticipationStatus = async () => {
-        try {
-          const fetchOptions = {
-            headers: {
-              Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-            },
-          };
-          const response = await fetch(url + '/activity/participationStatus/' + activity.id, fetchOptions);
-          const participationStatus = await response.json();
-          if (participationStatus.message == "not yet participate"){
-            console.log(`no participated ${activity.id}`);
-              //hint text
-              hint.innerHTML = "Click to join";
-            // participate button
-            const participateButton = document.createElement('button');
-            participateButton.innerHTML = 'Join';
-            participateButton.classList.add('button_participate');
-            layer.appendChild(participateButton);
-            participateButton.addEventListener('click', async () => {
-            const fetchOptions = {
-           method: 'POST',
-          headers: {
-            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-          },
-        };
-        try {
-          const response = await fetch(url + '/activity/participation/' + activity.id, fetchOptions);
-          const json = await response.json();
-          console.log('post response', json);
-          alert("Welcome to join this activity.");
-          if(option.value == "name"){
-            getActivityByName();
-        } else if(option.value == "location") {
-            getActivityByLocation();
-        } else if(option.value == "date") {
-            getActivityByDate();
-        }
-        } catch (e) {
-          console.log(e.message);
-        }
-      });
-          } else{
-              //hint text
-              hint.innerHTML = "Click to opt out";
-
-
-          //quit button
-          const quitButton = document.createElement('button');
-          quitButton.innerHTML = 'Opt out';
-          quitButton.classList.add('button_participate');
-          layer.appendChild(quitButton)
-          quitButton.addEventListener('click', async () => {
-          const fetchOptions = {
-            method: 'DELETE',
-            headers: {
-              Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-            },
-          };
-          try {
-            const response = await fetch(url + '/activity/participation/' + activity.id, fetchOptions);
-            const json = await response.json();
-            console.log('delete response', json);
-            alert("You have left this activity.")
-            if(option.value == "name"){
-                getActivityByName();
-            } else if(option.value == "location") {
-                getActivityByLocation();
-            } else if(option.value == "date") {
-                getActivityByDate();
-            }
-          } catch (e) {
-            console.log(e.message);
-          }
-      });      
-        }
-        } catch (e) {
-        console.log(e.message);
-        }
-      };
-      getParticipationStatus();
-    
-      //delete button
-      if (user.role == 0 || user.role === 2){
-        const deleteButton = document.createElement('button');
-        deleteButton.innerHTML = 'Delete';
-        deleteButton.classList.add('button_delete');
-        figure.appendChild(deleteButton)
-        deleteButton.addEventListener('click', async () => {
-          const fetchOptions = {
-            method: 'DELETE',
-            headers: {
-              Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-            },
-          };
-          if (confirm("You are deleting an activity, continue?")) {
+        //if user not participate this activity display participate button otherwise display quit button
+        const getParticipationStatus = async () => {
             try {
-              const response = await fetch(url + '/activity/' + activity.id, fetchOptions);
-              const json = await response.json();
-              console.log('delete response', json);
-              if(option.value == "name"){
-                  getActivityByName();
-              } else if(option.value == "location") {
-                  getActivityByLocation();
-              } else if(option.value == "date") {
-                  getActivityByDate();
-              }        
+                const fetchOptions = {
+                    headers: {
+                        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                    },
+                };
+                const response = await fetch(url + '/activity/participationStatus/' + activity.id, fetchOptions);
+                const participationStatus = await response.json();
+                if (participationStatus.message == "not yet participate") {
+                    console.log(`no participated ${activity.id}`);
+                    //hint text
+                    hint.innerHTML = "Click to join";
+                    // participate button
+                    const participateButton = document.createElement('button');
+                    participateButton.innerHTML = 'Join';
+                    participateButton.classList.add('button_participate');
+                    layer.appendChild(participateButton);
+                    participateButton.addEventListener('click', async () => {
+                        const fetchOptions = {
+                            method: 'POST',
+                            headers: {
+                                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                            },
+                        };
+                        try {
+                            const response = await fetch(url + '/activity/participation/' + activity.id, fetchOptions);
+                            const json = await response.json();
+                            console.log('post response', json);
+                            alert("Welcome to join this activity.");
+                            if (option.value == "name") {
+                                getActivityByName();
+                            } else if (option.value == "location") {
+                                getActivityByLocation();
+                            } else if (option.value == "date") {
+                                getActivityByDate();
+                            }
+                        } catch (e) {
+                            console.log(e.message);
+                        }
+                    });
+                } else {
+                    //hint text
+                    hint.innerHTML = "Click to opt out";
+
+
+                    //quit button
+                    const quitButton = document.createElement('button');
+                    quitButton.innerHTML = 'Opt out';
+                    quitButton.classList.add('button_participate');
+                    layer.appendChild(quitButton)
+                    quitButton.addEventListener('click', async () => {
+                        const fetchOptions = {
+                            method: 'DELETE',
+                            headers: {
+                                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                            },
+                        };
+                        try {
+                            const response = await fetch(url + '/activity/participation/' + activity.id, fetchOptions);
+                            const json = await response.json();
+                            console.log('delete response', json);
+                            alert("You have left this activity.")
+                            if (option.value == "name") {
+                                getActivityByName();
+                            } else if (option.value == "location") {
+                                getActivityByLocation();
+                            } else if (option.value == "date") {
+                                getActivityByDate();
+                            }
+                        } catch (e) {
+                            console.log(e.message);
+                        }
+                    });
+                }
             } catch (e) {
-              console.log(e.message);
+                console.log(e.message);
             }
-          } else {
-            alert("You cancelled the action");
-          }
-        });
-      }
-      div.appendChild(a);
+        };
+        getParticipationStatus();
+
+        //delete button
+        if (user.role == 0 || user.role === 2) {
+            const deleteButton = document.createElement('button');
+            deleteButton.innerHTML = 'Delete';
+            deleteButton.classList.add('button_delete');
+            figure.appendChild(deleteButton)
+            deleteButton.addEventListener('click', async () => {
+                const fetchOptions = {
+                    method: 'DELETE',
+                    headers: {
+                        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                    },
+                };
+                if (confirm("You are deleting an activity, continue?")) {
+                    try {
+                        const response = await fetch(url + '/activity/' + activity.id, fetchOptions);
+                        const json = await response.json();
+                        console.log('delete response', json);
+                        if (option.value == "name") {
+                            getActivityByName();
+                        } else if (option.value == "location") {
+                            getActivityByLocation();
+                        } else if (option.value == "date") {
+                            getActivityByDate();
+                        }
+                    } catch (e) {
+                        console.log(e.message);
+                    }
+                } else {
+                    alert("You cancelled the action");
+                }
+            });
+        }
+        div.appendChild(a);
 
         // FOR MODAL FUNCTIONALITY
         // Triggering the modal to open
@@ -285,79 +284,79 @@ const createActivityCards = (activities) => {
         }
         // MODAL FUNCTIONALITY ENDS
     });
-  };
+};
 
-form.addEventListener('submit', async (evt)=>{
+form.addEventListener('submit', async (evt) => {
     evt.preventDefault();
-    console.log("value is ",option.value);
-    console.log("value is ",query.value);
+    console.log("value is ", option.value);
+    console.log("value is ", query.value);
 
-    if(option.value == "name"){        
+    if (option.value == "name") {
         //   AJAX call
-           getActivityByName = async () => {
+        getActivityByName = async () => {
             try {
-              const fetchOptions = {
+                const fetchOptions = {
                     headers: {
-                      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
                     },
-                  };
-              const response = await fetch(url + '/activity/searchType/' + query.value, fetchOptions);
-              const activities = await response.json();
-              console.log(activities);
-              if(activities.message){
-                  alert(`Sorry, there is no ${query.value} activity available at this moment. Please try to search other activity. Good luck.`);
-                  return;
-              }
-              createActivityCards(activities);
+                };
+                const response = await fetch(url + '/activity/searchType/' + query.value, fetchOptions);
+                const activities = await response.json();
+                console.log(activities);
+                if (activities.message) {
+                    alert(`Sorry, there is no ${query.value} activity available at this moment. Please try to search other activity. Good luck.`);
+                    return;
+                }
+                createActivityCards(activities);
             } catch (e) {
-              console.log(e.message);
+                console.log(e.message);
             }
-          };
-          getActivityByName();
-    } else if (option.value == "location"){
-           //   AJAX call
-           getActivityByLocation = async () => {
+        };
+        getActivityByName();
+    } else if (option.value == "location") {
+        //   AJAX call
+        getActivityByLocation = async () => {
             try {
-              const fetchOptions = {
+                const fetchOptions = {
                     headers: {
-                      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
                     },
-                  };
-              const response = await fetch(url + '/activity/searchLocation/' + query.value, fetchOptions);
-              const activities = await response.json();
-              console.log(activities);
-              if(activities.message){
-                alert(`Sorry, there is no activity available in ${query.value} at this moment. Please try to search other location. Good luck.`);
-                return;
-            }
-              createActivityCards(activities);
+                };
+                const response = await fetch(url + '/activity/searchLocation/' + query.value, fetchOptions);
+                const activities = await response.json();
+                console.log(activities);
+                if (activities.message) {
+                    alert(`Sorry, there is no activity available in ${query.value} at this moment. Please try to search other location. Good luck.`);
+                    return;
+                }
+                createActivityCards(activities);
             } catch (e) {
-              console.log(e.message);
+                console.log(e.message);
             }
-          };
-          getActivityByLocation();
+        };
+        getActivityByLocation();
     } else if (option.value == "date") {
-         //   AJAX call
-          getActivityByDate = async () => {
+        //   AJAX call
+        getActivityByDate = async () => {
             try {
-              const fetchOptions = {
+                const fetchOptions = {
                     headers: {
-                      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
                     },
-                  };
-              const response = await fetch(url + '/activity/searchDate/' + query.value, fetchOptions);
-              const activities = await response.json();
-              console.log(activities);
-              if(activities.message){
-                alert(`Sorry, there is no activity available on ${query.value} at this moment. Please try to search other date. Good luck.`);
-                return;
-            }
-              createActivityCards(activities);
+                };
+                const response = await fetch(url + '/activity/searchDate/' + query.value, fetchOptions);
+                const activities = await response.json();
+                console.log(activities);
+                if (activities.message) {
+                    alert(`Sorry, there is no activity available on ${query.value} at this moment. Please try to search other date. Good luck.`);
+                    return;
+                }
+                createActivityCards(activities);
             } catch (e) {
-              console.log(e.message);
+                console.log(e.message);
             }
-          };
-          getActivityByDate();
+        };
+        getActivityByDate();
     }
 
 });

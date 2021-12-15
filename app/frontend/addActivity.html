@@ -1,135 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <title>Nutivity</title>
     <link rel="icon" type="image/x-icon" href="./images/icon.ico">
-    <link href="./styles/style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <!--Left side navigation drawer-->
-    <div class="content">
-      <nav class="nav_container">
+    <link href="./styles/style.css" rel="stylesheet"/>
+</head>
+<body>
+<!--Left side navigation drawer-->
+<div class="content">
+    <nav class="nav_container">
         <div class="navbar_toggle" id="mobile-menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
         </div>
         <ul class="side_nav">
-          <li class="navbar_item hidden admin-option">
-            <a href="admin.html" class="navbar_links">Admin page</a>
-          </li>
-          <li class="navbar_item">
-            <a href="search.html" class="navbar_links">Search</a>
-          </li>
-          <li class="navbar_item">
-            <a href="addActivity.html" class="navbar_links active">New</a>
-          </li>
-          <li class="navbar_item">
-            <a href="home.html" class="navbar_links">All</a>
-          </li>
-          <li class="navbar_item">
-            <a href="last24.html" class="navbar_links">Last 24hrs</a>
-          </li>
-          <li class="navbar_item">
-            <a href="user.html" class="navbar_links">My profile</a>
-          </li>
-          <li class="navbar_item">
-            <a href="account-settings.html" class="navbar_links">Settings</a>
-          </li>
-          <li class="navbar_item">
-            <a href="logout.html" class="navbar_links">Logout</a>
-          </li>
+            <li class="navbar_item hidden admin-option">
+                <a href="admin.html" class="navbar_links">Admin page</a>
+            </li>
+            <li class="navbar_item">
+                <a href="search.html" class="navbar_links">Search</a>
+            </li>
+            <li class="navbar_item">
+                <a href="addActivity.html" class="navbar_links active">New</a>
+            </li>
+            <li class="navbar_item">
+                <a href="home.html" class="navbar_links">All</a>
+            </li>
+            <li class="navbar_item">
+                <a href="last24.html" class="navbar_links">Last 24hrs</a>
+            </li>
+            <li class="navbar_item">
+                <a href="user.html" class="navbar_links">My profile</a>
+            </li>
+            <li class="navbar_item">
+                <a href="account-settings.html" class="navbar_links">Settings</a>
+            </li>
+            <li class="navbar_item">
+                <a href="logout.html" class="navbar_links">Logout</a>
+            </li>
         </ul>
-      </nav>
+    </nav>
 
     <!--Main content-->
-    <!--Container for the activity form-->
     <div class="new_activity_background">
-    <div class="container_new_activity">
-      <div class="forms">
-        <div class="form-wrapper" id="activity-wrapper">
-          <p class="p_add_activity">Add a new activity</p>
-          <form
-            id="add_activity_form"
-            class="light-border"
-            method="post"
-            enctype="multipart/form-data"
-          >
-            <div>
-              <input
-                class="activity_input"
-                type="text"
-                required
-                minlength="3"
-                name="name"
-                placeholder="Name"
-              />
-            </div>
-            <div class="form_section_1">
-              <div>
-                <input
-                  class="activity_input"
-                  id="location"
-                  type="text"
-                  required
-                  minlength="3"
-                  name="location"
-                  placeholder="Location"
-                />
-              </div>
-              <div>
-                <input
-                  class="activity_input"
-                  id="date_time_input"
-                  type="datetime-local"
-                  required
-                  minlength="3"
-                  name="VET"
-                  placeholder="Time:YYYY-MM-DD hh:mm:ss"
-                />
-              </div>
-            </div>
-            <div>
+        <div class="container_new_activity">
+            <div class="forms">
+                <div class="form-wrapper" id="activity-wrapper">
+                    <p class="p_add_activity">Add a new activity</p>
+                    <form
+                            id="add_activity_form"
+                            class="light-border"
+                            method="post"
+                            enctype="multipart/form-data"
+                    >
+                        <div>
+                            <input
+                                    class="activity_input"
+                                    type="text"
+                                    required
+                                    minlength="3"
+                                    name="name"
+                                    placeholder="Name"
+                            />
+                        </div>
+                        <div class="form_section_1">
+                            <div>
+                                <input
+                                        class="activity_input"
+                                        id="location"
+                                        type="text"
+                                        required
+                                        minlength="3"
+                                        name="location"
+                                        placeholder="Location"
+                                />
+                            </div>
+                            <div>
+                                <input
+                                        class="activity_input"
+                                        id="date_time_input"
+                                        type="datetime-local"
+                                        required
+                                        minlength="3"
+                                        name="VET"
+                                        placeholder="Time:YYYY-MM-DD hh:mm:ss"
+                                />
+                            </div>
+                        </div>
+                        <div>
               <textarea
-                class="description_input"
-                type="text"
-                required
-                minlength="3"
-                name="description"
-                rows="5"
-                placeholder="Description"
+                      class="description_input"
+                      type="text"
+                      required
+                      minlength="3"
+                      name="description"
+                      rows="5"
+                      placeholder="Description"
               ></textarea>
+                        </div>
+                        <div class="upload_btn_wrapper">
+                            <button class="upload_img_btn">Activity image</button>
+                            <input
+                                    class="activity_input"
+                                    id="file"
+                                    type="file"
+                                    required
+                                    minlength="3"
+                                    name="activity_pic"
+                                    placeholder="Image"
+                                    onchange="updateList()"
+                            />
+                        </div>
+                        <div id="fileList"></div>
+                        <div>
+                            <button class="submit_activity" type="submit">Save</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="upload_btn_wrapper">
-              <button class="upload_img_btn">Activity image</button>
-              <input
-                class="activity_input"
-                id="file"
-                type="file"
-                required
-                minlength="3"
-                name="activity_pic"
-                placeholder="Image"
-                onchange="updateList()"
-              />
-            </div>
-            <div id="fileList"></div>
-            <div>
-              <button class="submit_activity" type="submit">Save</button>
-            </div>
-          </form>
         </div>
-      </div>
     </div>
-    </div>
-    </div>
-    <!-- Define scripts here -->
-    <!--    <script src="./scripts/check-login.js"></script>-->
-    <script src="./scripts/serialize.js"></script>
-    <script src="./scripts/login.js"></script>
-    <script src="./scripts/uploadFile.js"></script>
-    <script src="./scripts/addActivity.js"></script>
-    <script src="./scripts/navigation.js"></script>
-  </body>
+</div>
+<!-- Define scripts here -->
+<!--    <script src="./scripts/check-login.js"></script>-->
+<script src="./scripts/serialize.js"></script>
+<script src="./scripts/login.js"></script>
+<script src="./scripts/uploadFile.js"></script>
+<script src="./scripts/addActivity.js"></script>
+<script src="./scripts/navigation.js"></script>
+</body>
 </html>

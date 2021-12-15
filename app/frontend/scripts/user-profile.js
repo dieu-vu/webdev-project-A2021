@@ -25,7 +25,7 @@ const openMenu = () => {
     document.querySelector('.side-edit-menu').style.padding = "5%";
     stack.style.width = "60%";
     stack.style.float = "left";
-    stack.style.marginLeft ='0%';
+    stack.style.marginLeft = '0%';
     stack.style.transition = 'all 0.3s ease-in-out';
 };
 const closeMenu = () => {
@@ -39,7 +39,8 @@ const closeMenu = () => {
 // close side edit menu
 const closeButton = document.querySelector('.close-button');
 closeButton.addEventListener('click', () => {
-    closeMenu()});
+    closeMenu()
+});
 
 // create user picture on profile page:
 const createUserPic = (user, el) => {
@@ -48,7 +49,9 @@ const createUserPic = (user, el) => {
 
     const img = document.createElement('img');
     img.src = url + '/' + user.user_filename;
-    img.onerror = () => {img.src='https://picsum.photos/200'};
+    img.onerror = () => {
+        img.src = 'https://picsum.photos/200'
+    };
     img.alt = user.name;
     img.classList.add('user_image');
     img.addEventListener('click', () => {
@@ -64,8 +67,9 @@ const createUserPic = (user, el) => {
     const editButton = document.createElement('button');
     editButton.classList.add('edit-profile-button');
     editButton.addEventListener('click', () => {
-        openMenu()});
-    
+        openMenu()
+    });
+
     span.appendChild(editButton);
     p2.appendChild(span);
 
@@ -79,7 +83,7 @@ const createUserPic = (user, el) => {
 const createActivityStack = (activities, headerText, divName) => {
     const listContainer = document.createElement('div');
     listContainer.classList.add(divName);
-    
+
     const header = document.createElement('h2');
     header.innerHTML = headerText;
     header.classList.add('profile_headers');
@@ -90,7 +94,7 @@ const createActivityStack = (activities, headerText, divName) => {
 
     ul.innerHTML = '';
 
-    if (activities.length !==0){
+    if (activities.length !== 0) {
         activities.forEach((activity) => {
 
 
@@ -149,7 +153,7 @@ const createActivityStack = (activities, headerText, divName) => {
             const layer = document.createElement('div');
             layer.classList.add('layer');
             // // FOR MODAL FUNCTIONALITY
-            
+
             stack.style.color = '#fcfcfc';
 
 
@@ -177,8 +181,9 @@ const createActivityStack = (activities, headerText, divName) => {
                         console.log(e.message);
                     }
                 });
-                
-            };
+
+            }
+            ;
 
             //delete button is visible for admin or moderator role and the owner of the activity
             if (loggedInUser.role == 0 || loggedInUser.role === 2 || loggedInUser.user_id === activity.owner) {
@@ -245,7 +250,10 @@ const createActivityStack = (activities, headerText, divName) => {
             p4.classList.add('modal_time');
 
             const participantCount = document.createElement('p');
-            if (activity.num_participant === null) { activity.num_participant = 0};
+            if (activity.num_participant === null) {
+                activity.num_participant = 0
+            }
+            ;
             participantCount.innerHTML = `Joining: ${activity.num_participant}`;
             participantCount.classList.add('modal_participants');
 
@@ -337,20 +345,20 @@ userEditForm.addEventListener('submit', async (editEvent) => {
         if (pair[1] !== "" && pair[1].name !== "") {
             isEmpty = false;
         }
-     }
+    }
     console.log('BLANK FORM', isEmpty);
 
     //Fill the existing data to form if the user leaves fields blank
-    if (data.get('email')=== "") {
+    if (data.get('email') === "") {
         data.set('email', loggedInUser.email);
     }
-    if (data.get('name')=== ""){
+    if (data.get('name') === "") {
         data.set('name', loggedInUser.name);
     }
-    if (document.getElementById('file-id').files.length !==0){
+    if (document.getElementById('file-id').files.length !== 0) {
         data.filename = document.getElementById('file-id').files[0].name;
-    } 
-    
+    }
+
     console.log('USER PUT REQ', data);
 
     const options = {
@@ -364,8 +372,8 @@ userEditForm.addEventListener('submit', async (editEvent) => {
     const response = await fetch(url + `/user/${loggedInUserId}`, options);
     const json = await response.json();
     console.log(json);
-    
-   
+
+
     if (isEmpty) {
         alert("You submitted a blank form");
     } else if (!response.ok) {
@@ -373,10 +381,12 @@ userEditForm.addEventListener('submit', async (editEvent) => {
     } else {
         alert(json.message);
     }
-    
+
     console.log('USER PUT', response);
 
-    if (json.error) {alert(json.error.message)};
+    if (json.error) {
+        alert(json.error.message)
+    }
 
     location.href = 'user.html';
 });

@@ -22,14 +22,13 @@ registerForm.addEventListener('submit', async (evt) => {
     const json = await response.json();
     alert(json.message);
     console.log('register response', json);
- 
+
     if (!response.ok) {
         alert("Error " + response.statusText + " occurred when updating profile");
         window.location.href = ('register.html');
     } else if (!json.emailValid) {
         window.location.href = ('register.html');
-    }
-    else {
+    } else {
         window.location.href = ('login.html');
     }
 });

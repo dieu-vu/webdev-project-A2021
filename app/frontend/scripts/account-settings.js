@@ -14,12 +14,12 @@ if (loggedInUser.role === 0) {
 const settingInputForm = document.querySelector('.setting-input');
 const menuItem = document.getElementsByClassName('setting-item');
 
-//console.log('menuItem', menuItem);
-
-const generalFields = { name: 'Name', email: 'Email', fieldId: 'general'};
-const passwordFields = { currentPassword: 'Current Password', newPassword: 'New Password',
-                         checkPassword: 'Confirm New Password', fieldId: 'password'};
-const deleteFields = { confirm: `Type your email to confirm`, fieldId: 'delete'};
+const generalFields = {name: 'Name', email: 'Email', fieldId: 'general'};
+const passwordFields = {
+    currentPassword: 'Current Password', newPassword: 'New Password',
+    checkPassword: 'Confirm New Password', fieldId: 'password'
+};
+const deleteFields = {confirm: `Type your email to confirm`, fieldId: 'delete'};
 
 
 //Toggle between input forms with class name of the seleted item in menu
@@ -33,17 +33,15 @@ const generateInputForm = () => {
                 createFormByFieldList(generalFields, true, false);
                 console.log("Created form");
                 await handleGeneralForm();
-            }
-            else if (selectedItem.classList.contains("password")) {
+            } else if (selectedItem.classList.contains("password")) {
                 createFormByFieldList(passwordFields, false, false);
                 await handlePasswordForm();
-            }
-            else if (selectedItem.classList.contains("delete")) {
+            } else if (selectedItem.classList.contains("delete")) {
                 createFormByFieldList(deleteFields, false, true);
                 await handleDeleteForm();
             }
         });
-    });   
+    });
 }
 
 
@@ -58,7 +56,7 @@ const createFormByFieldList = (fieldList, haveUpload, ifDelete) => {
     form.classList.add('setting_input_form'); // CSS CLASS OF THE FORM
     form.id = fieldList['fieldId'];
 
-    if (ifDelete){
+    if (ifDelete) {
         const header = document.createElement('h3');
         header.id = 'delete-header';
         header.innerHTML = 'Account deletion'
@@ -82,17 +80,17 @@ const createFormByFieldList = (fieldList, haveUpload, ifDelete) => {
             input.name = key;
 
             //Require input for password change:
-            if (key.toLowerCase().includes('password')){
+            if (key.toLowerCase().includes('password')) {
                 input.required = true;
                 input.type = 'password';
             }
             form.appendChild(label);
             form.appendChild(input);
-        };
+        }
     });
 
     // add field if having file upload
-    if (haveUpload){
+    if (haveUpload) {
         const label = document.createElement('label');
         label.innerHTML = 'Upload an image';
 
@@ -102,11 +100,11 @@ const createFormByFieldList = (fieldList, haveUpload, ifDelete) => {
         upload.placeholder = 'Choose file';
         upload.accept = 'image/*';
         upload.name = 'user_filename';
-        upload.id='file-id';
+        upload.id = 'file-id';
 
         form.appendChild(label);
         form.appendChild(upload);
-    }; 
+    }
 
     const button = document.createElement('button');
     button.type = 'submit';
@@ -117,11 +115,11 @@ const createFormByFieldList = (fieldList, haveUpload, ifDelete) => {
 
     settingInputForm.appendChild(h2);
     settingInputForm.appendChild(form);
-};     
+};
 
 
 // handle general edit form events:
-const handleGeneralForm = async () => { 
+const handleGeneralForm = async () => {
     let submittedForm = document.querySelector('#general');
     submittedForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
@@ -136,15 +134,15 @@ const handleGeneralForm = async () => {
             }
         }
         //Fill the existing data to form if the user leaves fields blank
-        if (data.get('email')=== "") {
+        if (data.get('email') === "") {
             data.set('email', loggedInUser.email);
         }
-        if (data.get('name')=== ""){
+        if (data.get('name') === "") {
             data.set('name', loggedInUser.name);
         }
-        if (document.getElementById('file-id').files.length !==0){
+        if (document.getElementById('file-id').files.length !== 0) {
             data.filename = document.getElementById('file-id').files[0].name;
-        } 
+        }
         const options = {
             method: 'PUT',
             headers: {
@@ -163,7 +161,7 @@ const handleGeneralForm = async () => {
         } else {
             alert(json.message);
         }
-        if (json.error) {alert(json.error.message)};
+        if (json.error) {alert(json.error.message)}
 
         location.href = 'account-settings.html';
     });
@@ -175,7 +173,7 @@ const handlePasswordForm = async () => {
     passwordForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
         const data = serializeJson(passwordForm);
-        
+
         //Check if new password confirmation matching:
         const matchingPassword = data["newPassword"] !== data["checkPassword"];
         if (matchingPassword) {
@@ -191,13 +189,15 @@ const handlePasswordForm = async () => {
             };
             const response = await fetch(url + `/user/${loggedInUserId}/passwordChange`, options);
             const json = await response.json();
-            
+
             if (!response.ok) {
                 alert("Error " + response.status + " occurred when updating password");
             } else {
                 alert(json.message);
             }
-            if (json.error) {alert(json.error.message)};
+            if (json.error) {
+                alert(json.error.message)
+            }
 
             location.href = 'account-settings.html';
         }
@@ -211,7 +211,7 @@ const handleDeleteForm = () => {
         const data = serializeJson(deleteForm);
         console.log(data);
 
-        if (data["confirm"] === ""){
+        if (data["confirm"] === "") {
             alert("Please confirm");
         } else if (data["confirm"] === loggedInUser.email) {
             const options = {
@@ -224,20 +224,21 @@ const handleDeleteForm = () => {
             };
             const response = await fetch(url + `/user/${loggedInUserId}`, options);
             const json = await response.json();
-            
+
             if (!response.ok) {
                 alert("Error " + response.status + " occurred when updating password");
             } else {
                 alert(json.message);
             }
-            if (json.error) {alert(json.error.message)};
+            if (json.error) {
+                alert(json.error.message)
+            }
             console.log('deletion confirmed');
             location.href = 'login.html';
-            
+
         } else {
             alert("Please type your email to confirm");
-        };
-
+        }
     });
 };
 

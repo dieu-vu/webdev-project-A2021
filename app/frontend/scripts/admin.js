@@ -1,10 +1,8 @@
-
 'use strict';
 
 const url = 'http://localhost:3000';
 
 const loggedInUserId = JSON.parse(sessionStorage.getItem('user')).user_id;
-
 
 
 // Create tabs for displaying user and activity list:
@@ -14,7 +12,7 @@ const activityList = document.querySelector('.activity-list');
 
 
 const createTabs = (node) => {
-    let tabs = Array.from(node.children).map ( node => {
+    let tabs = Array.from(node.children).map(node => {
         let button = document.createElement('button');
         button.classList.add('admin_tab_button');
         button.textContent = node.getAttribute('data-tabname');
@@ -26,7 +24,7 @@ const createTabs = (node) => {
 
     let tabList = document.createElement('div');
     tabList.classList.add('admin_tab_button_container');
-    for ( let {button} of tabs) tabList.appendChild(button);
+    for (let {button} of tabs) tabList.appendChild(button);
     node.insertBefore(tabList, node.firstChild);
 
     const selectTab = (selectedTab) => {
@@ -90,11 +88,16 @@ const createUserList = async (users) => {
             const name = document.createElement('p');
             name.classList.add('item-name');
 
-            if (user.role === 0) {name.innerHTML = `${user.name} (Admin)` }
-            else if (user.role === 2) {name.innerHTML = `${user.name} (Mod)`}
-            else {name.innerHTML = `${user.name}`};
+            if (user.role === 0) {
+                name.innerHTML = `${user.name} (Admin)`
+            } else if (user.role === 2) {
+                name.innerHTML = `${user.name} (Mod)`
+            } else {
+                name.innerHTML = `${user.name}`
+            }
+            ;
 
-    
+
             const li = document.createElement('li');
             li.appendChild(name);
 
@@ -108,10 +111,10 @@ const createUserList = async (users) => {
             deleteButton.style.display = "inline";
             deleteButton.addEventListener('click', async () => {
                 const fetchOptions = {
-                  method: 'DELETE',
-                  headers: {
-                    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-                  },
+                    method: 'DELETE',
+                    headers: {
+                        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                    },
                 };
                 if (confirm("You are deleting a user, continue?")) {
                     try {
@@ -120,12 +123,12 @@ const createUserList = async (users) => {
                         alert(`User ${name.innerHTML} deleted`);
                         window.location.reload();
                     } catch (e) {
-                    console.log(e.message);
+                        console.log(e.message);
                     }
                 } else {
                     alert("You cancelled the action");
-                } 
-                
+                }
+
             });
 
             //Promote button
@@ -138,7 +141,8 @@ const createUserList = async (users) => {
                 promoteButton.style.display = 'none';
             } else if (user.role === 2) {
                 await handleChangeRoleButton(promoteButton, 'Demote', user);
-            };
+            }
+            ;
 
             span.appendChild(deleteButton);
             span.appendChild(promoteButton);
@@ -147,7 +151,7 @@ const createUserList = async (users) => {
             ul.appendChild(li);
         });
     }
-    userList.appendChild(ul);    
+    userList.appendChild(ul);
 };
 
 
@@ -162,7 +166,7 @@ const createActivityList = (activities) => {
             const name = document.createElement('p');
             name.classList.add('item-name');
             name.innerHTML = `${activity.activity} - Owner: ${activity.owner}`;
-    
+
             const li = document.createElement('li');
             li.appendChild(name);
 
@@ -172,10 +176,10 @@ const createActivityList = (activities) => {
             deleteButton.style.display = "inline";
             deleteButton.addEventListener('click', async () => {
                 const fetchOptions = {
-                  method: 'DELETE',
-                  headers: {
-                    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-                  },
+                    method: 'DELETE',
+                    headers: {
+                        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                    },
                 };
                 alert("You are deleting an activity, continue?");
                 try {
@@ -191,18 +195,22 @@ const createActivityList = (activities) => {
             ul.appendChild(li);
         });
     }
-    activityList.appendChild(ul);    
+    activityList.appendChild(ul);
 };
 
 const handleChangeRoleButton = async (buttonElement, changeType, user) => {
-    if (changeType ==='Promote') {buttonElement.innerHTML = `${changeType} to mod` } 
-    else { buttonElement.innerHTML = `${changeType} from mod`};
-    
+    if (changeType === 'Promote') {
+        buttonElement.innerHTML = `${changeType} to mod`
+    } else {
+        buttonElement.innerHTML = `${changeType} from mod`
+    }
+
+
     buttonElement.addEventListener('click', async () => {
         const fetchOptions = {
             method: 'PUT',
             headers: {
-            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                Authorization: 'Bearer ' + sessionStorage.getItem('token'),
             },
         };
         if (confirm(`You will ${changeType} this user, continue?`)) {

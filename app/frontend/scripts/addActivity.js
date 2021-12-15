@@ -1,6 +1,5 @@
 // file for add activity functionality
 'use strict';
-// const url = 'http://localhost:3000'; // url for backend connection
 
 // get user data from session storage
 const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
@@ -19,10 +18,10 @@ addForm.addEventListener('submit', async (evt) => {
     const fetchOptions = {
         method: 'POST',
         headers: {
-          Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
         },
         body: fd,
-      };
+    };
     const response = await fetch(url + '/activity', fetchOptions);
     const json = await response.json();
     alert(json.message);

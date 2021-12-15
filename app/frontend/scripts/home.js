@@ -9,7 +9,7 @@ const user = JSON.parse(sessionStorage.getItem('user'));
 // Check if user is an admin to give access to admin page
 if (user.role === 0) {
     document.querySelector('.admin-option').style.display = "block";
-};
+}
 
 // create activity cards
 const createActivityCards = (activities) => {
@@ -66,7 +66,6 @@ const createActivityCards = (activities) => {
         figure.appendChild(p5);
         figure.appendChild(h2);
         figure.appendChild(hint);
-
 
 
         // // FOR MODAL FUNCTIONALITY

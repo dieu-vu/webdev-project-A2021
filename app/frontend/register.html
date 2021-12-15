@@ -3,50 +3,53 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf8">
-  <title>Register</title>
-  <link rel="icon" type="image/x-icon" href="./images/icon.ico">
-  <link href="./styles/style.css" rel="stylesheet">
+    <meta charset="utf8">
+    <title>Register</title>
+    <link rel="icon" type="image/x-icon" href="./images/icon.ico">
+    <link href="./styles/style.css" rel="stylesheet">
 </head>
 
 <body>
 <div class="container_layout">
 
-<!--container register page left side-->
-<div class="container_intro_register">
-  <h1>People make memories</h1>
-  <h3>You choose how.</h3>
-</div>
-
-<!--container register page right side-->
-<div class="container_register">
-  <div class="forms">
-    <div class="form-wrapper" id="register-wrapper">
-      <img src="images/nutivity_logo.png" alt="logo" width="90px" height="100px">
-      <h3>Nutivity</h3>
-      <form id="register-form" class="light-border" action="http://localhost:3000/auth/register" method="post" enctype="multipart/form-data">
-        <div>
-          <input class="light-border" type="text" required name="email" placeholder="Email"/>
-        </div>
-        <div>
-          <input class="light-border" type="text" required minlength="3" name="name" placeholder="Name"/>
-        </div>
-        <div>
-          <input class="light-border" type="password" required pattern="(?=.*[A-Z]).{8,}" name="password" placeholder="Password"/>
-        </div>
-        <div class="upload_btn_wrapper">
-          <button class="upload_img_btn">Upload a file</button>
-          <input class="light-border" id="file" type="file" name="user_filename" accept="image/*" placeholder="Choose file" onchange="updateList()"/>
-        </div>
-        <div id="fileList"></div>
-        <div>
-          <button class="light-border" type="submit">Register</button>
-        </div>
-      </form>
-      <p>Already have an account? <a href="login.html">login</a></p>
+    <!--container register page left side-->
+    <div class="container_intro_register">
+        <h1>People make memories</h1>
+        <h3>You choose how.</h3>
     </div>
-  </div>
-</div>
+
+    <!--container register page right side-->
+    <div class="container_register">
+        <div class="forms">
+            <div class="form-wrapper" id="register-wrapper">
+                <img src="images/nutivity_logo.png" alt="logo" width="90px" height="100px">
+                <h3>Nutivity</h3>
+                <form id="register-form" class="light-border" action="http://localhost:3000/auth/register" method="post"
+                      enctype="multipart/form-data">
+                    <div>
+                        <input class="light-border" type="text" required name="email" placeholder="Email"/>
+                    </div>
+                    <div>
+                        <input class="light-border" type="text" required minlength="3" name="name" placeholder="Name"/>
+                    </div>
+                    <div>
+                        <input class="light-border" type="password" required pattern="(?=.*[A-Z]).{8,}" name="password"
+                               placeholder="Password"/>
+                    </div>
+                    <div class="upload_btn_wrapper">
+                        <button class="upload_img_btn">Upload a file</button>
+                        <input class="light-border" id="file" type="file" name="user_filename" accept="image/*"
+                               placeholder="Choose file" onchange="updateList()"/>
+                    </div>
+                    <div id="fileList"></div>
+                    <div>
+                        <button class="light-border" type="submit">Register</button>
+                    </div>
+                </form>
+                <p>Already have an account? <a href="login.html">login</a></p>
+            </div>
+        </div>
+    </div>
 </div>
 <!--Define scripts here-->
 <script src="./scripts/serialize.js"></script>

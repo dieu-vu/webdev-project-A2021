@@ -30,6 +30,7 @@ const login = (req, res, next) => {
     })(req, res, next);
 };
 
+// Logout
 const logout = (req, res) => {
     req.logout();
     res.json({message: 'logout'});

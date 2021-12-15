@@ -2,76 +2,76 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <title>Nutivity</title>
-  <link rel="icon" type="image/x-icon" href="./images/icon.ico">
-  <link href="./styles/style.css" rel="stylesheet" />
+    <meta charset="UTF-8"/>
+    <title>Nutivity</title>
+    <link rel="icon" type="image/x-icon" href="./images/icon.ico">
+    <link href="./styles/style.css" rel="stylesheet"/>
 </head>
 
 <body>
-  <div class="content">
+<div class="content">
     <!--Left side navigation drawer-->
     <nav class="nav_menu">
-      <div class="nav_container">
-        <div class="navbar_toggle" id="mobile-menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
+        <div class="nav_container">
+            <div class="navbar_toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="side_nav" id="main_navigation">
+                <li class="navbar_item">
+                    <a href="search.html" class="navbar_links">Search</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="addActivity.html" class="navbar_links">New</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="home.html" class="navbar_links">All</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="last24.html" class="navbar_links">Last 24hrs</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="user.html" class="navbar_links">My profile</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="account-settings.html" class="navbar_links">Settings</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="logout.html" class="navbar_links">Logout</a>
+                </li>
+            </ul>
         </div>
-        <ul class="side_nav" id="main_navigation">
-          <li class="navbar_item">
-            <a href="search.html" class="navbar_links">Search</a>
-          </li>
-          <li class="navbar_item">
-            <a href="addActivity.html" class="navbar_links">New</a>
-          </li>
-          <li class="navbar_item">
-            <a href="home.html" class="navbar_links">All</a>
-          </li>
-          <li class="navbar_item">
-            <a href="last24.html" class="navbar_links">Last 24hrs</a>
-          </li>
-          <li class="navbar_item">
-            <a href="user.html" class="navbar_links">My profile</a>
-          </li>
-          <li class="navbar_item">
-            <a href="account-settings.html" class="navbar_links">Settings</a>
-          </li>
-          <li class="navbar_item">
-            <a href="logout.html" class="navbar_links">Logout</a>
-          </li>
-        </ul>
-      </div>
     </nav>
 
     <!--Main content-->
     <div class="activity_content">
-      <div class="user-header">
-        <div id="user-info">
-          <!-- display user picture and name -->
+        <div class="user-header">
+            <div id="user-info">
+                <!-- display user picture and name -->
+            </div>
         </div>
-      </div>
-      <div class="tab-panel">
-        <div data-tabname="Users" class="tab_content">
-          <div class="user-list">
-            <h2>User list</h2>
-            <!-- js to generate user list -->
-          </div>
+        <div class="tab-panel">
+            <div data-tabname="Users" class="tab_content">
+                <div class="user-list">
+                    <h2>User list</h2>
+                    <!-- js to generate user list -->
+                </div>
+            </div>
+            <div data-tabname="Activities" class="tab_content">
+                <div class="activity-list">
+                    <h2>Activity list</h2>
+                    <!-- js to generate user list -->
+                </div>
+            </div>
         </div>
-        <div data-tabname="Activities" class="tab_content">
-          <div class="activity-list">
-            <h2>Activity list</h2>
-            <!-- js to generate user list -->
-          </div>
-        </div>
-      </div>
 
     </div>
-  </div>
-  <!-- Define scripts here -->
-  <script src="./scripts/serialize.js"></script>
-  <script src="./scripts/navigation.js"></script>
-  <script src="./scripts/admin.js"></script>
+</div>
+<!-- Define scripts here -->
+<script src="./scripts/serialize.js"></script>
+<script src="./scripts/navigation.js"></script>
+<script src="./scripts/admin.js"></script>
 </body>
 
 </html>
