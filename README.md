@@ -41,7 +41,7 @@ Home page
 
 ## API 
 
-🔗 [API Reference for Nutivity App](https://github.com/dieu-vu/webdev-project-A2021/blob/version2/API-doc-Nutivity.md)
+🔗 [**API Reference for Nutivity App**](https://github.com/dieu-vu/webdev-project-A2021/blob/version2/API-doc-Nutivity.md)
 
 ## USAGE OF THE DEPLOYED WEB
 
