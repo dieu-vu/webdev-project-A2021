@@ -165,7 +165,7 @@ const handleGeneralForm = async () => {
         }
         if (json.error) {alert(json.error.message)};
 
-        //location.href = 'account-settings.html';
+        location.href = 'account-settings.html';
     });
 }
 
