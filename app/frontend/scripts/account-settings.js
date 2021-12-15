@@ -26,18 +26,21 @@ const deleteFields = { confirm: `Type your email to confirm`, fieldId: 'delete'}
 const generateInputForm = () => {
     Object.values(menuItem).forEach((selectedItem) => {
         createFormByFieldList(generalFields, true, false);
-        selectedItem.addEventListener('click', () => {
+        handleGeneralForm();
+        selectedItem.addEventListener('click', async () => {
+            settingInputForm.innerHTML = '';
             if (selectedItem.classList.contains("general")) {
                 createFormByFieldList(generalFields, true, false);
-                handleSubmitForm();
+                console.log("Created form");
+                await handleGeneralForm();
             }
             else if (selectedItem.classList.contains("password")) {
                 createFormByFieldList(passwordFields, false, false);
-                handlePasswordForm();
+                await handlePasswordForm();
             }
             else if (selectedItem.classList.contains("delete")) {
                 createFormByFieldList(deleteFields, false, true);
-                handleDeleteForm();
+                await handleDeleteForm();
             }
         });
     });   
@@ -46,6 +49,7 @@ const generateInputForm = () => {
 
 // Create form when menu item is selected:
 const createFormByFieldList = (fieldList, haveUpload, ifDelete) => {
+    console.log("Creating form")
     settingInputForm.innerHTML = '';
     const h2 = document.createElement('h2');
     h2.innerHTML = 'Change Account settings';
@@ -100,7 +104,6 @@ const createFormByFieldList = (fieldList, haveUpload, ifDelete) => {
         upload.name = 'user_filename';
         upload.id='file-id';
 
-
         form.appendChild(label);
         form.appendChild(upload);
     }; 
@@ -114,15 +117,12 @@ const createFormByFieldList = (fieldList, haveUpload, ifDelete) => {
 
     settingInputForm.appendChild(h2);
     settingInputForm.appendChild(form);
-
 };     
-
-generateInputForm();
 
 
 // handle general edit form events:
 const handleGeneralForm = async () => { 
-    const submittedForm = document.querySelector('#general');
+    let submittedForm = document.querySelector('#general');
     submittedForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
         const data = new FormData(submittedForm);
@@ -152,19 +152,20 @@ const handleGeneralForm = async () => {
             },
             body: data,
         };
+
         const response = await fetch(url + `/user/${loggedInUserId}`, options);
         const json = await response.json();
-        
+        console.log(json);
         if (isEmpty) {
             alert("You submitted a blank form");
         } else if (!response.ok) {
-            alert("Error " + response.status + " occurred when updating profile");
+            alert("Error " + response.statusText + " occurred when updating profile");
         } else {
             alert(json.message);
         }
         if (json.error) {alert(json.error.message)};
 
-        location.href = 'account-settings.html';
+        //location.href = 'account-settings.html';
     });
 }
 
@@ -239,3 +240,5 @@ const handleDeleteForm = () => {
 
     });
 };
+
+generateInputForm();
