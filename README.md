@@ -9,10 +9,11 @@ To create a web application for different sorts of activity sharing for register
 
 Landing page
 
-<img src="/app/assets/landing_page.png" width="200">
+<img src="/app/assets/landing_page.png" width="70%">
 
 Home page
-<img src="/app/assets/home_page.png" width="200">
+
+<img src="/app/assets/home_page.png" width="70%">
 
 ## BUILD
 
