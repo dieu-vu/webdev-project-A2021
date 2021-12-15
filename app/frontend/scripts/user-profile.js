@@ -243,6 +243,7 @@ const createActivityStack = (activities, headerText, divName) => {
             p4.classList.add('modal_time');
 
             const participantCount = document.createElement('p');
+            if (activity.num_participant === null) { activity.num_participant = 0};
             participantCount.innerHTML = `Joining: ${activity.num_participant}`;
             participantCount.classList.add('modal_participants');
 
