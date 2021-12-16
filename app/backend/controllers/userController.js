@@ -53,7 +53,7 @@ const user_put = async (req, res, next) => {
         if (user.name === "blank") { user.name = originalUser.name };
         //If user upload a new picture, create thumbnail
         if (!req.file) {
-            user.user_filename = req.user.user_filename;
+            user.user_filename = originalUser.user_filename;
             console.log('NO FILE IN PUT REQUEST', req.file)
         } else {
             const thumb = await makeThumbnail(req.file.path, req.file.filename);
