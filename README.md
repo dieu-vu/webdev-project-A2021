@@ -48,9 +48,11 @@ node app.js
 ## USAGE OF THE DEPLOYED WEB
 
 1. Login 
+
 With credentials or without - if without then enter the home page for guests with limited functionalities.
 
 2. Register
+
 Create a new username - after creation redirect to login
 
 3. User page
