@@ -19,14 +19,14 @@ Home page
 
 1. Clone the project
 ```
-    git clone https://github.com/dieu-vu/webdev-project-A2021.git
-    cd webdev-project-A2021
+    git clone https://github.com/dieu-vu/webdev-project-A2021.git --branch=version2 nutivity_app
+    cd nutivity_app
 ```
 2. Install dependencies
 ```
     npm i
 ```
-3. Create/edit .env file with your database credentials: You have to contact owners for the credentials
+3. Create/edit .env file with your database credentials. You have to contact owners for the credentials
 
 ```
  DB_HOST=127.0.0.1
@@ -37,7 +37,9 @@ Home page
 
 4. Run the application
 
-```node app.js```
+```
+node app.js
+```
 
 ## API 
 
