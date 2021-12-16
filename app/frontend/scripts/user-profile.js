@@ -350,7 +350,7 @@ userEditForm.addEventListener('submit', async (editEvent) => {
 
     //Fill the dummy data to form if the user leaves fields blank
     if (data.get('email') === "") {
-        data.set('email', "blank@blank.fi"); //Need this form for validation
+        data.set('email', "blank@domain.invalid"); //Need this form for validation, domain reserved by IETF
     }
     if (data.get('name') === "") {
         data.set('name', "blank");

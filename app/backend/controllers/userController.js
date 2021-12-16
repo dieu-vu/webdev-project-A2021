@@ -49,7 +49,7 @@ const user_put = async (req, res, next) => {
 
         const originalUser = await userModel.getUser(user.user_id);
 
-        if (user.email === "blank@blank.fi"){ user.email = originalUser.email };
+        if (user.email === "blank@.invalid"){ user.email = originalUser.email };
         if (user.name === "blank") { user.name = originalUser.name };
         //If user upload a new picture, create thumbnail
         if (!req.file) {
