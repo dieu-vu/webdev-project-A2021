@@ -81,6 +81,8 @@ Create a new username - after creation redirect to login
 - User can change password
 - User can delete their own account with a confirmation required
 
+11. Secure with HTTPS redirection
+
 ## DATABASE STRUCTURE
 ![Database structure](/app/assets/database.png?raw=true "Database") <br>
 
