@@ -89,7 +89,8 @@ We have created a database with four tables. The foreign key constraint ONDELETE
 For participate_in table, we have implemented double identifiers, so the same user can never join the same activity twice.
 
 We also implement uni-temporal data for the activity table and comment_in table.
- 
+
+🔗 [Project database SQL](/app/projectdb.sql) <br>
 
 ## CONTRIBUTORS
 [Dieu Vu](https://github.com/dieu-vu) <br>
