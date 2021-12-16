@@ -48,11 +48,11 @@ node app.js
 ## USAGE OF THE DEPLOYED WEB
 
 1. Login 
-
 With credentials or without - if without then enter the home page for guests with limited functionalities.
-2. Register
 
+2. Register
 Create a new username - after creation redirect to login
+
 3. User page
 - User can open side menu to modify user profile, example: Name, email, password and profile picture by clicking on edit button or profile picture
 - View joined activities and activities you as a user have published
