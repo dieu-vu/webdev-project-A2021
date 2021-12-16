@@ -96,4 +96,9 @@ We also implement uni-temporal data for the activity table and comment_in table.
 [Dieu Vu](https://github.com/dieu-vu) <br>
 [Jasmin Partanen](https://github.com/jasminsp)<br>
 [Xiaoming Ma](https://github.com/myxmxm)<br>
-Contact contributors for help if neccessary
+With support and teaching from course teachers: Patrick Ausderau, Ilkka Kylmäniemi, Aarne Klemetti, Ulla Sederlöf at Metropolia UAS.
+
+Contact contributors for help if neccessary.
+
+## LICENSE
+Apache License 2.0
