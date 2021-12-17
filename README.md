@@ -53,10 +53,10 @@ With credentials or without - if without then enter the home page for guests wit
 
 2. Register
 
-Create a new username - after creation redirect to login
+Create a new username - after creation redirect to login. Email duplication is checked.
 
 3. User page
-- User can open side menu to modify user profile, example: Name, email, password and profile picture by clicking on edit button or profile picture
+- User can open side menu to modify user profile, example: Name, email, password and profile picture by clicking on edit button or profile picture.  Email duplication is checked.
 - View joined activities and activities you as a user have published
 - Random image generation if the user has not added a profile image or there is an error downloading it.
 4. Activity page
