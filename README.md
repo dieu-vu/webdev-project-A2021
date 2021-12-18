@@ -33,6 +33,7 @@ Home page
  DB_USER=<your-db-user>
  DB_PASS=<your-db-user_password>
  DB_NAME=<your-db-name>
+ JWT_SECRET=<your-jwt-secretorkey>
 ```
 
 4. Run the application
