@@ -15,6 +15,10 @@ Home page
 
 <img src="/app/assets/home_page.png" width="70%">
 
+## PREQUISITES
+- Node (>= 16.0.0) and npm (>= 8.0.0) 
+- MariaDB (>= 10.6.5) 
+
 ## BUILD
 
 1. Clone the project
